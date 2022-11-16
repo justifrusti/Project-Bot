@@ -11,16 +11,24 @@ public class ThirdPersonPlayerController : MonoBehaviour
         Idle
     }
 
+    public enum JumpMode
+    {
+        NormalJump,
+        ChargeJump
+    }
+
     public MovementMode movementMode;
+    [Space]
+    public JumpMode jumpMode;
 
     [Header("Debug and Non Catogarized")]
     public Rigidbody rb;
-
+    [Space]
     public bool takeDamage;
 
     [Header("Characters Stats")]
     public int health;
-
+    [Space]
     public float invisFramesTime;
     public float dmgKnockback;
 
@@ -31,19 +39,26 @@ public class ThirdPersonPlayerController : MonoBehaviour
     public int walkingSpeed;
     public int runSpeed;
     public int maxJumps;
-
+    [Space]
     public float normalTurnSensitivity;
     public float lockedTurnSensitivity;
     public float runTurnSensitivity;
-
+    [Space]
+    public float maxJumpCharge;
+    public float jumpChargeSpeed;
+    [Space]
     public Vector3 jump;
 
     [HideInInspector] public int speed;
     [HideInInspector] public int timesJumped;
     [HideInInspector] public float turnSensitivity;
+    [HideInInspector] public float jumpCharge;
     [HideInInspector] public bool isRunning;
     [HideInInspector] public bool isMoving;
     [HideInInspector] public bool canJump;
+    
+    [Header("Unlocked Abilities")]
+    public bool unlockedChargeJump;
 
     void Start()
     {
@@ -52,6 +67,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
         speed = walkingSpeed;
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        if(unlockedChargeJump)
+        {
+            jumpMode = JumpMode.ChargeJump;
+        }
     }
 
     private void FixedUpdate()
@@ -83,14 +103,47 @@ public class ThirdPersonPlayerController : MonoBehaviour
         }
 
         //Jump
-        if(Input.GetButtonDown("Jump"))
+        switch(jumpMode)
         {
-            if(timesJumped == maxJumps)
-            {
-                canJump = false;
-            }
+            case JumpMode.NormalJump:
+                if (Input.GetButtonDown("Jump"))
+                {
+                    if (timesJumped == maxJumps)
+                    {
+                        canJump = false;
+                    }
 
-            Jump();
+                    Jump();
+                }
+                break;
+
+            case JumpMode.ChargeJump:
+                if (Input.GetButton("Jump"))
+                {
+                    if (timesJumped == maxJumps)
+                    {
+                        canJump = false;
+                    }
+
+                    ChargedJump();
+                }else if(Input.GetButtonUp("Jump"))
+                {
+                    if (timesJumped != maxJumps)
+                    {
+                        rb.velocity = new Vector3(rb.velocity.x, 0);
+                        rb.velocity += new Vector3(0, jump.y + jumpCharge, 0);
+
+                        timesJumped++;
+                    }
+
+                    if (timesJumped == maxJumps)
+                    {
+                        canJump = false;
+                    }
+
+                    jumpCharge = 0;
+                }
+                break;
         }
 
         if(takeDamage)
@@ -177,6 +230,26 @@ public class ThirdPersonPlayerController : MonoBehaviour
         if (timesJumped == maxJumps)
         {
             canJump = false;
+        }
+    }
+
+    public void ChargedJump()
+    {
+        if (jumpCharge < maxJumpCharge)
+        {
+            jumpCharge += jumpChargeSpeed * Time.deltaTime;
+        }
+
+        if (jumpCharge > maxJumpCharge)
+        {
+            jumpCharge = maxJumpCharge;
+        }
+
+        print(jumpCharge);
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            
         }
     }
 

@@ -536,25 +536,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementMode: 2
+  jumpMode: 0
   rb: {fileID: 1985806436}
   takeDamage: 0
   health: 10
   invisFramesTime: 1.2
   dmgKnockback: 3
   invisFramesActive: 0
+  canAttack: 0
   walkingSpeed: 4
   runSpeed: 9
   maxJumps: 100
   normalTurnSensitivity: 100
   lockedTurnSensitivity: 0
   runTurnSensitivity: 150
+  maxJumpCharge: 2
+  jumpChargeSpeed: 1
   jump: {x: 0, y: 4, z: 0}
   speed: 0
   timesJumped: 0
   turnSensitivity: 0
+  jumpCharge: 0
   isRunning: 0
   isMoving: 0
   canJump: 0
+  unlockedChargeJump: 0
 --- !u!1001 &598346033403845619
 PrefabInstance:
   m_ObjectHideFlags: 0
