@@ -66,7 +66,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
         speed = walkingSpeed;
 
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
 
         if(unlockedChargeJump)
         {
