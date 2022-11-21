@@ -12,31 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd705c2bc54891409806db106882f9c, type: 3}
   m_Name: New Overload Minigame
   m_EditorClassIdentifier: 
-  horizontalPieces: 0
-  verticalPieces: 0
-  downRightPieces: 0
+  horizontalPieces: 5
+  verticalPieces: 5
+  downRightPieces: 1
   downLeftPieces: 0
-  upRightPieces: 0
-  upLeftPieces: 0
+  upRightPieces: 1
+  upLeftPieces: 1
+  originalHorizontalPieces: 5
+  originalVerticalPieces: 5
+  originalDownRightPieces: 1
+  originalDownLeftPieces: 1
+  originalUpRightPieces: 1
+  originalUpLeftPieces: 1
   gridBlockades:
     gridSize: {x: 8, y: 8}
     cellSize: {x: 16, y: 16}
     cells:
-    - row: 0000010101010000
-    - row: 0000010101010000
+    - row: 0000000001010000
+    - row: 0000000001010000
+    - row: 0000010100000000
+    - row: 0000010100000000
     - row: 0000000000000000
-    - row: 0000010101010000
-    - row: 0000010101010000
+    - row: 0101000000010100
+    - row: 0101000000010100
     - row: 0000000000000000
-    - row: 0000010101010000
-    - row: 0000010101010000
   gridStartPos:
     gridSize: {x: 8, y: 8}
     cellSize: {x: 16, y: 16}
     cells:
-    - row: 0000000000000000
-    - row: 0000000000000000
     - row: 0100000000000000
+    - row: 0000000000000000
+    - row: 0000000000000000
     - row: 0000000000000000
     - row: 0000000000000000
     - row: 0000000000000000
@@ -47,10 +53,10 @@ MonoBehaviour:
     cellSize: {x: 16, y: 16}
     cells:
     - row: 0000000000000000
-    - row: 0000000000000000
-    - row: 0000000000000000
-    - row: 0000000000000000
-    - row: 0000000000000000
     - row: 0000000000000001
+    - row: 0000000000000000
+    - row: 0000000000000000
+    - row: 0000000000000000
+    - row: 0000000000000000
     - row: 0000000000000000
     - row: 0000000000000000

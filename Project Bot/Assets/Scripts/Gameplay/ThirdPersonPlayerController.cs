@@ -25,6 +25,10 @@ public class ThirdPersonPlayerController : MonoBehaviour
     public Rigidbody rb;
     [Space]
     public bool takeDamage;
+    [Space]
+    public Transform rayCastPoint;
+
+    RaycastHit hit;
 
     [Header("Characters Stats")]
     public int health;
@@ -56,6 +60,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
     [HideInInspector] public bool isRunning;
     [HideInInspector] public bool isMoving;
     [HideInInspector] public bool canJump;
+    [HideInInspector] public bool turnMode;
     
     [Header("Unlocked Abilities")]
     public bool unlockedChargeJump;
@@ -66,7 +71,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
         speed = walkingSpeed;
 
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
 
         if(unlockedChargeJump)
         {
@@ -82,9 +87,20 @@ public class ThirdPersonPlayerController : MonoBehaviour
             MoveCharacter();
         }
 
-        if (Input.GetButton("Horizontal"))
+        if (Input.GetButton("Horizontal") && isMoving)
         {
             TurnChar();
+        }else if(Input.GetButton("Horizontal") && !isMoving && turnMode)
+        {
+            TurnChar();
+        }else if(Input.GetButton("Horizontal") && !isMoving && !turnMode)
+        {
+            Vector3 move = new Vector3();
+
+            float h = Input.GetAxis("Horizontal");
+            move.x = h;
+
+            transform.Translate(move * Time.deltaTime * speed);
         }
     }
 
@@ -100,6 +116,14 @@ public class ThirdPersonPlayerController : MonoBehaviour
         {
             isMoving = false;
             movementMode = MovementMode.Idle;
+        }
+
+        if(Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            turnMode = true;
+        }else if(Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            turnMode = false;
         }
 
         //Jump
@@ -146,10 +170,24 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 break;
         }
 
+        if(Physics.Raycast(rayCastPoint.position, rayCastPoint.forward, out hit, 2f))
+        {
+            if(hit.collider.tag == "Overload")
+            {
+                if(Input.GetButtonDown("Interact"))
+                {
+                    hit.collider.GetComponent<OverloadInitialize>().LaunchMinigame();
+                }
+            }
+        }
+
+        //Debug
         if(takeDamage)
         {
             TakeDamage();
         }
+
+        Debug.DrawLine(rayCastPoint.position , rayCastPoint.position + rayCastPoint.forward * 2, Color.red, 1.0f);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -167,7 +205,6 @@ public class ThirdPersonPlayerController : MonoBehaviour
         Vector3 move = new Vector3();
 
         float v = Input.GetAxis("Vertical");
-        float h = Input.GetAxis("Horizontal");
 
         if (Input.GetButtonDown("Sprint"))
         {
@@ -187,7 +224,6 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 speed = walkingSpeed;
                 turnSensitivity = normalTurnSensitivity;
 
-                move.x = h;
                 move.z = v;
 
                 transform.Translate(move * Time.deltaTime * speed);
@@ -197,7 +233,6 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 speed = runSpeed;
                 turnSensitivity = runTurnSensitivity;
 
-                move.x = h;
                 move.z = v;
 
                 transform.Translate(move * Time.deltaTime * speed);
@@ -243,13 +278,6 @@ public class ThirdPersonPlayerController : MonoBehaviour
         if (jumpCharge > maxJumpCharge)
         {
             jumpCharge = maxJumpCharge;
-        }
-
-        print(jumpCharge);
-
-        if (Input.GetButtonUp("Jump"))
-        {
-            
         }
     }
 

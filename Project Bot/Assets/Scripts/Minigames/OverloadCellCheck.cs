@@ -4,17 +4,33 @@ using UnityEngine;
 
 public class OverloadCellCheck : MonoBehaviour
 {
+    public enum Direction
+    { 
+        None,
+        Horizontal,
+        Vertical,
+        UpLeft,
+        UpRight,
+        DownLeft,
+        DownRight,
+    }
+
     public bool isStartCell;
     public bool isEndCell;
     public bool isActive;
     public bool isDisabled;
     [Space]
-    public bool horizontal;
-    public bool vertical;
-    public bool upLeft;
-    public bool downLeft;
-    public bool upRight;
-    public bool downRight;
+    public Direction direction;
     [Space]
     public Sprite sprite;
+    [Space]
+    public Vector2Int cellIndex;
+
+    private void Update()
+    {
+        if(isEndCell && isActive)
+        {
+            print("Finish Function");
+        }
+    }
 }
