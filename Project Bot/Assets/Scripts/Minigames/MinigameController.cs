@@ -74,6 +74,11 @@ public class MinigameController : MonoBehaviour
             for (int x = 0; x < ovMinigame.gridStartPos.GridSize.x; x++)
             {
                 minigameGrid[y].row[x].GetComponent<Button>().GetComponent<Image>().sprite = normalSprite;
+                minigameGrid[y].row[x].GetComponent<OverloadCellCheck>().direction = OverloadCellCheck.Direction.None;
+                minigameGrid[y].row[x].GetComponent<OverloadCellCheck>().isActive = false;
+                minigameGrid[y].row[x].GetComponent<OverloadCellCheck>().isDisabled = false;
+                minigameGrid[y].row[x].GetComponent<OverloadCellCheck>().isStartCell = false;
+                minigameGrid[y].row[x].GetComponent<OverloadCellCheck>().isEndCell = false;
             }
         }
 
