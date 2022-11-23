@@ -358,6 +358,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     public void KnockBack()
     {
+        rb.velocity = Vector3.zero;
+
         Vector3 dir = (transform.position - (transform.forward * 2)).normalized;
         rb.AddForce(dir * dmgKnockback, ForceMode.Impulse);
     }
