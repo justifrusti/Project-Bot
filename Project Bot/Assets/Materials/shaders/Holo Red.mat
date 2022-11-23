@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Holo  Green
+  m_Name: Holo Red
   m_Shader: {fileID: -6465566751694194690, guid: c9b18330be8e688418d51d209f7b714a, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -37,9 +37,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Scroll_Speed: -0.05
+    - Scroll_Speed: 0.5
     m_Colors:
-    - Hologram_Tiling: {r: 8, g: 8, b: 0, a: 0}
-    - Main_Color: {r: 0.0771698, g: 0.5, b: 0.03018865, a: 0}
+    - Hologram_Tiling: {r: 32, g: 2, b: 0, a: 0}
+    - Main_Color: {r: 1, g: 0.017586341, b: 0, a: 0}
     - fresnel_color: {r: 1.1353015, g: 1.1353015, b: 1.1353015, a: 1}
   m_BuildTextureStacks: []
