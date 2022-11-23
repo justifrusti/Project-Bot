@@ -197,9 +197,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
         }
 
         //Pickup
-        if (Input.GetButtonDown("LMB") && hasPickup == true)
+        if (Input.GetButtonDown("LMB") && hasPickup)
         {
             hasPickup = false;
+
+            pickUpItem.GetComponent<Collider>().isTrigger = false;
 
             pickUpItem.GetComponent<Rigidbody>().isKinematic = false;
             pickUpItem.transform.parent = null;
@@ -207,9 +209,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
             pickUpItem.GetComponent<Rigidbody>().AddForce(transform.forward * dropForce);
         }
 
-        if (Input.GetButtonDown("RMB") && hasPickup == true)
+        if (Input.GetButtonDown("RMB") && hasPickup)
         {
             hasPickup = false;
+
+            pickUpItem.GetComponent<Collider>().isTrigger = false;
 
             pickUpItem.GetComponent<Rigidbody>().isKinematic = false;
             pickUpItem.transform.parent = null;
@@ -374,6 +378,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
             if (Input.GetButtonDown("Interact"))
             {
                 pickUpItem.GetComponent<Rigidbody>().isKinematic = true;
+                pickUpItem.GetComponent<Collider>().isTrigger = true;
                 pickUpItem.transform.position = pickUpPoint.transform.position;
                 pickUpItem.transform.parent = pickUpPoint.transform;
 
