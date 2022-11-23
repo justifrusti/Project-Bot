@@ -25,8 +25,6 @@ public class ThirdPersonPlayerController : MonoBehaviour
     [Header("Debug and Non Catogarized")]
     public Rigidbody rb;
     [Space]
-    public bool takeDamage;
-    [Space]
     public Transform rayCastPoint;
     [Space]
     public Transform cmCam;
@@ -224,12 +222,6 @@ public class ThirdPersonPlayerController : MonoBehaviour
             pickUpItem.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce);
         }
 
-        //Debug
-        if (takeDamage)
-        {
-            TakeDamage();
-        }
-
         Debug.DrawLine(rayCastPoint.position , rayCastPoint.position + rayCastPoint.forward * 2, Color.red, 1.0f);
     }
 
@@ -339,11 +331,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
         }
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int damage)
     {
         if(!invisFramesActive)
         {
-            CheckHealth(10);
+            CheckHealth(damage);
 
             KnockBack();
 

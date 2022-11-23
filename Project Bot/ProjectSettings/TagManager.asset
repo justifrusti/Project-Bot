@@ -8,6 +8,8 @@ TagManager:
   - Overload
   - PickUp
   - PressurePlate
+  - Wall
+  - Roomba
   layers:
   - Default
   - TransparentFX
