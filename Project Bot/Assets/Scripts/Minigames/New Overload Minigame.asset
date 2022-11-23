@@ -15,7 +15,7 @@ MonoBehaviour:
   horizontalPieces: 5
   verticalPieces: 5
   downRightPieces: 1
-  downLeftPieces: 0
+  downLeftPieces: 1
   upRightPieces: 1
   upLeftPieces: 1
   originalHorizontalPieces: 5

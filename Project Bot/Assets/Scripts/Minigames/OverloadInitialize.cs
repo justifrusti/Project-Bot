@@ -11,10 +11,22 @@ public class OverloadInitialize : MonoBehaviour
     public void LaunchMinigame()
     {
         minigame.ovMinigame = ovMinigame;
-        minigame.minigameType = MinigameController.MinigameType.Overload;
 
+        ResetValues();
+
+        minigame.AssignController();
         minigame.InitialSetup();
 
         this.enabled = false;
+    }
+
+    public void ResetValues()
+    {
+        ovMinigame.horizontalPieces = ovMinigame.originalHorizontalPieces;
+        ovMinigame.verticalPieces = ovMinigame.originalVerticalPieces;
+        ovMinigame.upLeftPieces = ovMinigame.originalUpLeftPieces;
+        ovMinigame.upRightPieces = ovMinigame.originalUpRightPieces;
+        ovMinigame.downLeftPieces = ovMinigame.originalDownLeftPieces;
+        ovMinigame.downRightPieces = ovMinigame.originalDownRightPieces;
     }
 }

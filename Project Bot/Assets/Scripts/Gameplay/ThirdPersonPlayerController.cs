@@ -61,6 +61,16 @@ public class ThirdPersonPlayerController : MonoBehaviour
     [HideInInspector] public bool isMoving;
     [HideInInspector] public bool canJump;
     [HideInInspector] public bool turnMode;
+    [Space]
+    [Header("Pick Ups")]
+    public Transform pickUpPoint;
+    [Space]
+    public float pickUpRayDst;
+    public float throwForce;
+    public float dropForce;
+
+    [HideInInspector] public GameObject pickUpItem;
+    [HideInInspector] public bool hasPickup;
     
     [Header("Unlocked Abilities")]
     public bool unlockedChargeJump;
@@ -179,10 +189,36 @@ public class ThirdPersonPlayerController : MonoBehaviour
                     hit.collider.GetComponent<OverloadInitialize>().LaunchMinigame();
                 }
             }
+
+            if (hit.collider.gameObject.tag == "PickUp")
+            {
+                HoldablePickUp();
+            }
+        }
+
+        //Pickup
+        if (Input.GetButtonDown("LMB") && hasPickup == true)
+        {
+            hasPickup = false;
+
+            pickUpItem.GetComponent<Rigidbody>().isKinematic = false;
+            pickUpItem.transform.parent = null;
+
+            pickUpItem.GetComponent<Rigidbody>().AddForce(transform.forward * dropForce);
+        }
+
+        if (Input.GetButtonDown("RMB") && hasPickup == true)
+        {
+            hasPickup = false;
+
+            pickUpItem.GetComponent<Rigidbody>().isKinematic = false;
+            pickUpItem.transform.parent = null;
+
+            pickUpItem.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce);
         }
 
         //Debug
-        if(takeDamage)
+        if (takeDamage)
         {
             TakeDamage();
         }
@@ -325,6 +361,25 @@ public class ThirdPersonPlayerController : MonoBehaviour
     {
         Vector3 dir = (transform.position - (transform.forward * 2)).normalized;
         rb.AddForce(dir * dmgKnockback, ForceMode.Impulse);
+    }
+
+    public void HoldablePickUp()
+    {
+        print("Press E to PickUp and Hold");
+
+        if (hit.transform.tag == "PickUp" && !hasPickup)
+        {
+            pickUpItem = hit.collider.gameObject;
+
+            if (Input.GetButtonDown("Interact"))
+            {
+                pickUpItem.GetComponent<Rigidbody>().isKinematic = true;
+                pickUpItem.transform.position = pickUpPoint.transform.position;
+                pickUpItem.transform.parent = pickUpPoint.transform;
+
+                hasPickup = true;
+            }
+        }
     }
 
     IEnumerator ResetInvis()

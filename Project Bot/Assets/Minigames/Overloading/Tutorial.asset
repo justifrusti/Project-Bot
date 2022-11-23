@@ -12,39 +12,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd705c2bc54891409806db106882f9c, type: 3}
   m_Name: Tutorial
   m_EditorClassIdentifier: 
-  horizontalPieces: 0
-  verticalPieces: 0
-  downRightPieces: 0
-  downLeftPieces: 0
-  upRightPieces: 0
-  upLeftPieces: 0
-  originalHorizontalPieces: 0
-  originalVerticalPieces: 0
-  originalDownRightPieces: 0
-  originalDownLeftPieces: 0
-  originalUpRightPieces: 0
-  originalUpLeftPieces: 0
+  horizontalPieces: 5
+  verticalPieces: 6
+  downRightPieces: 4
+  downLeftPieces: 1
+  upRightPieces: 2
+  upLeftPieces: 4
+  originalHorizontalPieces: 5
+  originalVerticalPieces: 6
+  originalDownRightPieces: 4
+  originalDownLeftPieces: 1
+  originalUpRightPieces: 2
+  originalUpLeftPieces: 4
   gridBlockades:
-    gridSize: {x: 4, y: 4}
+    gridSize: {x: 8, y: 8}
     cellSize: {x: 16, y: 16}
     cells:
-    - row: 00000000
-    - row: 00000000
-    - row: 00000000
-    - row: 00000000
+    - row: 0001010101010101
+    - row: 0001010000000001
+    - row: 0001010001010001
+    - row: 0001000001000001
+    - row: 0000000100000101
+    - row: 0101010100010101
+    - row: 0101010100000000
+    - row: 0101010101010101
   gridStartPos:
-    gridSize: {x: 4, y: 4}
-    cellSize: {x: 0, y: 0}
+    gridSize: {x: 8, y: 8}
+    cellSize: {x: 16, y: 16}
     cells:
-    - row: 00000000
-    - row: 00000000
-    - row: 00000000
-    - row: 00000000
+    - row: 0100000000000000
+    - row: 0000000000000000
+    - row: 0000000000000000
+    - row: 0000000000000000
+    - row: 0000000000000000
+    - row: 0000000000000000
+    - row: 0000000000000000
+    - row: 0000000000000000
   gridEndPos:
-    gridSize: {x: 4, y: 4}
-    cellSize: {x: 0, y: 0}
+    gridSize: {x: 8, y: 8}
+    cellSize: {x: 16, y: 16}
     cells:
-    - row: 00000000
-    - row: 00000000
-    - row: 00000000
-    - row: 00000000
+    - row: 0000000000000000
+    - row: 0000000000000000
+    - row: 0000000000000000
+    - row: 0000000000000000
+    - row: 0000000000000000
+    - row: 0000000000000000
+    - row: 0000000000000001
+    - row: 0000000000000000

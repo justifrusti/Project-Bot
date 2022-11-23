@@ -12,18 +12,10 @@ public class MinigameController : MonoBehaviour
         public List<Button> row;
     }
 
-    public enum MinigameType
-    {
-        Overload,
-        Download
-    }
-
-    public MinigameType minigameType;
-
     public List<GridRow> minigameGrid;
     public GridLayoutGroup layout;
 
-    private Vector2Int endPos;
+    [HideInInspector]public Vector2Int endPos;
 
     [Header("Minigame Ref")]
     public OverloadingMinigame ovMinigame;
@@ -32,7 +24,6 @@ public class MinigameController : MonoBehaviour
     [Space]
     [Header("UI Elements")]
     public GameObject ovUI;
-    /*public GameObject dlUI;*/
     [Space]
     public Image horizontalImg;
     public Image verticalImg;
@@ -60,15 +51,19 @@ public class MinigameController : MonoBehaviour
     public Sprite startPointSprite;
     public Sprite endPointSprite;
 
+    public void AssignController()
+    {
+        for (int y = 0; y < ovMinigame.gridStartPos.GridSize.y; y++)
+        {
+            for (int x = 0; x < ovMinigame.gridStartPos.GridSize.x; x++)
+            {
+                minigameGrid[y].row[x].GetComponent<OverloadCellCheck>().controller = this;
+            }
+        }
+    }
+
     public void InitializeOverload()
     {
-        ovMinigame.horizontalPieces = ovMinigame.originalHorizontalPieces;
-        ovMinigame.verticalPieces = ovMinigame.originalVerticalPieces;
-        ovMinigame.upLeftPieces = ovMinigame.originalUpLeftPieces;
-        ovMinigame.upRightPieces = ovMinigame.originalUpRightPieces;
-        ovMinigame.downLeftPieces = ovMinigame.originalDownLeftPieces;
-        ovMinigame.downRightPieces = ovMinigame.originalDownRightPieces;
-
         for (int y = 0; y < ovMinigame.gridStartPos.GridSize.y; y++)
         {
             for (int x = 0; x < ovMinigame.gridStartPos.GridSize.x; x++)
@@ -284,7 +279,8 @@ public class MinigameController : MonoBehaviour
 
                 CheckDir(cellCheck, rightCell);
             }
-        }else if(indexes.x == 0 && indexes.y < 7)
+        }
+        else if(indexes.x == 0 && indexes.y < 7)
         {
             OverloadCellCheck upCell = minigameGrid[indexes.y - 1].row[indexes.x].GetComponent<OverloadCellCheck>();
             OverloadCellCheck downCell = minigameGrid[indexes.y + 1].row[indexes.x].GetComponent<OverloadCellCheck>();
@@ -301,41 +297,8 @@ public class MinigameController : MonoBehaviour
 
                 CheckDir(cellCheck, downCell);
             }
-        }else if(indexes.x < 7 && indexes.y == 0)
-        {
-            OverloadCellCheck leftCell = minigameGrid[indexes.y].row[indexes.x - 1].GetComponent<OverloadCellCheck>();
-            OverloadCellCheck rightCell = minigameGrid[indexes.y].row[indexes.x + 1].GetComponent<OverloadCellCheck>();
-
-            if (leftCell.isActive && (cellCheck.direction == OverloadCellCheck.Direction.Horizontal || cellCheck.direction == OverloadCellCheck.Direction.DownLeft || cellCheck.direction == OverloadCellCheck.Direction.UpLeft))
-            {
-                print("Left Cell is Active");
-
-                CheckDir(cellCheck, leftCell);
-            }
-            else if (rightCell.isActive && (cellCheck.direction == OverloadCellCheck.Direction.Horizontal || cellCheck.direction == OverloadCellCheck.Direction.DownRight || cellCheck.direction == OverloadCellCheck.Direction.UpRight))
-            {
-                print("Right Cell is Active");
-
-                CheckDir(cellCheck, rightCell);
-            }
-        }else if(indexes.x == 7 && indexes.y < 7)
-        {
-            OverloadCellCheck upCell = minigameGrid[indexes.y - 1].row[indexes.x].GetComponent<OverloadCellCheck>();
-            OverloadCellCheck downCell = minigameGrid[indexes.y + 1].row[indexes.x].GetComponent<OverloadCellCheck>();
-
-            if (upCell.isActive && (cellCheck.direction == OverloadCellCheck.Direction.Vertical || cellCheck.direction == OverloadCellCheck.Direction.UpLeft || cellCheck.direction == OverloadCellCheck.Direction.UpRight))
-            {
-                print("Up Cell is Active");
-
-                CheckDir(cellCheck, upCell);
-            }
-            else if (downCell.isActive && (cellCheck.direction == OverloadCellCheck.Direction.Vertical || cellCheck.direction == OverloadCellCheck.Direction.DownLeft || cellCheck.direction == OverloadCellCheck.Direction.DownRight))
-            {
-                print("Down Cell is Active");
-
-                CheckDir(cellCheck, downCell);
-            }
-        }else if(indexes.x < 7 && indexes.y == 7)
+        }
+        else if(indexes.x < 7 && indexes.y == 0)
         {
             OverloadCellCheck leftCell = minigameGrid[indexes.y].row[indexes.x - 1].GetComponent<OverloadCellCheck>();
             OverloadCellCheck rightCell = minigameGrid[indexes.y].row[indexes.x + 1].GetComponent<OverloadCellCheck>();
@@ -353,72 +316,106 @@ public class MinigameController : MonoBehaviour
                 CheckDir(cellCheck, rightCell);
             }
         }
+        else if(indexes.x == 7 && indexes.y < 7)
+        {
+            OverloadCellCheck upCell = minigameGrid[indexes.y - 1].row[indexes.x].GetComponent<OverloadCellCheck>();
+            OverloadCellCheck downCell = minigameGrid[indexes.y + 1].row[indexes.x].GetComponent<OverloadCellCheck>();
 
-        CheckEndGoal();
+            if (upCell.isActive && (cellCheck.direction == OverloadCellCheck.Direction.Vertical || cellCheck.direction == OverloadCellCheck.Direction.UpLeft || cellCheck.direction == OverloadCellCheck.Direction.UpRight))
+            {
+                print("Up Cell is Active");
+
+                CheckDir(cellCheck, upCell);
+            }
+            else if (downCell.isActive && (cellCheck.direction == OverloadCellCheck.Direction.Vertical || cellCheck.direction == OverloadCellCheck.Direction.DownLeft || cellCheck.direction == OverloadCellCheck.Direction.DownRight))
+            {
+                print("Down Cell is Active");
+
+                CheckDir(cellCheck, downCell);
+            }
+        }
+        else if(indexes.x < 7 && indexes.y == 7)
+        {
+            OverloadCellCheck leftCell = minigameGrid[indexes.y].row[indexes.x - 1].GetComponent<OverloadCellCheck>();
+            OverloadCellCheck rightCell = minigameGrid[indexes.y].row[indexes.x + 1].GetComponent<OverloadCellCheck>();
+
+            if (leftCell.isActive && (cellCheck.direction == OverloadCellCheck.Direction.Horizontal || cellCheck.direction == OverloadCellCheck.Direction.DownLeft || cellCheck.direction == OverloadCellCheck.Direction.UpLeft))
+            {
+                print("Left Cell is Active");
+
+                CheckDir(cellCheck, leftCell);
+            }
+            else if (rightCell.isActive && (cellCheck.direction == OverloadCellCheck.Direction.Horizontal || cellCheck.direction == OverloadCellCheck.Direction.DownRight || cellCheck.direction == OverloadCellCheck.Direction.UpRight))
+            {
+                print("Right Cell is Active");
+
+                CheckDir(cellCheck, rightCell);
+            }
+        }
     }
 
     public void CheckDir(OverloadCellCheck cellCheck, OverloadCellCheck neighbour)
     {
-        if(neighbour.direction == OverloadCellCheck.Direction.None && !neighbour.isDisabled)
+        if (neighbour.direction == OverloadCellCheck.Direction.None && !neighbour.isDisabled)
         {
             cellCheck.isActive = true;
         }
 
-        if(neighbour.direction == OverloadCellCheck.Direction.Horizontal)
-        {
-            if(cellCheck.direction == OverloadCellCheck.Direction.Horizontal)
-            {
-                cellCheck.isActive = true;
-            }else if(cellCheck.direction == OverloadCellCheck.Direction.DownLeft)
-            {
-                cellCheck.isActive = true;
-            }else if(cellCheck.direction == OverloadCellCheck.Direction.DownRight)
-            {
-                cellCheck.isActive = true;
-            }else if(cellCheck.direction == OverloadCellCheck.Direction.UpRight)
-            {
-                cellCheck.isActive = true;
-            }else if(cellCheck.direction == OverloadCellCheck.Direction.UpLeft)
-            {
-                cellCheck.isActive = true;
-            }
-        }else if(neighbour.direction == OverloadCellCheck.Direction.Vertical)
-        {
-            if(cellCheck.direction == OverloadCellCheck.Direction.Vertical)
-            {
-                cellCheck.isActive = true;
-            }else if (cellCheck.direction == OverloadCellCheck.Direction.DownLeft)
-            {
-                cellCheck.isActive = true;
-            }else if (cellCheck.direction == OverloadCellCheck.Direction.DownRight)
-            {
-                cellCheck.isActive = true;
-            }else if (cellCheck.direction == OverloadCellCheck.Direction.UpRight)
-            {
-                cellCheck.isActive = true;
-            }else if (cellCheck.direction == OverloadCellCheck.Direction.UpLeft)
-            {
-                cellCheck.isActive = true;
-            }
-        }else if(neighbour.direction == OverloadCellCheck.Direction.UpRight)
+        if (neighbour.direction == OverloadCellCheck.Direction.Horizontal)
         {
             if (cellCheck.direction == OverloadCellCheck.Direction.Horizontal)
             {
                 cellCheck.isActive = true;
-            }else if(cellCheck.direction == OverloadCellCheck.Direction.Vertical)
+            } else if (cellCheck.direction == OverloadCellCheck.Direction.DownLeft)
             {
                 cellCheck.isActive = true;
-            }else if(cellCheck.direction == OverloadCellCheck.Direction.UpLeft)
+            } else if (cellCheck.direction == OverloadCellCheck.Direction.DownRight)
             {
                 cellCheck.isActive = true;
-            }else if(cellCheck.direction == OverloadCellCheck.Direction.DownLeft)
+            } else if (cellCheck.direction == OverloadCellCheck.Direction.UpRight)
             {
                 cellCheck.isActive = true;
-            }else if(cellCheck.direction == OverloadCellCheck.Direction.DownRight)
+            } else if (cellCheck.direction == OverloadCellCheck.Direction.UpLeft)
             {
                 cellCheck.isActive = true;
             }
-        }else if(neighbour.direction == OverloadCellCheck.Direction.UpLeft)
+        } else if (neighbour.direction == OverloadCellCheck.Direction.Vertical)
+        {
+            if (cellCheck.direction == OverloadCellCheck.Direction.Vertical)
+            {
+                cellCheck.isActive = true;
+            } else if (cellCheck.direction == OverloadCellCheck.Direction.DownLeft)
+            {
+                cellCheck.isActive = true;
+            } else if (cellCheck.direction == OverloadCellCheck.Direction.DownRight)
+            {
+                cellCheck.isActive = true;
+            } else if (cellCheck.direction == OverloadCellCheck.Direction.UpRight)
+            {
+                cellCheck.isActive = true;
+            } else if (cellCheck.direction == OverloadCellCheck.Direction.UpLeft)
+            {
+                cellCheck.isActive = true;
+            }
+        } else if (neighbour.direction == OverloadCellCheck.Direction.UpRight)
+        {
+            if (cellCheck.direction == OverloadCellCheck.Direction.Horizontal)
+            {
+                cellCheck.isActive = true;
+            } else if (cellCheck.direction == OverloadCellCheck.Direction.Vertical)
+            {
+                cellCheck.isActive = true;
+            } else if (cellCheck.direction == OverloadCellCheck.Direction.UpLeft)
+            {
+                cellCheck.isActive = true;
+            } else if (cellCheck.direction == OverloadCellCheck.Direction.DownLeft)
+            {
+                cellCheck.isActive = true;
+            } else if (cellCheck.direction == OverloadCellCheck.Direction.DownRight)
+            {
+                cellCheck.isActive = true;
+            }
+        } else if (neighbour.direction == OverloadCellCheck.Direction.UpLeft)
         {
             if (cellCheck.direction == OverloadCellCheck.Direction.Horizontal)
             {
@@ -440,7 +437,7 @@ public class MinigameController : MonoBehaviour
             {
                 cellCheck.isActive = true;
             }
-        }else if (neighbour.direction == OverloadCellCheck.Direction.DownRight)
+        } else if (neighbour.direction == OverloadCellCheck.Direction.DownRight)
         {
             if (cellCheck.direction == OverloadCellCheck.Direction.Horizontal)
             {
@@ -462,7 +459,7 @@ public class MinigameController : MonoBehaviour
             {
                 cellCheck.isActive = true;
             }
-        }else if (neighbour.direction == OverloadCellCheck.Direction.DownLeft)
+        } else if (neighbour.direction == OverloadCellCheck.Direction.DownLeft)
         {
             if (cellCheck.direction == OverloadCellCheck.Direction.Horizontal)
             {
@@ -483,59 +480,16 @@ public class MinigameController : MonoBehaviour
             else if (cellCheck.direction == OverloadCellCheck.Direction.DownRight)
             {
                 cellCheck.isActive = true;
-            }
-        }
-    }
-
-    public void CheckEndGoal()
-    {
-        if (endPos.y != 0 || endPos.y != 7)
-        {
-            if (minigameGrid[endPos.y].row[endPos.x - 1].GetComponent<OverloadCellCheck>().isActive)
-            {
-                minigameGrid[endPos.y].row[endPos.x].GetComponent<OverloadCellCheck>().isActive = true;
-            }
-            else if (minigameGrid[endPos.y - 1].row[endPos.x].GetComponent<OverloadCellCheck>().isActive)
-            {
-                minigameGrid[endPos.y].row[endPos.x].GetComponent<OverloadCellCheck>().isActive = true;
-            }
-            else if (minigameGrid[endPos.y + 1].row[endPos.x].GetComponent<OverloadCellCheck>().isActive)
-            {
-                minigameGrid[endPos.y].row[endPos.x].GetComponent<OverloadCellCheck>().isActive = true;
             }
         }
     }
 
     public void InitialSetup()
     {
-        if (ovMinigame != null)
-        {
-            minigameType = MinigameType.Overload;
-        }
-        else
-        {
-            minigameType = MinigameType.Download;
-        }
+        InitializeOverload();
 
-        switch (minigameType)
-        {
-            case MinigameType.Overload:
-                /*dlUI.SetActive(false);*/
+        ovUI.SetActive(true);
 
-                InitializeOverload();
-
-                ovUI.SetActive(true);
-
-                Cursor.lockState = CursorLockMode.None;
-                break;
-
-            case MinigameType.Download:
-                ovUI.SetActive(false);
-
-                //Initialize Stuff
-
-                /*dlUI.SetActive(true);*/
-                break;
-        }
+        Cursor.lockState = CursorLockMode.None;
     }
 }
