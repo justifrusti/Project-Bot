@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
     public bool takeDamage;
     [Space]
     public Transform rayCastPoint;
+    [Space]
+    public Transform cmCam;
 
     RaycastHit hit;
 
@@ -110,7 +113,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
             float h = Input.GetAxis("Horizontal");
             move.x = h;
 
-            transform.Translate(move * Time.deltaTime * speed);
+            transform.Translate(move * Time.deltaTime * speed, cmCam);
         }
     }
 
