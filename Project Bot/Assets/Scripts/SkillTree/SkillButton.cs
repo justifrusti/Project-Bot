@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SkillButton : MonoBehaviour
 {
+    public ThirdPersonPlayerController controller;
 
     public int skillId;
 
@@ -44,9 +45,10 @@ public class SkillButton : MonoBehaviour
     {
         if (SkillTreeReader.Instance.UnlockSkill(skillId))
         {
-            PlayerPrefs.SetInt("Score", SkillTreeReader.Instance.availablePoints);
             skillHub.RefreshButtons();
             SkillTreeReader.Instance.SaveSkillTree();
+
+            controller.ActivateUnlockedSkills();
         }
     }
 }

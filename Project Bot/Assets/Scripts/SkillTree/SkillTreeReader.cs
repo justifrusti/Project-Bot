@@ -58,7 +58,7 @@ public class SkillTreeReader : MonoBehaviour
 
     public void LoadSkillTree()
     {
-        string path = "Assets/SkillTree/Data/skilltree.json";
+        string path = "Assets/Scripts/SkillTree/Data/skilltree.json";
         string dataAsJson;
 
         if (File.Exists(path))
@@ -104,6 +104,7 @@ public class SkillTreeReader : MonoBehaviour
         for (int i = 0; i < _skillTree.Length; ++i)
         {
             _skills.TryGetValue(_skillTree[i].id_Skill, out _skillInspected);
+
             if (_skillInspected != null)
             {
                 skillTree.skillTree[i] = _skillInspected;

@@ -35,6 +35,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     [Header("Characters Stats")]
     public int health;
+    public int damage;
     [Space]
     public float invisFramesTime;
     public float dmgKnockback;
@@ -83,9 +84,9 @@ public class ThirdPersonPlayerController : MonoBehaviour
     [HideInInspector] public bool hasPickup;
 
     [HideInInspector] public Vector3 currentActiveCheckpoint;
-    
-    [Header("Unlocked Abilities")]
-    public bool unlockedChargeJump;
+
+    [Header("Skills")]
+    public GameObject skillUI;
 
     void Start()
     {
@@ -97,10 +98,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
 
-        if(unlockedChargeJump)
-        {
-            jumpMode = JumpMode.ChargeJump;
-        }
+        //SkillTreeReader.Instance.availablePoints = manager.saveData.skillPoints;
     }
 
     private void FixedUpdate()
@@ -238,6 +236,20 @@ public class ThirdPersonPlayerController : MonoBehaviour
         if(Input.GetButtonDown("Respawn"))
         {
             transform.position = currentActiveCheckpoint;
+        }
+
+        //Skills
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(skillUI.activeInHierarchy)
+            {
+                skillUI.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+            }else
+            {
+                skillUI.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
+            }
         }
 
         //Raycast Length
@@ -474,5 +486,49 @@ public class ThirdPersonPlayerController : MonoBehaviour
         yield return new WaitForSeconds(invisFramesTime);
 
         invisFramesActive = false;
+    }
+
+    public void ActivateUnlockedSkills()
+    {
+        if(SkillTreeReader.Instance.IsSkillUnlocked(7))
+        {
+            damage = damage * 6;
+        }else if (SkillTreeReader.Instance.IsSkillUnlocked(4))
+        {
+            damage = damage * 4;
+        }
+        else if (SkillTreeReader.Instance.IsSkillUnlocked(1))
+        {
+            damage = damage * 2;
+        }
+
+        if (SkillTreeReader.Instance.IsSkillUnlocked(8))
+        {
+            health = health * 6;
+        }
+        else if (SkillTreeReader.Instance.IsSkillUnlocked(5))
+        {
+            health = health * 4;
+        }
+        else if (SkillTreeReader.Instance.IsSkillUnlocked(2))
+        {
+            health = health * 2;
+        }
+
+        if (SkillTreeReader.Instance.IsSkillUnlocked(9))
+        {
+            jumpMode = JumpMode.ChargeJump;
+            jumpCharge = jumpCharge * 6;
+        }
+        else if (SkillTreeReader.Instance.IsSkillUnlocked(6))
+        {
+            jumpMode = JumpMode.ChargeJump;
+            jumpCharge = jumpCharge * 4;
+        }
+        else if (SkillTreeReader.Instance.IsSkillUnlocked(3))
+        {
+            jumpMode = JumpMode.ChargeJump;
+            jumpCharge = jumpCharge * 2;
+        }
     }
 }
