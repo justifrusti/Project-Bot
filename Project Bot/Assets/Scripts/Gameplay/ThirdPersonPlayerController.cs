@@ -63,7 +63,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
     [SerializeField] private int originalWalkSpeed;
     [SerializeField] private int originalRunSpeed;
 
-    /*[HideInInspector]*/ public int speed;
+    [HideInInspector] public int speed;
     [HideInInspector] public int timesJumped;
     [HideInInspector] public float turnSensitivity;
     [HideInInspector] public float jumpCharge;
