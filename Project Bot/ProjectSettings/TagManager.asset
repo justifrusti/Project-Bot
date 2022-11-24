@@ -10,6 +10,12 @@ TagManager:
   - PressurePlate
   - Wall
   - Roomba
+  - JumpPad
+  - SpeedPad
+  - CheckPoint
+  - DeathBox
+  - Plate
+  - ActivatePlate
   layers:
   - Default
   - TransparentFX

@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: f2e23ac3708b310429febde46c5a2b17, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -153,11 +153,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dbc1e2167f1ddb4f8dd76aff95cd459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   agent: {fileID: 0}
   target: {fileID: 6032650778262859706}
+  player: {fileID: 0}
   turnAngle: {x: 0, y: 40, z: 0}
   health: 10
   damage: 1
+  range: 3
+  followPlayer: 0
+  stopCountdownStarted: 0
+  barrelRotPoint: {fileID: 0}
+  bulletPoint: {fileID: 0}
+  bullet: {fileID: 0}
+  fireSpeed: 0
+  shootDelay: 0
+  canShoot: 0
+  showGizmos: 1
 --- !u!1 &6032650777983864340
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +231,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 943a4f107531076489ccf2a9e347ab46, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -346,7 +358,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 943a4f107531076489ccf2a9e347ab46, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

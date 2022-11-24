@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class ThirdPersonPlayerController : MonoBehaviour
@@ -9,6 +10,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
     {
         Walking,
         Running,
+        SpeedPad,
         Idle
     }
 
@@ -43,18 +45,25 @@ public class ThirdPersonPlayerController : MonoBehaviour
     [Header("Character/Cam Movement")]
     public int walkingSpeed;
     public int runSpeed;
-    public int maxJumps;
+    public int speedPadSpeed;
+    [SerializeField] private int maxJumps;
     [Space]
     public float normalTurnSensitivity;
     public float lockedTurnSensitivity;
     public float runTurnSensitivity;
     [Space]
-    public float maxJumpCharge;
+    [SerializeField] private float maxJumpCharge;
     public float jumpChargeSpeed;
     [Space]
     public Vector3 jump;
+    [Space]
+    public Vector3 jumpPadJump;
+    [SerializeField] private Vector3 originalJump;
+    [Space]
+    [SerializeField] private int originalWalkSpeed;
+    [SerializeField] private int originalRunSpeed;
 
-    [HideInInspector] public int speed;
+    /*[HideInInspector]*/ public int speed;
     [HideInInspector] public int timesJumped;
     [HideInInspector] public float turnSensitivity;
     [HideInInspector] public float jumpCharge;
@@ -72,12 +81,16 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     [HideInInspector] public GameObject pickUpItem;
     [HideInInspector] public bool hasPickup;
+
+    [HideInInspector] public Vector3 currentActiveCheckpoint;
     
     [Header("Unlocked Abilities")]
     public bool unlockedChargeJump;
 
     void Start()
     {
+        currentActiveCheckpoint = transform.position;
+
         turnSensitivity = normalTurnSensitivity;
 
         speed = walkingSpeed;
@@ -222,16 +235,72 @@ public class ThirdPersonPlayerController : MonoBehaviour
             pickUpItem.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce);
         }
 
-        Debug.DrawLine(rayCastPoint.position , rayCastPoint.position + rayCastPoint.forward * 2, Color.red, 1.0f);
+        if(Input.GetButtonDown("Respawn"))
+        {
+            transform.position = currentActiveCheckpoint;
+        }
+
+        //Raycast Length
+        /*Debug.DrawLine(rayCastPoint.position , rayCastPoint.position + rayCastPoint.forward * 2, Color.red, 1.0f);*/
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Floor")
+        if(collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("JumpPad"))
         {
             timesJumped = 0;
 
             canJump = true;
+        }
+
+        if(collision.gameObject.CompareTag("Floor") && movementMode == MovementMode.SpeedPad)
+        {
+            if (isRunning)
+            {
+                movementMode = MovementMode.Running;
+            }
+            else
+            {
+                movementMode = MovementMode.Walking;
+            }
+
+            timesJumped = 0;
+
+            canJump = true;
+        }
+
+        if(collision.gameObject.CompareTag("JumpPad"))
+        {
+            jump = jumpPadJump;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("JumpPad"))
+        {
+            jump = originalJump;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("SpeedPad"))
+        {
+            movementMode = MovementMode.SpeedPad;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("CheckPoint"))
+        {
+            currentActiveCheckpoint = other.gameObject.GetComponent<Checkpoint>().pos;
+        }
+
+        if(other.gameObject.CompareTag("DeathBox"))
+        {
+            transform.position = currentActiveCheckpoint;
         }
     }
 
@@ -266,6 +335,15 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
             case MovementMode.Running:
                 speed = runSpeed;
+                turnSensitivity = runTurnSensitivity;
+
+                move.z = v;
+
+                transform.Translate(move * Time.deltaTime * speed);
+                break;
+
+            case MovementMode.SpeedPad:
+                speed = speedPadSpeed;
                 turnSensitivity = runTurnSensitivity;
 
                 move.z = v;
@@ -382,6 +460,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 hasPickup = true;
             }
         }
+    }
+
+    public void RespawnAtCheckpoint()
+    {
+        transform.position = currentActiveCheckpoint;
     }
 
     IEnumerator ResetInvis()
