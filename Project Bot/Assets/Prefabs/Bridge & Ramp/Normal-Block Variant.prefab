@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &7320859456045714752
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877241608393192103}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1, z: 3}
+  m_Center: {x: 0, y: 0.5, z: -1.5}
 --- !u!1001 &5723539351028813814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57,7 +70,20 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3e84297ba9fb5234e993c081822215d0, type: 2}
     - target: {fileID: 919132149155446097, guid: ee72b1ef56e0ffb40a91a75f72fe04af, type: 3}
       propertyPath: m_Name
-      value: Normal-Block
+      value: Normal-Block Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ee72b1ef56e0ffb40a91a75f72fe04af, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ee72b1ef56e0ffb40a91a75f72fe04af, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee72b1ef56e0ffb40a91a75f72fe04af, type: 3}
+--- !u!1 &4877241608393192103 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ee72b1ef56e0ffb40a91a75f72fe04af, type: 3}
+  m_PrefabInstance: {fileID: 5723539351028813814}
+  m_PrefabAsset: {fileID: 0}
