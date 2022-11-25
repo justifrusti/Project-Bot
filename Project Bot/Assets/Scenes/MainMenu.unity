@@ -824,6 +824,50 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1130492862305170487, guid: 22a7dcdaf1885734fbc0f3f09c93f478, type: 3}
+--- !u!1 &224992058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 224992060}
+  - component: {fileID: 224992059}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &224992059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224992058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7787b5a188196d448aee219939209dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds: []
+--- !u!4 &224992060
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224992058}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1062.0573, y: 934.68146, z: -956.43445}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &237444078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,6 +1452,8 @@ GameObject:
   - component: {fileID: 423782023}
   - component: {fileID: 423782022}
   - component: {fileID: 423782021}
+  - component: {fileID: 423782025}
+  - component: {fileID: 423782026}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1497,6 +1543,121 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &423782025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423782020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc0304d2b862cc4c8746cbdd2451ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuUI: {fileID: 984442189}
+  levelSelectUI: {fileID: 1792437657}
+  settingsUI: {fileID: 2060272378}
+  creditsUI: {fileID: 1792437657}
+  buttonClick: {fileID: 423782026}
+  audioMixer: {fileID: 24100000, guid: 7499ed2354904e842bcb58283ed05792, type: 2}
+  resolutionsDropdown: {fileID: 0}
+--- !u!82 &423782026
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423782020}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -4504023315871953618, guid: 7499ed2354904e842bcb58283ed05792, type: 2}
+  m_audioClip: {fileID: 8300000, guid: e36b1c39364772646a0436971064cb62, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &458740183
 GameObject:
   m_ObjectHideFlags: 0
@@ -4292,7 +4453,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1667277822}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 423782025}
+        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
+        m_MethodName: GoToSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1667277822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4755,7 +4928,7 @@ GameObject:
   - component: {fileID: 1799520830}
   - component: {fileID: 1799520829}
   m_Layer: 5
-  m_Name: Quit button
+  m_Name: return to menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4824,7 +4997,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1799520830}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 423782025}
+        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
+        m_MethodName: ReturnToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1799520830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6259,15 +6444,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementMode: 2
   jumpMode: 0
+  camMode: 0
   rb: {fileID: 1985806436}
-  takeDamage: 0
+  rayCastPoint: {fileID: 0}
+  cam: {fileID: 0}
+  cmCam: {fileID: 0}
   health: 10
+  damage: 0
   invisFramesTime: 1.2
   dmgKnockback: 3
   invisFramesActive: 0
   canAttack: 0
   walkingSpeed: 4
   runSpeed: 9
+  speedPadSpeed: 0
   maxJumps: 100
   normalTurnSensitivity: 100
   lockedTurnSensitivity: 0
@@ -6275,14 +6465,27 @@ MonoBehaviour:
   maxJumpCharge: 2
   jumpChargeSpeed: 1
   jump: {x: 0, y: 4, z: 0}
+  jumpPadJump: {x: 0, y: 0, z: 0}
+  originalJump: {x: 0, y: 0, z: 0}
+  originalWalkSpeed: 0
+  originalRunSpeed: 0
   speed: 0
   timesJumped: 0
   turnSensitivity: 0
   jumpCharge: 0
+  camSens: 0
   isRunning: 0
   isMoving: 0
   canJump: 0
-  unlockedChargeJump: 0
+  turnMode: 0
+  pickUpPoint: {fileID: 0}
+  pickUpRayDst: 0
+  throwForce: 0
+  dropForce: 0
+  pickUpItem: {fileID: 0}
+  hasPickup: 0
+  currentActiveCheckpoint: {x: 0, y: 0, z: 0}
+  skillUI: {fileID: 0}
 --- !u!1 &1990497463
 GameObject:
   m_ObjectHideFlags: 0
