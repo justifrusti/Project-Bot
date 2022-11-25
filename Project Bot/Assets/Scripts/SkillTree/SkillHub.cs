@@ -6,6 +6,8 @@ public class SkillHub : MonoBehaviour
 {
     public SkillButton[] skillsButton;
 
+    public Color activeColor;
+
     public void RefreshButtons()
     {
         for (int i = 0; i < skillsButton.Length; ++i)

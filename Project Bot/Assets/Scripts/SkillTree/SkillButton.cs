@@ -9,8 +9,6 @@ public class SkillButton : MonoBehaviour
 
     public int skillId;
 
-    public Color unlockedColor;
-
     public SkillHub skillHub;
 
     private Image _image;
@@ -28,7 +26,7 @@ public class SkillButton : MonoBehaviour
     {
         if (SkillTreeReader.Instance.IsSkillUnlocked(skillId))
         {
-            _image.color = unlockedColor;
+            _image.color = skillHub.activeColor;
         }
         else if (!SkillTreeReader.Instance.CanSkillBeUnlocked(skillId))
         {

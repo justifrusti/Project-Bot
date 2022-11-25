@@ -1,7 +1,6 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class ThirdPersonPlayerController : MonoBehaviour
@@ -22,8 +21,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     public enum CamMode
     {
-        ThirdPerson,
-        FreeLook
+        FreeLook,
+        ThirdPerson
     }
 
     public MovementMode movementMode;
@@ -39,18 +38,24 @@ public class ThirdPersonPlayerController : MonoBehaviour
     [Space]
     public Transform cam;
     public CinemachineFreeLook cmCam;
+    [Space]
+    public Transform rightHand;
 
     RaycastHit hit;
 
     [Header("Characters Stats")]
-    public int health;
-    public int damage;
+    public int maxHearts;
+    [Space]
+    public int maxDamageCharge;
+    public float damageChargeSpeed;
     [Space]
     public float invisFramesTime;
-    public float dmgKnockback;
+    public int chargeRange;
 
     [HideInInspector] public bool invisFramesActive;
     [HideInInspector] public bool canAttack;
+    [HideInInspector] public int hearts;
+    [HideInInspector] public float damage;
 
     [Header("Character/Cam Movement")]
     public int walkingSpeed;
@@ -72,7 +77,6 @@ public class ThirdPersonPlayerController : MonoBehaviour
     [Space]
     [SerializeField] private int originalWalkSpeed;
     [SerializeField] private int originalRunSpeed;
-
     [HideInInspector] public int speed;
     [HideInInspector] public int timesJumped;
     [HideInInspector] public float turnSensitivity;
@@ -100,15 +104,9 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     void Start()
     {
-        currentActiveCheckpoint = transform.position;
-
-        turnSensitivity = normalTurnSensitivity;
-
-        speed = walkingSpeed;
+        VariableSetup();
 
         Cursor.lockState = CursorLockMode.Locked;
-
-        camSens = cmCam.m_XAxis.m_MaxSpeed;
 
         if(camMode == CamMode.ThirdPerson)
         {
@@ -283,8 +281,25 @@ public class ThirdPersonPlayerController : MonoBehaviour
             }
         }
 
+        //Charge Shot
+        if(Input.GetButton("LMB"))
+        {
+            if(damage < maxDamageCharge)
+            {
+                damage += damageChargeSpeed * Time.deltaTime;
+            }else if(damage > maxDamageCharge)
+            {
+                damage = maxDamageCharge;
+            }
+
+            if (Physics.Raycast(cam.position, cam.forward, out hit, chargeRange))
+            {
+                print(hit.collider.name);
+            }
+        }
+
         //Raycast Length
-        /*Debug.DrawLine(rayCastPoint.position , rayCastPoint.position + rayCastPoint.forward * 2, Color.red, 1.0f);*/
+        Debug.DrawLine(rayCastPoint.position, rayCastPoint.forward * 1,Color.red, 1.0f);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -461,15 +476,13 @@ public class ThirdPersonPlayerController : MonoBehaviour
         {
             CheckHealth(damage);
 
-            KnockBack();
-
             StartCoroutine(ResetInvis());
         }
     }
 
     public void CheckHealth(int damage)
     {
-        if ((health -= damage) <= 0)
+        if ((hearts -= damage) <= 0)
         {
             Die();
         }
@@ -478,14 +491,6 @@ public class ThirdPersonPlayerController : MonoBehaviour
     public void Die()
     {
         Destroy(gameObject);
-    }
-
-    public void KnockBack()
-    {
-        rb.velocity = Vector3.zero;
-
-        Vector3 dir = (transform.position - (transform.forward * 2)).normalized;
-        rb.AddForce(dir * dmgKnockback, ForceMode.Impulse);
     }
 
     public void HoldablePickUp()
@@ -538,15 +543,18 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
         if (SkillTreeReader.Instance.IsSkillUnlocked(8))
         {
-            health = health * 6;
+            maxHearts = 6;
+            hearts = maxHearts;
         }
         else if (SkillTreeReader.Instance.IsSkillUnlocked(5))
         {
-            health = health * 4;
+            maxHearts = 5;
+            hearts = maxHearts;
         }
         else if (SkillTreeReader.Instance.IsSkillUnlocked(2))
         {
-            health = health * 2;
+            maxHearts = 4;
+            hearts = maxHearts;
         }
 
         if (SkillTreeReader.Instance.IsSkillUnlocked(9))
@@ -564,5 +572,18 @@ public class ThirdPersonPlayerController : MonoBehaviour
             jumpMode = JumpMode.ChargeJump;
             jumpCharge = jumpCharge * 2;
         }
+    }
+
+    public void VariableSetup()
+    {
+        currentActiveCheckpoint = transform.position;
+
+        turnSensitivity = normalTurnSensitivity;
+
+        speed = walkingSpeed;
+
+        camSens = cmCam.m_XAxis.m_MaxSpeed;
+
+        hearts = maxHearts;
     }
 }

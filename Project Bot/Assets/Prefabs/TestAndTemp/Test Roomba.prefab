@@ -154,13 +154,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  rb: {fileID: 6032650777767942598}
+  dmgKnockback: 1
   agent: {fileID: 0}
   target: {fileID: 6032650778262859706}
   player: {fileID: 0}
   turnAngle: {x: 0, y: 40, z: 0}
   health: 10
   damage: 1
-  range: 3
+  range: 4
   followPlayer: 0
   stopCountdownStarted: 0
   barrelRotPoint: {fileID: 0}

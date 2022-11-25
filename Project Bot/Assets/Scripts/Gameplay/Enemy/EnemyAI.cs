@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,6 +13,9 @@ public class EnemyAI : MonoBehaviour
 
     public AIType type;
 
+    public Rigidbody rb;
+    public int dmgKnockback;
+    [Space]
     [HideInInspector]public NavMeshAgent agent;
     [Header("Nav Mesh")]
     public Transform target;
@@ -40,7 +42,7 @@ public class EnemyAI : MonoBehaviour
 
     public float shootDelay;
 
-    /*[HideInInspector] */public bool canShoot;
+    [HideInInspector] public bool canShoot;
 
     [Header("Debug")]
     public bool showGizmos;
@@ -118,6 +120,12 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    public void KnockBack()
+    {
+        Vector3 dir = (transform.position - (transform.forward * -1)).normalized;
+        rb.AddForce(dir * dmgKnockback, ForceMode.Impulse);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Wall")  || collision.gameObject.CompareTag("Roomba"))
@@ -128,6 +136,11 @@ public class EnemyAI : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<ThirdPersonPlayerController>().TakeDamage(damage);
+
+            if(type == AIType.Roomba)
+            {
+                KnockBack();
+            }
         }
     }
 
