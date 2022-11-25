@@ -20,16 +20,25 @@ public class ThirdPersonPlayerController : MonoBehaviour
         ChargeJump
     }
 
+    public enum CamMode
+    {
+        ThirdPerson,
+        FreeLook
+    }
+
     public MovementMode movementMode;
     [Space]
     public JumpMode jumpMode;
+    [Space]
+    public CamMode camMode;
 
     [Header("Debug and Non Catogarized")]
     public Rigidbody rb;
     [Space]
     public Transform rayCastPoint;
     [Space]
-    public Transform cmCam;
+    public Transform cam;
+    public CinemachineFreeLook cmCam;
 
     RaycastHit hit;
 
@@ -68,6 +77,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
     [HideInInspector] public int timesJumped;
     [HideInInspector] public float turnSensitivity;
     [HideInInspector] public float jumpCharge;
+    [HideInInspector] public float camSens;
     [HideInInspector] public bool isRunning;
     [HideInInspector] public bool isMoving;
     [HideInInspector] public bool canJump;
@@ -98,6 +108,13 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
 
+        camSens = cmCam.m_XAxis.m_MaxSpeed;
+
+        if(camMode == CamMode.ThirdPerson)
+        {
+            cmCam.m_XAxis.m_MaxSpeed = 0;
+        }
+
         //SkillTreeReader.Instance.availablePoints = manager.saveData.skillPoints;
     }
 
@@ -122,7 +139,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
             float h = Input.GetAxis("Horizontal");
             move.x = h;
 
-            transform.Translate(move * Time.deltaTime * speed, cmCam);
+            transform.Translate(move * Time.deltaTime * speed, cam);
         }
     }
 
@@ -252,6 +269,20 @@ public class ThirdPersonPlayerController : MonoBehaviour
             }
         }
 
+        //Cam
+        if(Input.GetButtonDown("CamMode"))
+        {
+            if(camMode == CamMode.FreeLook)
+            {
+                camMode = CamMode.ThirdPerson;
+                cmCam.m_XAxis.m_MaxSpeed = 0;
+            }else if(camMode == CamMode.ThirdPerson)
+            {
+                camMode = CamMode.FreeLook;
+                cmCam.m_XAxis.m_MaxSpeed = camSens;
+            }
+        }
+
         //Raycast Length
         /*Debug.DrawLine(rayCastPoint.position , rayCastPoint.position + rayCastPoint.forward * 2, Color.red, 1.0f);*/
     }
@@ -307,7 +338,10 @@ public class ThirdPersonPlayerController : MonoBehaviour
     {
         if(other.gameObject.CompareTag("CheckPoint"))
         {
-            currentActiveCheckpoint = other.gameObject.GetComponent<Checkpoint>().pos;
+            Vector3 respawnPos = other.gameObject.GetComponent<Checkpoint>().pos;
+            Vector3 alteredRespawnPos = new Vector3(respawnPos.x, respawnPos.y + 1, respawnPos.z + 1);
+
+            currentActiveCheckpoint = alteredRespawnPos;
         }
 
         if(other.gameObject.CompareTag("DeathBox"))
