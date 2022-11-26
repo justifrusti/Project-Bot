@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ThirdPersonPlayerController : MonoBehaviour
 {
+    public GameManager manager;
+    
     public enum MovementMode
     {
         Walking,
@@ -50,10 +52,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
     public float damageChargeSpeed;
     [Space]
     public float invisFramesTime;
-    public int chargeRange;
+    public int chargeShootSpeed;
+
+    public GameObject bullet;
 
     [HideInInspector] public bool invisFramesActive;
-    [HideInInspector] public bool canAttack;
     [HideInInspector] public int hearts;
     [HideInInspector] public float damage;
 
@@ -61,22 +64,22 @@ public class ThirdPersonPlayerController : MonoBehaviour
     public int walkingSpeed;
     public int runSpeed;
     public int speedPadSpeed;
-    [SerializeField] private int maxJumps;
+    public int maxJumps;
     [Space]
     public float normalTurnSensitivity;
     public float lockedTurnSensitivity;
     public float runTurnSensitivity;
     [Space]
-    [SerializeField] private float maxJumpCharge;
+    public float maxJumpCharge;
     public float jumpChargeSpeed;
     [Space]
     public Vector3 jump;
     [Space]
     public Vector3 jumpPadJump;
-    [SerializeField] private Vector3 originalJump;
+    public Vector3 originalJump;
     [Space]
-    [SerializeField] private int originalWalkSpeed;
-    [SerializeField] private int originalRunSpeed;
+    public int originalWalkSpeed;
+    public int originalRunSpeed;
     [HideInInspector] public int speed;
     [HideInInspector] public int timesJumped;
     [HideInInspector] public float turnSensitivity;
@@ -112,6 +115,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
         {
             cmCam.m_XAxis.m_MaxSpeed = 0;
         }
+
+        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         //SkillTreeReader.Instance.availablePoints = manager.saveData.skillPoints;
     }
@@ -284,18 +289,22 @@ public class ThirdPersonPlayerController : MonoBehaviour
         //Charge Shot
         if(Input.GetButton("LMB"))
         {
-            if(damage < maxDamageCharge)
+            if (damage < maxDamageCharge)
             {
                 damage += damageChargeSpeed * Time.deltaTime;
-            }else if(damage > maxDamageCharge)
+            }
+            else if (damage > maxDamageCharge)
             {
                 damage = maxDamageCharge;
             }
+        }
 
-            if (Physics.Raycast(cam.position, cam.forward, out hit, chargeRange))
-            {
-                print(hit.collider.name);
-            }
+        if(Input.GetButtonUp("LMB"))
+        {
+            GameObject currentBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+
+            currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * chargeShootSpeed, ForceMode.Impulse);
+            currentBullet.GetComponent<PlayerBullet>().AssignPlayer(this);
         }
 
         //Raycast Length
@@ -455,18 +464,13 @@ public class ThirdPersonPlayerController : MonoBehaviour
         }
     }
 
-    public void DoDamage()
+    public void DoDamage(float damage, Collision collision)
     {
-        if (canAttack)
+        print("Enemy Took Damage");
+
+        if(collision.gameObject.GetComponent<EnemyAI>() != null || collision.gameObject.transform.parent.gameObject.GetComponent<EnemyAI>() != null)
         {
-            canAttack = false;
-
-            print("Enemy Took Damage");
-
-            /*currentEnemy.TakeDamage(currentWeapon.damage);
-
-            Vector3 dir = (currentEnemy.transform.position - transform.position).normalized;
-            currentEnemy.rb.AddForce(dir * currentEnemy.dmgKnockback, ForceMode.Impulse);*/
+            collision.gameObject.transform.parent.gameObject.GetComponent<EnemyAI>().CheckHealth(damage);
         }
     }
 
@@ -531,14 +535,17 @@ public class ThirdPersonPlayerController : MonoBehaviour
     {
         if(SkillTreeReader.Instance.IsSkillUnlocked(7))
         {
-            damage = damage * 6;
+            maxDamageCharge = 30;
+            damageChargeSpeed = 10;
         }else if (SkillTreeReader.Instance.IsSkillUnlocked(4))
         {
-            damage = damage * 4;
+            maxDamageCharge = 20;
+            damageChargeSpeed = 6;
         }
         else if (SkillTreeReader.Instance.IsSkillUnlocked(1))
         {
-            damage = damage * 2;
+            maxDamageCharge = 15;
+            damageChargeSpeed = 4;
         }
 
         if (SkillTreeReader.Instance.IsSkillUnlocked(8))
@@ -571,6 +578,15 @@ public class ThirdPersonPlayerController : MonoBehaviour
         {
             jumpMode = JumpMode.ChargeJump;
             jumpCharge = jumpCharge * 2;
+        }else if(SkillTreeReader.Instance.IsSkillUnlocked(12))
+        {
+            chargeShootSpeed = 20;
+        }else if(SkillTreeReader.Instance.IsSkillUnlocked(11))
+        {
+            chargeShootSpeed = 15;
+        }else if(SkillTreeReader.Instance.IsSkillUnlocked(10))
+        {
+            chargeShootSpeed = 10;
         }
     }
 

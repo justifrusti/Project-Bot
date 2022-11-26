@@ -16,17 +16,18 @@ TagManager:
   - DeathBox
   - Plate
   - ActivatePlate
+  - Turret
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - CollideObj
   - Bullet
   - Turret
-  - 
+  - PlayerBullet
   - 
   - 
   - 

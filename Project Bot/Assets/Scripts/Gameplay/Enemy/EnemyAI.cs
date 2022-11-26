@@ -24,7 +24,7 @@ public class EnemyAI : MonoBehaviour
     public Vector3 turnAngle;
 
     [Header("Enemy Stats")]
-    public int health;
+    public float health;
     public int damage;
     [Space]
     public float range;
@@ -170,5 +170,18 @@ public class EnemyAI : MonoBehaviour
         {
             Gizmos.DrawWireSphere(transform.position, range);
         }
-    } 
+    }
+
+    public void CheckHealth(float damage)
+    {
+        if ((health -= damage) <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
 }
