@@ -259,7 +259,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
         }
 
         //Skills
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetButtonDown("Esc"))
         {
             if(skillUI.activeInHierarchy)
             {
@@ -301,10 +301,10 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
         if(Input.GetButtonUp("LMB"))
         {
-            GameObject currentBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+            /*GameObject currentBullet = Instantiate(bullet, transform.position, Quaternion.identity);
 
             currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * chargeShootSpeed, ForceMode.Impulse);
-            currentBullet.GetComponent<PlayerBullet>().AssignPlayer(this);
+            currentBullet.GetComponent<PlayerBullet>().AssignPlayer(this);*/
         }
 
         //Raycast Length
@@ -464,14 +464,17 @@ public class ThirdPersonPlayerController : MonoBehaviour
         }
     }
 
-    public void DoDamage(float damage, Collision collision)
+    public void DoDamage(float damage)
     {
         print("Enemy Took Damage");
 
-        if(collision.gameObject.GetComponent<EnemyAI>() != null || collision.gameObject.transform.parent.gameObject.GetComponent<EnemyAI>() != null)
+        /*if(collision.gameObject.transform.parent.gameObject.GetComponent<EnemyAI>() != null)
         {
             collision.gameObject.transform.parent.gameObject.GetComponent<EnemyAI>().CheckHealth(damage);
-        }
+        }else if(collision.gameObject.GetComponent<EnemyAI>() != null)
+        {
+            collision.gameObject.GetComponent<EnemyAI>().CheckHealth(damage);
+        }*/
     }
 
     public void TakeDamage(int damage)

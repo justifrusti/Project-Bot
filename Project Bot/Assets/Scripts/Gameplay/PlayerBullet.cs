@@ -18,7 +18,7 @@ public class PlayerBullet : MonoBehaviour
     {
         rb.velocity = Vector3.zero;
 
-        playerController.DoDamage(playerController.damage, collision);
+        /*playerController.DoDamage(playerController.damage, collision);*/
 
         Destroy(this.gameObject);
     }
