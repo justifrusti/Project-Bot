@@ -49,4 +49,6 @@ public class SaveData
     public float dropForce;
     [Space]
     public Vector3 currentActiveCheckpoint;
+    [Header("Skills")]
+    public int skillPoints;
 }

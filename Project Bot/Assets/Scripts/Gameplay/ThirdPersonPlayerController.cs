@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ThirdPersonPlayerController : MonoBehaviour
 {
@@ -105,6 +106,14 @@ public class ThirdPersonPlayerController : MonoBehaviour
     [Header("Skills")]
     public GameObject skillUI;
 
+    [Header("KeyCards")]
+    public int keyCardAmmounts;
+
+    public bool unlockedBlueKK;
+    public bool unlockedYellowKK;
+    public bool unlockedGreeKK;
+    public bool unlockedRedKK;
+
     void Start()
     {
         VariableSetup();
@@ -118,7 +127,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        //SkillTreeReader.Instance.availablePoints = manager.saveData.skillPoints;
+        SkillTreeReader.Instance.availablePoints = manager.saveData.skillPoints;
     }
 
     private void FixedUpdate()
@@ -340,6 +349,48 @@ public class ThirdPersonPlayerController : MonoBehaviour
         {
             jump = jumpPadJump;
         }
+
+        if(collision.gameObject.CompareTag("KeyCard"))
+        {
+            switch(collision.gameObject.GetComponent<KeyCardController>().color)
+            {
+                case KeyCardController.KeyCardColor.Blue:
+                    unlockedBlueKK = true;
+                    break;
+
+                case KeyCardController.KeyCardColor.Red:
+                    unlockedRedKK = true;
+                    break;
+
+                case KeyCardController.KeyCardColor.Green:
+                    unlockedGreeKK = true;
+                    break;
+
+                case KeyCardController.KeyCardColor.Yellow:
+                    unlockedYellowKK = true;
+                    break;
+            }
+
+            manager.uiManager.KeyCardIndicators();
+        }
+
+        if(collision.gameObject.CompareTag("KeyDoor"))
+        {
+            if (collision.gameObject.GetComponent<KeyCardController>().color == KeyCardController.KeyCardColor.Blue && unlockedBlueKK)
+            {
+                collision.gameObject.GetComponent<Collider>().isTrigger = true;
+            }else if (collision.gameObject.GetComponent<KeyCardController>().color == KeyCardController.KeyCardColor.Red && unlockedRedKK)
+            {
+                collision.gameObject.GetComponent<Collider>().isTrigger = true;
+            }
+            else if(collision.gameObject.GetComponent<KeyCardController>().color == KeyCardController.KeyCardColor.Green && unlockedGreeKK)
+            {
+                collision.gameObject.GetComponent<Collider>().isTrigger = true;
+            }else if (collision.gameObject.GetComponent<KeyCardController>().color == KeyCardController.KeyCardColor.Yellow && unlockedYellowKK)
+            {
+                collision.gameObject.GetComponent<Collider>().isTrigger = true;
+            }
+        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -366,6 +417,14 @@ public class ThirdPersonPlayerController : MonoBehaviour
             Vector3 alteredRespawnPos = new Vector3(respawnPos.x, respawnPos.y + 1, respawnPos.z + 1);
 
             currentActiveCheckpoint = alteredRespawnPos;
+        }
+
+        if(other.gameObject.CompareTag("Teleporter"))
+        {
+            Vector3 respawnPos = other.gameObject.GetComponent<Teleporter>().pos;
+            Vector3 alteredRespawnPos = new Vector3(respawnPos.x, respawnPos.y + 1, respawnPos.z + 1);
+
+            transform.position = alteredRespawnPos;
         }
 
         if(other.gameObject.CompareTag("DeathBox"))

@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public SaveData saveData;
     public SaveLoadSystem saveLoadSystem;
     public ThirdPersonPlayerController playerController;
+    public PlayerUIManager uiManager;
 
     private void Awake()
     {
@@ -14,24 +15,10 @@ public class GameManager : MonoBehaviour
         InitializeScripts();
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.N))
-        {
-            SavePlayerData();
-            saveLoadSystem.SaveGame();
-        }
-
-        if(Input.GetKeyDown(KeyCode.L))
-        {
-            saveLoadSystem.LoadGame();
-            LoadPlayerData();
-        }
-    }
-
     public void InitializeScripts()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonPlayerController>();
+        uiManager = GameObject.FindGameObjectWithTag("UI Manager").GetComponent<PlayerUIManager>();
         saveLoadSystem = GetComponent<SaveLoadSystem>();
     }
 
@@ -66,6 +53,8 @@ public class GameManager : MonoBehaviour
         saveData.throwForce = playerController.throwForce;
         saveData.dropForce = playerController.dropForce;
         saveData.currentActiveCheckpoint = playerController.currentActiveCheckpoint;
+
+        saveData.skillPoints = SkillTreeReader.Instance.availablePoints;
     }
 
     public void LoadPlayerData()
@@ -101,5 +90,7 @@ public class GameManager : MonoBehaviour
         playerController.currentActiveCheckpoint = saveData.currentActiveCheckpoint;
 
         playerController.RespawnAtCheckpoint();
+
+        SkillTreeReader.Instance.availablePoints = saveData.skillPoints;
     }
 }

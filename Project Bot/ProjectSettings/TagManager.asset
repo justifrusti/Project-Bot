@@ -17,6 +17,10 @@ TagManager:
   - Plate
   - ActivatePlate
   - Turret
+  - Teleporter
+  - KeyDoor
+  - KeyCard
+  - UI Manager
   layers:
   - Default
   - TransparentFX
