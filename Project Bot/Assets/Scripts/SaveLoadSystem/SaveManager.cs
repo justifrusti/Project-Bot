@@ -6,7 +6,7 @@ using System.IO;
 public static class SaveManager
 {
     public static string directory = "/Data/";
-    public static string fileName = "AwakeningData.sav";
+    public static string fileName = "PlayerOS.bot";
 
     public static void Save(SaveData so)
     {

@@ -376,6 +376,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
             }
 
             manager.uiManager.KeyCardIndicators();
+
+            Destroy(collision.gameObject);
         }
 
         if(collision.gameObject.CompareTag("KeyDoor"))

@@ -1,25 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
     public SaveData saveData;
-    public SaveLoadSystem saveLoadSystem;
     public ThirdPersonPlayerController playerController;
     public PlayerUIManager uiManager;
+
+    public static string directory = "/Data/";
+    public static string fileName = "PlayerOS.bot";
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
         InitializeScripts();
+
+        string fullPath = Application.persistentDataPath + directory + fileName;
+
+        if (File.Exists(fullPath))
+        {
+            LoadGame();
+        }
+        else
+        {
+            Debug.LogError("Save file does not exist");
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            SavePlayerData();
+            SaveGame();
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadGame();
+            LoadPlayerData();
+        }
     }
 
     public void InitializeScripts()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonPlayerController>();
         uiManager = GameObject.FindGameObjectWithTag("UI Manager").GetComponent<PlayerUIManager>();
-        saveLoadSystem = GetComponent<SaveLoadSystem>();
     }
 
     public void SavePlayerData()
@@ -92,5 +120,17 @@ public class GameManager : MonoBehaviour
         playerController.RespawnAtCheckpoint();
 
         SkillTreeReader.Instance.availablePoints = saveData.skillPoints;
+    }
+
+    public void SaveGame()
+    {
+        print("save");
+        SaveManager.Save(saveData);
+    }
+
+    public void LoadGame()
+    {
+        print("load");
+        saveData = SaveManager.Load();
     }
 }
