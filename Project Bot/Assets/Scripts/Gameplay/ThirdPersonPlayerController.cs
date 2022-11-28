@@ -44,6 +44,10 @@ public class ThirdPersonPlayerController : MonoBehaviour
     [Space]
     public Transform rightHand;
 
+    private Color emissionColor;
+    private Material currentMat;
+    private bool updatedMat;
+
     RaycastHit hit;
 
     [Header("Characters Stats")]
@@ -399,12 +403,28 @@ public class ThirdPersonPlayerController : MonoBehaviour
         {
             jump = originalJump;
         }
+
+        if(collision.gameObject.CompareTag("SpeedPad"))
+        {
+            currentMat.SetColor("_EmissionColor", emissionColor);
+            updatedMat = false;
+        }
     }
 
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("SpeedPad"))
         {
+            if(!updatedMat)
+            {
+                updatedMat = true;
+
+                currentMat = collision.gameObject.GetComponent<MeshRenderer>().material;
+                emissionColor = currentMat.GetColor("_EmissionColor");
+
+                currentMat.SetColor("_EmissionColor", Color.black);
+            }
+
             movementMode = MovementMode.SpeedPad;
         }
     }
