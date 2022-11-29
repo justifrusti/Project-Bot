@@ -64,6 +64,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
     [HideInInspector] public bool invisFramesActive;
     [HideInInspector] public int hearts;
     [HideInInspector] public float damage;
+    [HideInInspector] public int deaths;
 
     [Header("Character/Cam Movement")]
     public int walkingSpeed;
@@ -117,6 +118,9 @@ public class ThirdPersonPlayerController : MonoBehaviour
     public bool unlockedYellowKK;
     public bool unlockedGreeKK;
     public bool unlockedRedKK;
+
+    //Private Check Variables
+    private bool onPad;
 
     void Start()
     {
@@ -314,14 +318,21 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
         if(Input.GetButtonUp("LMB"))
         {
-            /*GameObject currentBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+            GameObject currentBullet = Instantiate(bullet, transform.position, Quaternion.identity);
 
             currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * chargeShootSpeed, ForceMode.Impulse);
-            currentBullet.GetComponent<PlayerBullet>().AssignPlayer(this);*/
+            currentBullet.GetComponent<PlayerBullet>().AssignPlayer(this);
         }
 
-        //Raycast Length
-        Debug.DrawLine(rayCastPoint.position, rayCastPoint.forward * 1,Color.red, 1.0f);
+        //Debug
+        //Debug.DrawLine(rayCastPoint.position, rayCastPoint.forward * 1,Color.red, 1.0f);
+
+        if(Input.GetKeyDown(KeyCode.V))
+        {
+            deaths = manager.saveData.deaths;
+            deaths++;
+            manager.saveData.deaths = deaths;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -347,6 +358,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
             timesJumped = 0;
 
             canJump = true;
+
+            onPad = false;
         }
 
         if(collision.gameObject.CompareTag("JumpPad"))
@@ -494,6 +507,13 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 break;
 
             case MovementMode.SpeedPad:
+                if(!onPad)
+                {
+                    FindObjectOfType<AudioManagerScript>().Play("speedBoost");
+                }
+
+                onPad = true;
+
                 speed = speedPadSpeed;
                 turnSensitivity = runTurnSensitivity;
 
@@ -578,6 +598,9 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     public void Die()
     {
+        deaths = manager.saveData.deaths;
+        deaths++;
+        manager.saveData.deaths = deaths;
         Destroy(gameObject);
     }
 

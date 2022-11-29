@@ -14,6 +14,8 @@ public class SaveData
     [Space]
     public float invisFramesTime;
     public int chargeShootSpeed;
+    [Space]
+    public int deaths;
 
     public bool invisFramesActive;
     public int hearts;

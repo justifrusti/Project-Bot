@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
         saveData.damageChargeSpeed = playerController.damageChargeSpeed;
         saveData.invisFramesTime = playerController.invisFramesTime;
         saveData.chargeShootSpeed = playerController.chargeShootSpeed;
+        //
         saveData.invisFramesActive = playerController.invisFramesActive;
         saveData.hearts = playerController.hearts;
         saveData.damage = playerController.damage;
@@ -92,6 +93,7 @@ public class GameManager : MonoBehaviour
         playerController.damageChargeSpeed = saveData.damageChargeSpeed;
         playerController.invisFramesTime = saveData.invisFramesTime;
         playerController.chargeShootSpeed = saveData.chargeShootSpeed;
+        //
         playerController.invisFramesActive = saveData.invisFramesActive;
         playerController.hearts = saveData.hearts;
         playerController.damage = saveData.damage;
