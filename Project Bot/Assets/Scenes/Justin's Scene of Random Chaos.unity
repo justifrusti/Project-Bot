@@ -1044,7 +1044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e293f8e01bfda6e44849b8b8dc735e1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minigame: {fileID: 0}
+  minigame: {fileID: 870997739}
   ovMinigame: {fileID: 11400000, guid: d11cc049132eb704e88cb11ded4755bc, type: 2}
 --- !u!4 &189760207
 Transform:
@@ -4267,6 +4267,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &870997735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2237722683802096952, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+  m_PrefabInstance: {fileID: 2237722683720857421}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &870997739 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1911728269513125822, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+  m_PrefabInstance: {fileID: 2237722683720857421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870997735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a3d8dbd672a4b5429f42e8601cb6ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &960008437
 GameObject:
   m_ObjectHideFlags: 0
@@ -6447,7 +6463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e293f8e01bfda6e44849b8b8dc735e1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minigame: {fileID: 0}
+  minigame: {fileID: 870997739}
   ovMinigame: {fileID: 11400000, guid: 5043e1bff4d221746ba0545cf0b8b678, type: 2}
 --- !u!4 &1542255074
 Transform:
@@ -8397,11 +8413,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 598346033172957891, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0008084514
+      value: 0.00080845144
       objectReference: {fileID: 0}
     - target: {fileID: 598346033172957891, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00033535028
+      value: -0.0003353503
       objectReference: {fileID: 0}
     - target: {fileID: 598346033480349501, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8509,11 +8525,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 598346035125090777, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00078319066
+      value: 0.0007831633
       objectReference: {fileID: 0}
     - target: {fileID: 598346035125090777, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00039073927
+      value: -0.00039072562
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
@@ -8524,6 +8540,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1911728269513125822, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: ovUI
+      value: 
+      objectReference: {fileID: 870997735}
     - target: {fileID: 2237722682590088472, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
