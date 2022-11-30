@@ -43,7 +43,6 @@ public class ThirdPersonPlayerController : MonoBehaviour
     public CinemachineFreeLook cmCam;
     [Space]
     public Transform rightHand;
-    public Transform currentPad;
 
     private Color emissionColor;
     private Material currentMat;
@@ -447,8 +446,6 @@ public class ThirdPersonPlayerController : MonoBehaviour
             }
 
             movementMode = MovementMode.SpeedPad;
-
-            currentPad = collision.gameObject.transform;
         }
     }
 
@@ -526,11 +523,6 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 turnSensitivity = runTurnSensitivity;
 
                 move.z = v;
-
-                if(v > 0)
-                {
-                    transform.Translate(move * Time.deltaTime * speed, currentPad);
-                }
                 break;
         }
     }

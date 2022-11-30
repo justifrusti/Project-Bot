@@ -32,9 +32,9 @@ RectTransform:
   m_Father: {fileID: 217629599036763932}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 34.77008, y: -252.10258}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 69.54016, y: 69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &362018231400897197
@@ -107,9 +107,9 @@ RectTransform:
   m_Father: {fileID: 217629599036763932}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 34.77008, y: -34.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 69.54016, y: 69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1441340527812938757
@@ -271,7 +271,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -425,7 +425,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -967,7 +967,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -1121,7 +1121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -1275,7 +1275,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -1429,7 +1429,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -1583,7 +1583,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -1886,7 +1886,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -2040,7 +2040,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -2194,7 +2194,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -2348,7 +2348,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -2727,7 +2727,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -2881,7 +2881,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -3227,7 +3227,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -3621,7 +3621,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -3775,7 +3775,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -3929,7 +3929,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -4235,7 +4235,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -4375,9 +4375,9 @@ RectTransform:
   m_Father: {fileID: 2237722683477318349}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 321.26065, y: -35.08435}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 69.54016, y: 69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2237722683061656989
@@ -4673,7 +4673,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -4827,7 +4827,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -4981,7 +4981,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -5407,7 +5407,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -5695,7 +5695,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -5849,7 +5849,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -6003,7 +6003,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadCopyVariables
         m_Mode: 2
@@ -6068,9 +6068,9 @@ RectTransform:
   m_Father: {fileID: 2237722683477318349}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 249.638, y: -35.08435}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 69.54016, y: 69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2237722683290834909
@@ -6232,7 +6232,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -6535,7 +6535,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadCopyVariables
         m_Mode: 2
@@ -6918,7 +6918,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -7635,7 +7635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2237722683562037962
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8028,7 +8028,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -8182,7 +8182,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -8336,7 +8336,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -8490,7 +8490,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -8644,7 +8644,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -8798,7 +8798,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -9101,7 +9101,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadCopyVariables
         m_Mode: 2
@@ -9361,7 +9361,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -9515,7 +9515,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -10103,7 +10103,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -10332,7 +10332,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -10994,7 +10994,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -11148,7 +11148,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -11407,7 +11407,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -11636,7 +11636,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -11790,7 +11790,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -12080,7 +12080,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -12234,7 +12234,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadCopyVariables
         m_Mode: 2
@@ -12463,7 +12463,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -12617,7 +12617,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -12882,7 +12882,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -13111,7 +13111,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -13265,7 +13265,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -13419,7 +13419,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -13573,7 +13573,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadCopyVariables
         m_Mode: 2
@@ -13727,7 +13727,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -13868,9 +13868,9 @@ RectTransform:
   m_Father: {fileID: 2237722683477318349}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 178.01537, y: -35.08435}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 69.54016, y: 69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2237722684041068600
@@ -14032,7 +14032,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -14186,7 +14186,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -14606,7 +14606,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -14671,9 +14671,9 @@ RectTransform:
   m_Father: {fileID: 2237722683477318349}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 392.8833, y: -35.08435}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 69.54016, y: 69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2237722684133122452
@@ -14835,7 +14835,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -14989,7 +14989,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -15426,7 +15426,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -15491,9 +15491,9 @@ RectTransform:
   m_Father: {fileID: 2237722683477318349}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 34.77008, y: -35.08435}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 69.54016, y: 69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2237722684186654375
@@ -15655,7 +15655,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -15856,9 +15856,9 @@ RectTransform:
   m_Father: {fileID: 2237722683477318349}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 106.39272, y: -35.08435}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 69.54016, y: 69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2237722684240871830
@@ -16154,7 +16154,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -16308,7 +16308,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -16462,7 +16462,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -16616,7 +16616,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -17787,7 +17787,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -17941,7 +17941,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadCopyVariables
         m_Mode: 2
@@ -18095,7 +18095,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -18458,7 +18458,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -18822,7 +18822,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1911728269513125822}
         m_TargetAssemblyTypeName: MinigameController, Assembly-CSharp
         m_MethodName: OverloadPasteVariables
         m_Mode: 2
@@ -19261,9 +19261,9 @@ RectTransform:
   m_Father: {fileID: 217629599036763932}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 34.77008, y: -179.56839}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 69.54016, y: 69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6500996409315493413
@@ -19336,9 +19336,9 @@ RectTransform:
   m_Father: {fileID: 217629599036763932}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 34.77008, y: -107.034195}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 69.54016, y: 69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2828983369674404937
