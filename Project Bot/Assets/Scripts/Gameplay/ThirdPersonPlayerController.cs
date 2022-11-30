@@ -515,10 +515,10 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 break;
 
             case MovementMode.SpeedPad:
-                /*if(!onPad)
+                if (!onPad)
                 {
                     FindObjectOfType<AudioManagerScript>().Play("speedBoost");
-                }*/
+                }
 
                 onPad = true;
 
