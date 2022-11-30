@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -43,6 +44,9 @@ public class ThirdPersonPlayerController : MonoBehaviour
     public CinemachineFreeLook cmCam;
     [Space]
     public Transform rightHand;
+    [Space]
+    public Transform wheels;
+    public Transform head;
 
     private Color emissionColor;
     private Material currentMat;
@@ -122,6 +126,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
     //Private Check Variables
     private bool onPad;
 
+    private Vector3 originalWheelRot;
+
     void Start()
     {
         VariableSetup();
@@ -152,14 +158,21 @@ public class ThirdPersonPlayerController : MonoBehaviour
         }else if(Input.GetButton("Horizontal") && !isMoving && turnMode)
         {
             TurnChar();
-        }else if(Input.GetButton("Horizontal") && !isMoving && !turnMode)
+        }
+        else if(Input.GetButton("Horizontal") && !isMoving && !turnMode)
         {
-            Vector3 move = new Vector3();
-
             float h = Input.GetAxis("Horizontal");
-            move.x = h;
 
-            transform.Translate(move * Time.deltaTime * speed, cam);
+            Vector3 rightWheel = new Vector3(0, 180, 0);
+            Vector3 leftWheel = new Vector3(0, -180, 0);
+
+            if(h > 0)
+            {
+                wheels.Rotate(rightWheel * Time.deltaTime, Space.Self);
+            }else if(h < 0)
+            {
+                wheels.Rotate(leftWheel * Time.deltaTime, Space.Self);
+            }
         }
     }
 
@@ -327,7 +340,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
         //Debug
         //Debug.DrawLine(rayCastPoint.position, rayCastPoint.forward * 1,Color.red, 1.0f);
 
-        if(Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             deaths = manager.saveData.deaths;
             deaths++;
@@ -499,7 +512,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
                 move.z = v;
 
-                transform.Translate(move * Time.deltaTime * speed);
+                transform.Translate(move * Time.deltaTime * speed, wheels);
                 break;
 
             case MovementMode.Running:
@@ -508,7 +521,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
                 move.z = v;
 
-                transform.Translate(move * Time.deltaTime * speed);
+                transform.Translate(move * Time.deltaTime * speed, wheels);
                 break;
 
             case MovementMode.SpeedPad:
