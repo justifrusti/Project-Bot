@@ -417,6 +417,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("JumpPad"))
         {
             jump = originalJump;
+
+            if(!canJump)
+            {
+                FindObjectOfType<AudioManagerScript>().Play("jumpBoost");
+            }
         }
 
         if(collision.gameObject.CompareTag("SpeedPad"))
