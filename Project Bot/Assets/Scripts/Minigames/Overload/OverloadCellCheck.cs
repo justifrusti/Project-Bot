@@ -127,7 +127,7 @@ public class OverloadCellCheck : MonoBehaviour
 
         if(isActive)
         {
-            print("Finish Function");
+            controller.FinishMinigame();
         }
     }
 }

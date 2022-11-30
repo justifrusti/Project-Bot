@@ -484,6 +484,13 @@ public class MinigameController : MonoBehaviour
         }
     }
 
+    public void FinishMinigame()
+    {
+        ovUI.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     public void InitialSetup()
     {
         InitializeOverload();

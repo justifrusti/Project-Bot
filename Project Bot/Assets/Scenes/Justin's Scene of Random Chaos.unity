@@ -263,7 +263,7 @@ Transform:
   - {fileID: 1362711153}
   - {fileID: 225553932}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &42138520
 GameObject:
@@ -593,7 +593,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &106960312
 GameObject:
@@ -805,7 +805,7 @@ Transform:
   m_Children:
   - {fileID: 1932171172}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &118149391
 MonoBehaviour:
@@ -1489,7 +1489,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &251585702
 GameObject:
@@ -1906,6 +1906,260 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294837838}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &314390013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 314390015}
+  - component: {fileID: 314390014}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &314390014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314390013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7787b5a188196d448aee219939209dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: speedBoost
+    clip: {fileID: 8300000, guid: c7539f9c0365852479fae98d97b919e0, type: 3}
+    group: {fileID: -4504023315871953618, guid: 7499ed2354904e842bcb58283ed05792, type: 2}
+    volume: 1
+    pitch: 1.4
+    loop: 0
+    source: {fileID: 0}
+  - name: jumpBoost
+    clip: {fileID: 8300000, guid: 16ab97c76faf1e3499c4ef206a11c08e, type: 3}
+    group: {fileID: -4504023315871953618, guid: 7499ed2354904e842bcb58283ed05792, type: 2}
+    volume: 1
+    pitch: 1.4
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: 
+    clip: {fileID: 0}
+    group: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &314390015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314390013}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1062.0573, y: 934.68146, z: -956.43445}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &337459005
 GameObject:
   m_ObjectHideFlags: 0
@@ -2789,7 +3043,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &468203077
 GameObject:
@@ -3238,6 +3492,7 @@ MonoBehaviour:
     damageChargeSpeed: 0
     invisFramesTime: 0
     chargeShootSpeed: 0
+    deaths: 0
     invisFramesActive: 0
     hearts: 0
     damage: 0
@@ -4265,7 +4520,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &870997735 stripped
 GameObject:
@@ -4518,7 +4773,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1118695949
 GameObject:
@@ -4676,7 +4931,7 @@ Transform:
   - {fileID: 2046037729}
   - {fileID: 1134345538}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1134345538 stripped
 Transform:
@@ -5014,7 +5269,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1173143764
 GameObject:
@@ -6720,7 +6975,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1739096745
 GameObject:
@@ -7131,7 +7386,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1884462899
 GameObject:
@@ -7185,7 +7440,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1888217855
 GameObject:
@@ -7315,7 +7570,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &1922209383
 GameObject:
@@ -7358,7 +7613,7 @@ Transform:
   - {fileID: 2058117034}
   - {fileID: 612750749}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1932171171
 GameObject:
@@ -7705,7 +7960,7 @@ Transform:
   - {fileID: 1464184521}
   - {fileID: 1967396284}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1985806441
 MonoBehaviour:
@@ -7737,6 +7992,7 @@ MonoBehaviour:
   invisFramesActive: 0
   hearts: 0
   damage: 0
+  deaths: 0
   walkingSpeed: 4
   runSpeed: 9
   speedPadSpeed: 18
@@ -8011,7 +8267,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 0.01, z: 0.15}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2058117033
 GameObject:
@@ -8453,7 +8709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 598346034962412360, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 598346034962412360, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8547,10 +8803,18 @@ PrefabInstance:
     - target: {fileID: 2237722682590088472, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722682590088472, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722682594629806, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722682594629806, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722682606798401, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: controller
@@ -8559,22 +8823,42 @@ PrefabInstance:
     - target: {fileID: 2237722682628369884, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722682628369884, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722682701127419, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722682701127419, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722682707832971, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722682707832971, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722682719381135, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722682719381135, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722682761491621, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722682761491621, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722682763091319, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: controller
@@ -8583,18 +8867,34 @@ PrefabInstance:
     - target: {fileID: 2237722682775534114, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722682775534114, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722682776426772, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722682776426772, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722682796628915, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722682796628915, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722682798668548, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722682798668548, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722682819728448, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: controller
@@ -8603,10 +8903,18 @@ PrefabInstance:
     - target: {fileID: 2237722682852831321, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722682852831321, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722682854978961, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722682854978961, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722682872446429, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: controller
@@ -8615,22 +8923,34 @@ PrefabInstance:
     - target: {fileID: 2237722682897131101, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722682897131101, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722682989335319, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722682989335319, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722682997195450, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722682997195450, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683004177768, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2237722683045634689, guid: db92f3ef239ed374da44c15748352d87, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683004177768, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683061656962, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8651,30 +8971,58 @@ PrefabInstance:
     - target: {fileID: 2237722683107391233, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683107391233, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683155922311, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683155922311, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683209847016, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683209847016, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683247777139, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683247777139, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683267148102, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683267148102, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683279789488, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683279789488, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683284215313, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683284215313, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadCopyVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683290834882, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8695,6 +9043,10 @@ PrefabInstance:
     - target: {fileID: 2237722683301842201, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683301842201, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683329296123, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: controller
@@ -8703,10 +9055,18 @@ PrefabInstance:
     - target: {fileID: 2237722683345239111, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683345239111, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadCopyVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683444866334, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683444866334, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683516356539, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: controller
@@ -8715,26 +9075,50 @@ PrefabInstance:
     - target: {fileID: 2237722683581108454, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683581108454, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683591138623, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683591138623, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683605399378, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683605399378, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683622536449, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683622536449, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683632475839, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683632475839, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683652450309, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683652450309, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683654389469, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: controller
@@ -8743,22 +9127,42 @@ PrefabInstance:
     - target: {fileID: 2237722683678731061, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683678731061, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadCopyVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683688999729, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683688999729, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683748323972, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683748323972, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683815076962, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683815076962, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683832347221, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683832347221, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683860629938, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: controller
@@ -8771,62 +9175,114 @@ PrefabInstance:
     - target: {fileID: 2237722683862762707, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683862762707, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683871114622, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683871114622, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683934544177, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683934544177, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683950770919, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683950770919, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683972081758, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683972081758, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683979517856, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683979517856, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683981808805, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683981808805, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadCopyVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722683997097814, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722683997097814, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684001182184, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684001182184, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684012979009, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684012979009, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684022438540, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684022438540, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684028370637, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2237722684031007131, guid: db92f3ef239ed374da44c15748352d87, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684028370637, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684034711554, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684034711554, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadCopyVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684034886550, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684034886550, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684041068601, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8847,10 +9303,18 @@ PrefabInstance:
     - target: {fileID: 2237722684055670233, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684055670233, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684078108742, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684078108742, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684081077592, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_Pivot.x
@@ -8862,7 +9326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684081077592, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684081077592, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_AnchorMax.x
@@ -8947,6 +9411,10 @@ PrefabInstance:
     - target: {fileID: 2237722684116552744, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684116552744, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684133122455, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8967,10 +9435,18 @@ PrefabInstance:
     - target: {fileID: 2237722684136375281, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684136375281, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684163628912, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684163628912, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684164840632, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: controller
@@ -8979,6 +9455,10 @@ PrefabInstance:
     - target: {fileID: 2237722684184574615, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684184574615, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684186654372, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8999,6 +9479,10 @@ PrefabInstance:
     - target: {fileID: 2237722684220419285, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684220419285, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684240871831, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9019,18 +9503,34 @@ PrefabInstance:
     - target: {fileID: 2237722684362014481, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684362014481, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684371392152, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684371392152, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684373968022, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684373968022, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684378030200, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684378030200, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684434664354, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: controller
@@ -9043,22 +9543,34 @@ PrefabInstance:
     - target: {fileID: 2237722684530931023, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684530931023, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684551988145, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684551988145, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadCopyVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684562275429, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684562275429, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 2237722684614017481, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2237722684686065828, guid: db92f3ef239ed374da44c15748352d87, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
+      objectReference: {fileID: 870997739}
+    - target: {fileID: 2237722684614017481, guid: db92f3ef239ed374da44c15748352d87, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OverloadPasteVariables
       objectReference: {fileID: 0}
     - target: {fileID: 4301416944761133226, guid: db92f3ef239ed374da44c15748352d87, type: 3}
       propertyPath: m_AnchorMax.y
