@@ -130,7 +130,18 @@ public class EnemyAI : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Wall")  || collision.gameObject.CompareTag("Roomba"))
         {
-            transform.Rotate(turnAngle);
+            float randomizer = Random.Range(0, 1.01f);
+
+            if(randomizer <= .7f)
+            {
+                transform.Rotate(turnAngle);
+            }else if(randomizer > .7f)
+            {
+                transform.Rotate(turnAngle * 2);
+            }else
+            {
+                transform.Rotate(turnAngle);
+            }
         }
 
         if(collision.gameObject.CompareTag("Player"))

@@ -5390,6 +5390,7 @@ GameObject:
   - component: {fileID: 1805769963}
   - component: {fileID: 1805769965}
   - component: {fileID: 1805769964}
+  - component: {fileID: 1805769966}
   m_Layer: 5
   m_Name: Titel
   m_TagString: Untagged
@@ -5513,6 +5514,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1805769962}
   m_CullTransparentMesh: 1
+--- !u!114 &1805769966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805769962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca93a3b6cd192784bbc616f2b68d8601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textBox: {fileID: 1805769964}
+  timeBetweenChar: 0.12
+  textToType: UP-D8
 --- !u!1 &1812827358
 GameObject:
   m_ObjectHideFlags: 0
@@ -6536,6 +6552,7 @@ GameObject:
   - component: {fileID: 1985806441}
   - component: {fileID: 1985806437}
   - component: {fileID: 1985806436}
+  - component: {fileID: 1985806442}
   m_Layer: 0
   m_Name: Test Bot
   m_TagString: Untagged
@@ -6661,6 +6678,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   cmCam: {fileID: 0}
   rightHand: {fileID: 0}
+  wheels: {fileID: 0}
+  head: {fileID: 0}
   maxHearts: 0
   maxDamageCharge: 0
   damageChargeSpeed: 0
@@ -6670,6 +6689,7 @@ MonoBehaviour:
   invisFramesActive: 0
   hearts: 0
   damage: 0
+  deaths: 0
   walkingSpeed: 4
   runSpeed: 9
   speedPadSpeed: 0
@@ -6706,6 +6726,26 @@ MonoBehaviour:
   unlockedYellowKK: 0
   unlockedGreeKK: 0
   unlockedRedKK: 0
+--- !u!114 &1985806442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985806435}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3acf86db6a66749b8dc18e95c4119e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  materialToChange: {fileID: 0}
+  red: {r: 0, g: 0, b: 0, a: 0}
+  green: {r: 0, g: 0, b: 0, a: 0}
+  blue: {r: 0, g: 0, b: 0, a: 0}
+  white: {r: 0, g: 0, b: 0, a: 0}
+  amber: {r: 0, g: 0, b: 0, a: 0}
+  pink: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1990497463
 GameObject:
   m_ObjectHideFlags: 0

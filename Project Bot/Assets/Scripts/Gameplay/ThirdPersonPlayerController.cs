@@ -1,10 +1,11 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(FacialExpressionManager))]
 public class ThirdPersonPlayerController : MonoBehaviour
 {
     public GameManager manager;
@@ -125,8 +126,6 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     //Private Check Variables
     private bool onPad;
-
-    private Vector3 originalWheelRot;
 
     void Start()
     {
@@ -536,6 +535,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 turnSensitivity = runTurnSensitivity;
 
                 move.z = v;
+
+                transform.Translate(move * Time.deltaTime * speed, wheels);
                 break;
         }
     }
