@@ -1175,6 +1175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 3
+  em: 0
+  previousEM: 0
   materialToChange: {fileID: 2100000, guid: d714caf828ea7264ea3e47b87d2c0f02, type: 2}
   red: {r: 0.9607844, g: 0.20392159, b: 0.13725491, a: 1}
   green: {r: 0.03529412, g: 0.8000001, b: 0.3137255, a: 1}
@@ -1182,6 +1184,22 @@ MonoBehaviour:
   white: {r: 1, g: 1, b: 1, a: 1}
   amber: {r: 1, g: 0.60784316, b: 0.019607844, a: 1}
   pink: {r: 0.80392164, g: 0.27450982, b: 0.76470596, a: 1}
+  em_Default: {fileID: 2800000, guid: 9ea426253e0c80e4e9d7958692f65130, type: 3}
+  em_blankBlack: {fileID: 2800000, guid: 99f44b9f23830b746916e84ecdb4bec0, type: 3}
+  em_blankWhite: {fileID: 2800000, guid: 163c03038f5af28438a225c0f7f9b2e1, type: 3}
+  em_Death1: {fileID: 2800000, guid: 4dd02f2dd724c8347a0ab6b77e9e5b8e, type: 3}
+  em_Death2: {fileID: 2800000, guid: a40622ac92b21eb47b6e963664c5cbbb, type: 3}
+  em_Death3: {fileID: 2800000, guid: 6857d238fddced64d803ba169b9b6506, type: 3}
+  em_Happy: {fileID: 2800000, guid: 59f924e6e02204b4ca4520a3a424c364, type: 3}
+  em_OverJoyed: {fileID: 2800000, guid: bf2d6de71f50cfa41b4d4e727a1cded7, type: 3}
+  em_Pain1: {fileID: 2800000, guid: 9cabb58547a0daa41a51e90c92bd4bf8, type: 3}
+  em_Pain2: {fileID: 2800000, guid: 91b4c63c018dcca439e99fba2f1cee79, type: 3}
+  em_Pain3: {fileID: 2800000, guid: 2ded64e221d48d6429a382c21bacc7dd, type: 3}
+  em_Shocked1: {fileID: 2800000, guid: 9afd26ddb87883e41bedbd548f580bdf, type: 3}
+  em_Shocked2: {fileID: 2800000, guid: 2102399769e48cc4285c2a5c0f1f689b, type: 3}
+  em_Smile: {fileID: 2800000, guid: 2166522b813ca814f8f916e78f856e88, type: 3}
+  em_Smug: {fileID: 2800000, guid: e49ab0c829aafcf4083ee4bbde0d0b09, type: 3}
+  em_Wink: {fileID: 2800000, guid: 5256ad148fbc24e429ec3085f0b9a455, type: 3}
 --- !u!114 &6044978034577956852
 MonoBehaviour:
   m_ObjectHideFlags: 0

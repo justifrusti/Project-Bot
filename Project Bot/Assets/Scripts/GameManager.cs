@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+[RequireComponent(typeof(SkillTreeReader))]
 public class GameManager : MonoBehaviour
 {
     public SaveData saveData;

@@ -24,7 +24,7 @@ public class SkillTreeReader : MonoBehaviour
 
     private Skill _skillInspected;
 
-    public int availablePoints = 100;
+    public int availablePoints = 0;
 
     void Awake()
     {
