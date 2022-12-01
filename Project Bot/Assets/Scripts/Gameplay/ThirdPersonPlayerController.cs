@@ -127,6 +127,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
     //Private Check Variables
     private bool onPad;
 
+    private bool canChangeEmotion = true;
+
     void Start()
     {
         VariableSetup();
@@ -195,6 +197,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
         }else if(Input.GetKeyUp(KeyCode.LeftControl))
         {
             turnMode = false;
+        }
+
+        if(movementMode == MovementMode.Idle && canChangeEmotion)
+        {
+            manager.facialManager.ChangeEM(false, 0, FacialExpressionManager.CurrentExpression.Default);
         }
 
         //Jump
@@ -330,10 +337,14 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
         if(Input.GetButtonUp("LMB"))
         {
-            GameObject currentBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+            GameObject currentBullet = Instantiate(bullet, rightHand.position, Quaternion.identity);
 
-            currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * chargeShootSpeed, ForceMode.Impulse);
+            currentBullet.GetComponent<Rigidbody>().AddForce(rightHand.up * chargeShootSpeed, ForceMode.Impulse);
             currentBullet.GetComponent<PlayerBullet>().AssignPlayer(this);
+
+            manager.facialManager.ChangeEM(true, .5f, FacialExpressionManager.CurrentExpression.Wink);
+            canChangeEmotion = false;
+            StartCoroutine(ResetBool(.5f));
         }
 
         //Debug
@@ -354,6 +365,13 @@ public class ThirdPersonPlayerController : MonoBehaviour
             timesJumped = 0;
 
             canJump = true;
+
+            if(collision.gameObject.CompareTag("Floor") && canChangeEmotion)
+            {
+                manager.facialManager.ChangeEM(true, .5f, FacialExpressionManager.CurrentExpression.Shocked2);
+                canChangeEmotion = false;
+                StartCoroutine(ResetBool(.5f));
+            }
         }
 
         if(collision.gameObject.CompareTag("Floor") && movementMode == MovementMode.SpeedPad)
@@ -420,6 +438,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
             }else if (collision.gameObject.GetComponent<KeyCardController>().color == KeyCardController.KeyCardColor.Yellow && unlockedYellowKK)
             {
                 collision.gameObject.GetComponent<Collider>().isTrigger = true;
+            }else
+            {
+                manager.facialManager.ChangeEM(true, 1.5f, FacialExpressionManager.CurrentExpression.Death3);
+                canChangeEmotion = false;
+                StartCoroutine(ResetBool(1.5f));
             }
         }
     }
@@ -433,6 +456,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
             if(!canJump)
             {
                 FindObjectOfType<AudioManagerScript>().Play("jumpBoost");
+                
+                if(canChangeEmotion)
+                {
+                    manager.facialManager.ChangeEM(false, 0, FacialExpressionManager.CurrentExpression.OverJoyed);
+                }
             }
         }
 
@@ -469,6 +497,13 @@ public class ThirdPersonPlayerController : MonoBehaviour
             Vector3 alteredRespawnPos = new Vector3(respawnPos.x, respawnPos.y + 1, respawnPos.z + 1);
 
             currentActiveCheckpoint = alteredRespawnPos;
+
+            if(canChangeEmotion)
+            {
+                manager.facialManager.ChangeEM(true, 3f, FacialExpressionManager.CurrentExpression.Smug);
+                canChangeEmotion = false;
+                StartCoroutine(ResetBool(3f));
+            }
         }
 
         if(other.gameObject.CompareTag("Teleporter"))
@@ -477,11 +512,39 @@ public class ThirdPersonPlayerController : MonoBehaviour
             Vector3 alteredRespawnPos = new Vector3(respawnPos.x, respawnPos.y + 1, respawnPos.z + 1);
 
             transform.position = alteredRespawnPos;
+
+            if(canChangeEmotion)
+            {
+                manager.facialManager.ChangeEM(true, 3f, FacialExpressionManager.CurrentExpression.Smile);
+                canChangeEmotion = false;
+                StartCoroutine(ResetBool(3f));
+            }    
         }
 
         if(other.gameObject.CompareTag("DeathBox"))
         {
             transform.position = currentActiveCheckpoint;
+
+            int randomizer = Random.Range(0, 3);
+
+            if(randomizer == 0)
+            {
+                manager.facialManager.ChangeEM(true, 3f, FacialExpressionManager.CurrentExpression.Death1);
+                canChangeEmotion = false;
+                StartCoroutine(ResetBool(3));
+            }
+            else if(randomizer == 1)
+            {
+                manager.facialManager.ChangeEM(true, 3f, FacialExpressionManager.CurrentExpression.Death2);
+                canChangeEmotion = false;
+                StartCoroutine(ResetBool(3));
+            }
+            else if(randomizer == 2)
+            {
+                manager.facialManager.ChangeEM(true, 3f, FacialExpressionManager.CurrentExpression.Death3);
+                canChangeEmotion = false;
+                StartCoroutine(ResetBool(3));
+            }
         }
     }
 
@@ -512,6 +575,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 move.z = v;
 
                 transform.Translate(move * Time.deltaTime * speed, wheels);
+
+                if(canChangeEmotion)
+                {
+                    manager.facialManager.ChangeEM(false, 0, FacialExpressionManager.CurrentExpression.Happy);
+                }
                 break;
 
             case MovementMode.Running:
@@ -521,6 +589,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 move.z = v;
 
                 transform.Translate(move * Time.deltaTime * speed, wheels);
+
+                if(canChangeEmotion)
+                {
+                    manager.facialManager.ChangeEM(false, 0, FacialExpressionManager.CurrentExpression.Happy);
+                }
                 break;
 
             case MovementMode.SpeedPad:
@@ -537,6 +610,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 move.z = v;
 
                 transform.Translate(move * Time.deltaTime * speed, wheels);
+
+                if(canChangeEmotion)
+                {
+                    manager.facialManager.ChangeEM(false, 0, FacialExpressionManager.CurrentExpression.Shocked1);
+                }
                 break;
         }
     }
@@ -610,6 +688,26 @@ public class ThirdPersonPlayerController : MonoBehaviour
         if ((hearts -= damage) <= 0)
         {
             Die();
+        }else
+        {
+            canChangeEmotion = false;
+            StartCoroutine(ResetBool(1.2f));
+
+            int randomizer = Random.Range(0, 3);
+
+            if(randomizer == 0)
+            {
+                manager.facialManager.ChangeEM(true, 1.2f, FacialExpressionManager.CurrentExpression.Pain1);
+            }else if(randomizer == 1)
+            {
+                manager.facialManager.ChangeEM(true, 1.2f, FacialExpressionManager.CurrentExpression.Pain2);
+            }else if(randomizer == 2)
+            {
+                manager.facialManager.ChangeEM(true, 1.2f, FacialExpressionManager.CurrentExpression.Pain3);
+            }else
+            {
+                manager.facialManager.ChangeEM(true, 1.2f, FacialExpressionManager.CurrentExpression.Pain1);
+            }
         }
     }
 
@@ -725,5 +823,12 @@ public class ThirdPersonPlayerController : MonoBehaviour
         camSens = cmCam.m_XAxis.m_MaxSpeed;
 
         hearts = maxHearts;
+    }
+
+    IEnumerator ResetBool(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        canChangeEmotion = true;
     }
 }

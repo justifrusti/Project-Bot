@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class FacialExpressionManager : MonoBehaviour
 {
     public enum FacialColors
@@ -101,16 +100,13 @@ public class FacialExpressionManager : MonoBehaviour
                 materialToChange.SetColor("_EmissionColor", pink);
                 break;
         }
-
-        if(previousEM != em)
-        {
-            ChangeEM();
-        }
     }
 
-    public void ChangeEM()
+    public void ChangeEM(bool timedAction, float time, CurrentExpression expression)
     {
-        switch(em)
+        em = expression;
+
+        switch (em)
         {
             case CurrentExpression.Default:
                 materialToChange.SetTexture("_BaseMap", em_Default);
@@ -193,6 +189,19 @@ public class FacialExpressionManager : MonoBehaviour
                 break;
         }
 
-        previousEM = em;
+        if (timedAction)
+        {
+            StartCoroutine(FaceChangeBack(time));
+        }else if(!timedAction)
+        {
+            previousEM = em;
+        }
+    }
+
+    IEnumerator FaceChangeBack(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        ChangeEM(false, 0, previousEM);
     }
 }

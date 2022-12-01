@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Linq.Expressions;
 
 [RequireComponent(typeof(SkillTreeReader))]
 public class GameManager : MonoBehaviour
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     public SaveData saveData;
     public ThirdPersonPlayerController playerController;
     public PlayerUIManager uiManager;
+    public FacialExpressionManager facialManager;
 
     public static string directory = "/Data/";
     public static string fileName = "PlayerOS.bot";
@@ -49,6 +51,7 @@ public class GameManager : MonoBehaviour
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonPlayerController>();
         uiManager = GameObject.FindGameObjectWithTag("UI Manager").GetComponent<PlayerUIManager>();
+        facialManager = GameObject.FindGameObjectWithTag("Player").GetComponent<FacialExpressionManager>();
     }
 
     public void SavePlayerData()
@@ -58,7 +61,7 @@ public class GameManager : MonoBehaviour
         saveData.damageChargeSpeed = playerController.damageChargeSpeed;
         saveData.invisFramesTime = playerController.invisFramesTime;
         saveData.chargeShootSpeed = playerController.chargeShootSpeed;
-        //
+        saveData.deaths = playerController.deaths;
         saveData.invisFramesActive = playerController.invisFramesActive;
         saveData.hearts = playerController.hearts;
         saveData.damage = playerController.damage;
@@ -94,7 +97,7 @@ public class GameManager : MonoBehaviour
         playerController.damageChargeSpeed = saveData.damageChargeSpeed;
         playerController.invisFramesTime = saveData.invisFramesTime;
         playerController.chargeShootSpeed = saveData.chargeShootSpeed;
-        //
+        playerController.deaths = saveData.deaths;
         playerController.invisFramesActive = saveData.invisFramesActive;
         playerController.hearts = saveData.hearts;
         playerController.damage = saveData.damage;
