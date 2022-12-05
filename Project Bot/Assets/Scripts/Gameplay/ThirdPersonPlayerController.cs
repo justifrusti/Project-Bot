@@ -456,10 +456,14 @@ public class ThirdPersonPlayerController : MonoBehaviour
             if(!canJump)
             {
                 FindObjectOfType<AudioManagerScript>().Play("jumpBoost");
-                
+
                 if(canChangeEmotion)
                 {
-                    manager.facialManager.ChangeEM(false, 0, FacialExpressionManager.CurrentExpression.OverJoyed);
+                    canChangeEmotion = false;
+
+                    manager.facialManager.ChangeEM(true, 2, FacialExpressionManager.CurrentExpression.OverJoyed);
+
+                    ResetBool(2);
                 }
             }
         }
