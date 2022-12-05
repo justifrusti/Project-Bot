@@ -1235,8 +1235,8 @@ MonoBehaviour:
   damage: 0
   deaths: 0
   walkingSpeed: 7
-  runSpeed: 9
-  speedPadSpeed: 18
+  runSpeed: 15
+  speedPadSpeed: 32
   maxJumps: 1
   normalTurnSensitivity: 400
   lockedTurnSensitivity: 0
