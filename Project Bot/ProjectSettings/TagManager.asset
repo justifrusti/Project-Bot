@@ -21,6 +21,7 @@ TagManager:
   - KeyDoor
   - KeyCard
   - UI Manager
+  - PlayerTarget
   layers:
   - Default
   - TransparentFX

@@ -15,7 +15,7 @@ public class TurretBullet : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         rb.velocity = Vector3.zero;
 

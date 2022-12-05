@@ -60,7 +60,7 @@ public class EnemyAI : MonoBehaviour
                 break;
         }
 
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("PlayerTarget").transform;
     }
 
     void Update()
