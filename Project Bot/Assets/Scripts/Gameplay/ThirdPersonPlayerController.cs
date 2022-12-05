@@ -158,22 +158,23 @@ public class ThirdPersonPlayerController : MonoBehaviour
             TurnChar();
         }else if(Input.GetButton("Horizontal") && !isMoving && turnMode)
         {
-            TurnChar();
-        }
-        else if(Input.GetButton("Horizontal") && !isMoving && !turnMode)
-        {
             float h = Input.GetAxis("Horizontal");
 
             Vector3 rightWheel = new Vector3(0, 180, 0);
             Vector3 leftWheel = new Vector3(0, -180, 0);
 
-            if(h > 0)
+            if (h > 0)
             {
                 wheels.Rotate(rightWheel * Time.deltaTime, Space.Self);
-            }else if(h < 0)
+            }
+            else if (h < 0)
             {
                 wheels.Rotate(leftWheel * Time.deltaTime, Space.Self);
             }
+        }
+        else if(Input.GetButton("Horizontal") && !isMoving && !turnMode)
+        {
+            TurnChar();
         }
     }
 
