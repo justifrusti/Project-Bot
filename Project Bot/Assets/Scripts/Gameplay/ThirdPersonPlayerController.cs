@@ -288,9 +288,10 @@ public class ThirdPersonPlayerController : MonoBehaviour
             pickUpItem.transform.parent = null;
 
             pickUpItem.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce);
+            FindObjectOfType<AudioManagerScript>().Play("PickupThrow");
         }
 
-        if(Input.GetButtonDown("Respawn"))
+        if (Input.GetButtonDown("Respawn"))
         {
             transform.position = currentActiveCheckpoint;
         }
@@ -749,6 +750,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
             if (Input.GetButtonDown("Interact"))
             {
+                FindObjectOfType<AudioManagerScript>().Play("PickupBox");
                 pickUpItem.GetComponent<Rigidbody>().isKinematic = true;
                 pickUpItem.GetComponent<Collider>().isTrigger = true;
                 pickUpItem.transform.position = pickUpPoint.transform.position;
