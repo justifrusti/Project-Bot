@@ -19,7 +19,7 @@ public class SwitchComponent : MonoBehaviour
     public ComponentType type;
     public Action currentAction;
     [Space]
-    public GameObject fuseBoxSwitchObject;
+    public GameObject switchObject;
     [Space]
     public Vector3[] path;
     [Space]
@@ -42,7 +42,7 @@ public class SwitchComponent : MonoBehaviour
                 switch(type)
                 {
                     case ComponentType.Door:
-                        fuseBoxSwitchObject.SetActive(false);
+                        switchObject.SetActive(false);
                         break;
                 }
                 break;
@@ -51,15 +51,15 @@ public class SwitchComponent : MonoBehaviour
                 switch (type)
                 {
                     case ComponentType.Door:
-                        fuseBoxSwitchObject.SetActive(true);
+                        switchObject.SetActive(true);
                         break;
 
                     case ComponentType.Platform:
                         platformMoveSpeed = originalPlatformMoveSpeed;
 
-                        if(fuseBoxSwitchObject.transform.position != path[index] && canMove)
+                        if(switchObject.transform.position != path[index] && canMove)
                         {
-                            fuseBoxSwitchObject.transform.position = Vector3.MoveTowards(fuseBoxSwitchObject.transform.position, path[index], platformMoveSpeed * Time.deltaTime);
+                            switchObject.transform.position = Vector3.MoveTowards(switchObject.transform.position, path[index], platformMoveSpeed * Time.deltaTime);
                         }else if(!movingBack && canMove)
                         {
                             index++;

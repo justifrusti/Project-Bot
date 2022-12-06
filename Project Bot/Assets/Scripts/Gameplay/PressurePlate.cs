@@ -1,20 +1,28 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
+    public CinemachineVirtualCamera cinematicCam;
+    [Space]
     public float adjustSpeed;
-
+    [Space]
     public Transform moveTowards;
-
+    [Space]
     public Vector3 originalPos;
+    [Space]
+    public bool switchCamOnDeactivate;
 
     [HideInInspector] public bool onPressureplate;
+    private SwitchComponent component;
+    private bool pressureplateActive = false;
 
     private void Awake()
     {
         originalPos = transform.position;
+        component = GetComponent<SwitchComponent>();
     }
 
     private void Update()
@@ -30,9 +38,43 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("ActivatePlate"))
+        if(other.gameObject.CompareTag("ActivatePlate") && !pressureplateActive)
         {
-            print("Plate Active");
+            pressureplateActive = true;
+
+            CameraSwitcher.Register(cinematicCam);
+
+            if(CameraSwitcher.IsActiveCamera(cinematicCam))
+            {
+                Debug.Log("Cinematic is already active");
+            }else
+            {
+                CameraSwitcher.SwitchCamera(cinematicCam);
+            }
+
+            StartCoroutine(ActivatePressureFunction());
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("ActivatePlate") && pressureplateActive)
+        {
+            pressureplateActive = false;
+
+            if(switchCamOnDeactivate)
+            {
+                if (CameraSwitcher.IsActiveCamera(cinematicCam))
+                {
+                    Debug.Log("Cinematic is already active");
+                }
+                else
+                {
+                    CameraSwitcher.SwitchCamera(cinematicCam);
+                }
+            }
+
+            StartCoroutine(DeactivatePressureFunction());
         }
     }
 
@@ -44,5 +86,28 @@ public class PressurePlate : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         onPressureplate = false;
+    }
+
+    IEnumerator ActivatePressureFunction()
+    {
+        yield return new WaitForSeconds(1.5f);
+        component.currentAction = SwitchComponent.Action.Disable;
+        yield return new WaitForSeconds(1.5f);
+
+        CameraSwitcher.SwitchPlayerCamera(CameraSwitcher.playerCam);
+    }
+
+    IEnumerator DeactivatePressureFunction()
+    {
+        yield return new WaitForSeconds(1.5f);
+        component.currentAction = SwitchComponent.Action.Enable;
+        yield return new WaitForSeconds(1.5f);
+
+        if(switchCamOnDeactivate)
+        {
+            CameraSwitcher.SwitchPlayerCamera(CameraSwitcher.playerCam);
+        }
+
+        CameraSwitcher.Unregister(cinematicCam);
     }
 }
