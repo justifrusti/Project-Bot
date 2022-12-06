@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,13 +20,14 @@ public class SwitchComponent : MonoBehaviour
     public ComponentType type;
     public Action currentAction;
     [Space]
+    public CinemachineVirtualCamera cinematicCam;
     public GameObject switchObject;
     [Space]
     public Vector3[] path;
     [Space]
     public float originalPlatformMoveSpeed;
-    [HideInInspector]public float platformMoveSpeed;
-    [SerializeField]private int index;
+    [HideInInspector] public float platformMoveSpeed;
+    [SerializeField] private int index;
     private bool movingBack = false;
     private bool canMove = true;
 
@@ -36,10 +38,10 @@ public class SwitchComponent : MonoBehaviour
 
     private void Update()
     {
-        switch(currentAction)
+        switch (currentAction)
         {
             case Action.Disable:
-                switch(type)
+                switch (type)
                 {
                     case ComponentType.Door:
                         switchObject.SetActive(false);
@@ -57,15 +59,15 @@ public class SwitchComponent : MonoBehaviour
                     case ComponentType.Platform:
                         platformMoveSpeed = originalPlatformMoveSpeed;
 
-                        if(switchObject.transform.position != path[index] && canMove)
+                        if (switchObject.transform.position != path[index] && canMove)
                         {
                             switchObject.transform.position = Vector3.MoveTowards(switchObject.transform.position, path[index], platformMoveSpeed * Time.deltaTime);
-                        }else if(!movingBack && canMove)
+                        } else if (!movingBack && canMove)
                         {
                             index++;
 
                             ChangeDir();
-                        }else if(movingBack && canMove)
+                        } else if (movingBack && canMove)
                         {
                             index--;
 
@@ -80,7 +82,7 @@ public class SwitchComponent : MonoBehaviour
 
     public void ChangeDir()
     {
-        if (index >= path.Length -1 && !movingBack)
+        if (index >= path.Length - 1 && !movingBack)
         {
             canMove = false;
             StartCoroutine(MovingBack());
@@ -90,6 +92,13 @@ public class SwitchComponent : MonoBehaviour
             canMove = false;
             StartCoroutine(MovingFront());
         }
+    }
+
+    public void CinematicCutscene()
+    {
+        CameraSwitcher.Register(cinematicCam);
+
+        StartCoroutine(CinematicCutsceneTimer());
     }
 
     IEnumerator MovingBack()
@@ -104,5 +113,14 @@ public class SwitchComponent : MonoBehaviour
         movingBack = false;
         yield return new WaitForSeconds(3);
         canMove = true;
+    }
+
+    IEnumerator CinematicCutsceneTimer()
+    {
+        yield return new WaitForSeconds(.5f);
+        CameraSwitcher.SwitchCamera(cinematicCam);
+        yield return new WaitForSeconds(2f);
+        CameraSwitcher.SwitchPlayerCamera(CameraSwitcher.playerCam);
+        CameraSwitcher.Unregister(cinematicCam);
     }
 }

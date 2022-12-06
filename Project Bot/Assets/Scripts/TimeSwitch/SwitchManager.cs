@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Cinemachine;
 
 public class SwitchManager : MonoBehaviour
 {
+    public CinemachineVirtualCamera cinematicCam;
+
     public SwitchComponent[] components;
 
     public bool switchActive, initializedComponents;
@@ -18,7 +21,7 @@ public class SwitchManager : MonoBehaviour
 
     private void Update()
     {
-        if(switchActive && !initializedComponents)
+        if (switchActive && !initializedComponents)
         {
             timeLeft = maxTime;
 
@@ -29,14 +32,14 @@ public class SwitchManager : MonoBehaviour
             initializedComponents = true;
         }
 
-        if(switchActive && initializedComponents)
+        if (switchActive && initializedComponents)
         {
             timeLeft -= 1 * Time.deltaTime;
 
             timeText.text = timeLeft.ToString("f2");
         }
 
-        if(timeLeft <= 0)
+        if (timeLeft <= 0)
         {
             switchActive = false;
             initializedComponents = false;
@@ -76,5 +79,23 @@ public class SwitchManager : MonoBehaviour
                 }
             }
         }
+
+        CinematicCutscene();
+    }
+
+    public void CinematicCutscene()
+    {
+        CameraSwitcher.Register(cinematicCam);
+
+        StartCoroutine(CinematicCutsceneTimer());
+    }
+
+    IEnumerator CinematicCutsceneTimer()
+    {
+        yield return new WaitForSeconds(.5f);
+        CameraSwitcher.SwitchCamera(cinematicCam);
+        yield return new WaitForSeconds(2f);
+        CameraSwitcher.SwitchPlayerCamera(CameraSwitcher.playerCam);
+        CameraSwitcher.Unregister(cinematicCam);
     }
 }
