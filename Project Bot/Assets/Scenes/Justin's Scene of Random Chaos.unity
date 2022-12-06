@@ -7396,7 +7396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1884462900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8413,8 +8413,8 @@ GameObject:
   - component: {fileID: 2057746324}
   - component: {fileID: 2057746323}
   m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Name: TestPlatform
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8491,7 +8491,7 @@ Transform:
   m_GameObject: {fileID: 2057746322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.11, z: 0}
-  m_LocalScale: {x: 1, y: 0.1, z: 1}
+  m_LocalScale: {x: 3, y: 0.1, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 18
@@ -8918,7 +8918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 598346033172957891, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9976412
+      value: 0.99764127
       objectReference: {fileID: 0}
     - target: {fileID: 598346033172957891, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
       propertyPath: m_LocalRotation.x
@@ -8926,11 +8926,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 598346033172957891, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00084775686
+      value: 0.00084774196
       objectReference: {fileID: 0}
     - target: {fileID: 598346033172957891, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00021765754
+      value: -0.00021765195
       objectReference: {fileID: 0}
     - target: {fileID: 598346033480349501, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9058,11 +9058,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 598346035125090777, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00087526254
+      value: 0.0008752616
       objectReference: {fileID: 0}
     - target: {fileID: 598346035125090777, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0008305609
+      value: 0.000830546
       objectReference: {fileID: 0}
     - target: {fileID: 598346035125090777, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
       propertyPath: m_LocalRotation.z
@@ -9096,9 +9096,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1220474766561611821}
   - component: {fileID: 1991769685666548376}
+  - component: {fileID: 1991769685666548377}
   m_Layer: 0
   m_Name: Wall-Mounted-Fuzebox
-  m_TagString: Untagged
+  m_TagString: FuseBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9119,15 +9120,31 @@ MonoBehaviour:
   currentAction: 1
   fuseBoxSwitchObject: {fileID: 2057746322}
   path:
-  - {x: 0, y: 2, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   - {x: 0, y: 2, z: 2}
   - {x: 0, y: 4, z: 2}
   - {x: 0, y: 4, z: 4}
   - {x: 0, y: 6, z: 4}
   - {x: 0, y: 6, z: 0}
-  originalPlatformMoveSpeed: 1
+  - {x: 0, y: 6, z: 0}
+  originalPlatformMoveSpeed: 3
   platformMoveSpeed: 0
   index: 0
+--- !u!114 &1991769685666548377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991769685666548375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c4f0b5aba84cc469a186b34db7b770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 535145468256331051}
+  force: 10
 --- !u!4 &2008961550243749120
 Transform:
   m_ObjectHideFlags: 0

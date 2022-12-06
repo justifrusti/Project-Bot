@@ -474,6 +474,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
             currentMat.SetColor("_EmissionColor", emissionColor);
             updatedMat = false;
         }
+
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            transform.SetParent(null);
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -491,6 +496,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
             }
 
             movementMode = MovementMode.SpeedPad;
+        }
+
+        if(collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            transform.SetParent(collision.gameObject.transform);
         }
     }
 
@@ -665,17 +675,22 @@ public class ThirdPersonPlayerController : MonoBehaviour
         }
     }
 
-    public void DoDamage(float damage)
+    public void DoDamage(float damage, Collision collision)
     {
-        print("Enemy Took Damage");
-
-        /*if(collision.gameObject.transform.parent.gameObject.GetComponent<EnemyAI>() != null)
-        {
-            collision.gameObject.transform.parent.gameObject.GetComponent<EnemyAI>().CheckHealth(damage);
-        }else if(collision.gameObject.GetComponent<EnemyAI>() != null)
+        if (collision.gameObject.GetComponent<EnemyAI>() != null)
         {
             collision.gameObject.GetComponent<EnemyAI>().CheckHealth(damage);
-        }*/
+        }
+        else if (collision.gameObject.transform.parent != null)
+        {
+            if(collision.gameObject.transform.parent.gameObject.GetComponent<EnemyAI>() != null)
+            {
+                collision.gameObject.transform.parent.gameObject.GetComponent<EnemyAI>().CheckHealth(damage);
+            }
+        }else
+        {
+            Debug.Log("Error: No enemy controller to apply damage to found!");
+        }
     }
 
     public void TakeDamage(int damage)

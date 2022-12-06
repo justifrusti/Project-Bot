@@ -57,25 +57,19 @@ public class SwitchComponent : MonoBehaviour
                     case ComponentType.Platform:
                         platformMoveSpeed = originalPlatformMoveSpeed;
 
-                        if(index == path.Length && !movingBack)
-                        {
-                            canMove = false;
-                            StartCoroutine(MovingBack());
-                        }else if(index == 0 && movingBack)
-                        {
-                            canMove = false;
-                            StartCoroutine(MovingFront());
-                        }
-
                         if(fuseBoxSwitchObject.transform.position != path[index] && canMove)
                         {
                             fuseBoxSwitchObject.transform.position = Vector3.MoveTowards(fuseBoxSwitchObject.transform.position, path[index], platformMoveSpeed * Time.deltaTime);
                         }else if(!movingBack && canMove)
                         {
                             index++;
+
+                            ChangeDir();
                         }else if(movingBack && canMove)
                         {
                             index--;
+
+                            ChangeDir();
                         }
 
                         break;
@@ -84,11 +78,24 @@ public class SwitchComponent : MonoBehaviour
         }
     }
 
+    public void ChangeDir()
+    {
+        if (index >= path.Length -1 && !movingBack)
+        {
+            canMove = false;
+            StartCoroutine(MovingBack());
+        }
+        else if ((index == -1 || index == 0) && movingBack)
+        {
+            canMove = false;
+            StartCoroutine(MovingFront());
+        }
+    }
+
     IEnumerator MovingBack()
     {
         movingBack = true;
         yield return new WaitForSeconds(3);
-        index--;
         canMove = true;
     }
 
@@ -96,7 +103,6 @@ public class SwitchComponent : MonoBehaviour
     {
         movingBack = false;
         yield return new WaitForSeconds(3);
-        index++;
         canMove = true;
     }
 }

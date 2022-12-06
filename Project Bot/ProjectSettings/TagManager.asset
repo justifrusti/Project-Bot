@@ -22,6 +22,8 @@ TagManager:
   - KeyCard
   - UI Manager
   - PlayerTarget
+  - MovingPlatform
+  - FuseBox
   layers:
   - Default
   - TransparentFX

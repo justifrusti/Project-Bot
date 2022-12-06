@@ -18,7 +18,16 @@ public class PlayerBullet : MonoBehaviour
     {
         rb.velocity = Vector3.zero;
 
-        /*playerController.DoDamage(playerController.damage, collision);*/
+        playerController.DoDamage(playerController.damage, collision);
+
+        if(collision.gameObject.CompareTag("FuseBox"))
+        {
+            FuseExploder exploder = collision.gameObject.GetComponent<FuseExploder>();
+
+            exploder.ExplosiveForce();
+
+            collision.gameObject.GetComponent<SwitchComponent>().enabled = false;
+        }
 
         Destroy(this.gameObject);
     }
