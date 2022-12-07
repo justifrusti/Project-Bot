@@ -393,6 +393,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 movementMode = MovementMode.Walking;
             }
 
+            speedLines.SetActive(false);
+
             timesJumped = 0;
 
             canJump = true;
