@@ -26,8 +26,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     public enum CamMode
     {
-        FreeLook,
-        ThirdPerson
+        WheelBased,
+        CamBased
     }
 
     public MovementMode movementMode;
@@ -137,11 +137,6 @@ public class ThirdPersonPlayerController : MonoBehaviour
         VariableSetup();
 
         Cursor.lockState = CursorLockMode.Locked;
-
-        if(camMode == CamMode.ThirdPerson)
-        {
-            cmCam.m_XAxis.m_MaxSpeed = 0;
-        }
 
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
@@ -319,14 +314,14 @@ public class ThirdPersonPlayerController : MonoBehaviour
         //Cam
         if(Input.GetButtonDown("CamMode"))
         {
-            if(camMode == CamMode.FreeLook)
+            if(camMode == CamMode.WheelBased)
             {
-                camMode = CamMode.ThirdPerson;
-                cmCam.m_XAxis.m_MaxSpeed = 0;
-            }else if(camMode == CamMode.ThirdPerson)
+                camMode = CamMode.CamBased;
+                cmCam.m_BindingMode = CinemachineTransposer.BindingMode.WorldSpace;
+            }else if(camMode == CamMode.CamBased)
             {
-                camMode = CamMode.FreeLook;
-                cmCam.m_XAxis.m_MaxSpeed = camSens;
+                camMode = CamMode.WheelBased;
+                cmCam.m_BindingMode = CinemachineTransposer.BindingMode.SimpleFollowWithWorldUp;
             }
         }
 
@@ -663,13 +658,29 @@ public class ThirdPersonPlayerController : MonoBehaviour
     //Turning the character's body left and right
     public void TurnChar()
     {
-        Vector3 rotateBody = new Vector3();
+        Vector3 move = new Vector3();
+        float h = Input.GetAxis("Horizontal");
 
-        float turnY = Input.GetAxis("Horizontal");
+        switch (camMode)
+        {
+            case CamMode.WheelBased:
+                Vector3 rotateBody = new Vector3();
+                float turnY = Input.GetAxis("Horizontal");
 
-        rotateBody.y = turnY;
+                rotateBody.y = turnY;
 
-        transform.Rotate(rotateBody * Time.deltaTime * turnSensitivity);
+                transform.Rotate(rotateBody * Time.deltaTime * turnSensitivity);
+                break;
+
+            case CamMode.CamBased:
+                speed = walkingSpeed;
+                turnSensitivity = normalTurnSensitivity;
+
+                move.x = h;
+
+                transform.Translate(move * Time.deltaTime * speed, cam);
+                break;
+        }
     }
 
     public void Jump()
