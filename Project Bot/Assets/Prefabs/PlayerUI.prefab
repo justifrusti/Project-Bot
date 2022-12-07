@@ -14478,8 +14478,8 @@ MonoBehaviour:
   - {fileID: 2237722683290834908}
   - {fileID: 2237722683061656988}
   - {fileID: 2237722684133122453}
-  fullHeart: {fileID: 8443841218802090549, guid: 646d724114eeb1d44931512c9242ae06, type: 3}
-  emptyHeart: {fileID: 5001657567903995322, guid: 646d724114eeb1d44931512c9242ae06, type: 3}
+  fullHeart: {fileID: 21300000, guid: ad3a992d6d2bc1f4d9280d301bf957c3, type: 3}
+  emptyHeart: {fileID: 21300000, guid: 4a69b6960ba77de4b9ad53fff7b26281, type: 3}
   blueIndicator: {fileID: 7624533488165342548}
   yellowIndicator: {fileID: 7193858137184668553}
   greenIndicator: {fileID: 6502467197741687168}
@@ -19217,6 +19217,8 @@ MonoBehaviour:
   language: 0
   currentDialogue: {fileID: 0}
   subtitles: []
+  timeBetweenSentences: []
+  spokenDialogue: []
   textBox: {fileID: 1378262610099442901}
   timeBetweenChar: 0.03
   textToType: 

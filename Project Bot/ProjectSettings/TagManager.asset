@@ -24,6 +24,7 @@ TagManager:
   - PlayerTarget
   - MovingPlatform
   - FuseBox
+  - BlastDoor
   layers:
   - Default
   - TransparentFX
