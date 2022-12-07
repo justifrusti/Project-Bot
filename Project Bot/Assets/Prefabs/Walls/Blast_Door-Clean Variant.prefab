@@ -382,7 +382,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9079384028904204174}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Blast_Door-Clean Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
