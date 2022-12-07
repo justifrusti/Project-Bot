@@ -124,6 +124,9 @@ public class ThirdPersonPlayerController : MonoBehaviour
     public bool unlockedGreeKK;
     public bool unlockedRedKK;
 
+    [Header("RenderObjects")]
+    public GameObject speedLines;
+
     //Private Check Variables
     private bool onPad;
 
@@ -151,6 +154,9 @@ public class ThirdPersonPlayerController : MonoBehaviour
         if(isMoving)
         {
             MoveCharacter();
+        }else
+        {
+            speedLines.SetActive(false);
         }
 
         if (Input.GetButton("Horizontal") && isMoving)
@@ -474,6 +480,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
         {
             currentMat.SetColor("_EmissionColor", emissionColor);
             updatedMat = false;
+
+            speedLines.SetActive(false);
         }
 
         if (collision.gameObject.CompareTag("MovingPlatform"))
@@ -630,6 +638,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 {
                     FindObjectOfType<AudioManagerScript>().Play("speedBoost");
                 }
+
+                speedLines.SetActive(true);
 
                 onPad = true;
 
