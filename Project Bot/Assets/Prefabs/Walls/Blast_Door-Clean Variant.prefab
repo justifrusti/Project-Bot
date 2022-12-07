@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 3791648167907446495}
   m_Layer: 6
   m_Name: DoorOpenTrigger
-  m_TagString: Untagged
+  m_TagString: BlastDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -483,6 +483,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9079384028904204174}
   - component: {fileID: 9147877070868441564}
+  - component: {fileID: 1779863539075733411}
   m_Layer: 6
   m_Name: Blast_Door-Clean Variant
   m_TagString: Untagged
@@ -528,3 +529,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1779863539075733411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452028380253060404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9590d49d7f22a344be33f88ce23660b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  clip: {fileID: 0}

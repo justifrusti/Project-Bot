@@ -562,6 +562,19 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 StartCoroutine(ResetBool(3));
             }
         }
+
+        if(other.gameObject.CompareTag("BlastDoor"))
+        {
+            other.transform.parent.gameObject.GetComponent<BlastDoorAnimationController>().StartOpeningAnim();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("BlastDoor"))
+        {
+            other.transform.parent.gameObject.GetComponent<BlastDoorAnimationController>().StartClosingAnim();
+        }
     }
 
     public void MoveCharacter()
