@@ -317,11 +317,9 @@ public class ThirdPersonPlayerController : MonoBehaviour
             if(camMode == CamMode.WheelBased)
             {
                 camMode = CamMode.CamBased;
-                cmCam.m_BindingMode = CinemachineTransposer.BindingMode.WorldSpace;
             }else if(camMode == CamMode.CamBased)
             {
                 camMode = CamMode.WheelBased;
-                cmCam.m_BindingMode = CinemachineTransposer.BindingMode.SimpleFollowWithWorldUp;
             }
         }
 
@@ -584,6 +582,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     public void MoveCharacter()
     {
+        cmCam.m_BindingMode = CinemachineTransposer.BindingMode.SimpleFollowWithWorldUp;
+
         Vector3 move = new Vector3();
 
         float v = Input.GetAxis("Vertical");
@@ -661,25 +661,42 @@ public class ThirdPersonPlayerController : MonoBehaviour
         Vector3 move = new Vector3();
         float h = Input.GetAxis("Horizontal");
 
-        switch (camMode)
+        if(!isMoving)
         {
-            case CamMode.WheelBased:
-                Vector3 rotateBody = new Vector3();
-                float turnY = Input.GetAxis("Horizontal");
+            switch (camMode)
+            {
+                case CamMode.WheelBased:
+                    cmCam.m_BindingMode = CinemachineTransposer.BindingMode.SimpleFollowWithWorldUp;
 
-                rotateBody.y = turnY;
+                    Vector3 rotateBody = new Vector3();
+                    float turnY = Input.GetAxis("Horizontal");
 
-                transform.Rotate(rotateBody * Time.deltaTime * turnSensitivity);
-                break;
+                    rotateBody.y = turnY;
 
-            case CamMode.CamBased:
-                speed = walkingSpeed;
-                turnSensitivity = normalTurnSensitivity;
+                    transform.Rotate(rotateBody * Time.deltaTime * turnSensitivity);
+                    break;
 
-                move.x = h;
+                case CamMode.CamBased:
+                    cmCam.m_BindingMode = CinemachineTransposer.BindingMode.WorldSpace;
 
-                transform.Translate(move * Time.deltaTime * speed, cam);
-                break;
+                    speed = walkingSpeed;
+                    turnSensitivity = normalTurnSensitivity;
+
+                    move.x = h;
+
+                    transform.Translate(move * Time.deltaTime * speed, cam);
+                    break;
+            }
+        }else
+        {
+            cmCam.m_BindingMode = CinemachineTransposer.BindingMode.SimpleFollowWithWorldUp;
+
+            Vector3 rotateBody = new Vector3();
+            float turnY = Input.GetAxis("Horizontal");
+
+            rotateBody.y = turnY;
+
+            transform.Rotate(rotateBody * Time.deltaTime * turnSensitivity);
         }
     }
 
