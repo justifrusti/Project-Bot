@@ -14,6 +14,8 @@ public class PressurePlate : MonoBehaviour
     public Vector3 originalPos;
     [Space]
     public bool switchCamOnDeactivate;
+    [Space]
+    public Material buttonMat;
 
     [HideInInspector] public bool onPressureplate;
     private SwitchComponent component;
@@ -40,7 +42,8 @@ public class PressurePlate : MonoBehaviour
     {
         if(other.gameObject.CompareTag("ActivatePlate") && !pressureplateActive)
         {
-            print("Activated");
+            buttonMat.EnableKeyword("_EMISSION");
+
             pressureplateActive = true;
 
             CameraSwitcher.Register(cinematicCam);
@@ -61,6 +64,8 @@ public class PressurePlate : MonoBehaviour
     {
         if (other.gameObject.CompareTag("ActivatePlate") && pressureplateActive)
         {
+            buttonMat.DisableKeyword("_EMISSION");
+
             pressureplateActive = false;
 
             if(switchCamOnDeactivate)
