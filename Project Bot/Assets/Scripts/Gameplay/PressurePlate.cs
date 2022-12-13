@@ -17,7 +17,7 @@ public class PressurePlate : MonoBehaviour
 
     [HideInInspector] public bool onPressureplate;
     private SwitchComponent component;
-    private bool pressureplateActive = false;
+    [SerializeField]private bool pressureplateActive = false;
 
     private void Awake()
     {
@@ -40,6 +40,7 @@ public class PressurePlate : MonoBehaviour
     {
         if(other.gameObject.CompareTag("ActivatePlate") && !pressureplateActive)
         {
+            print("Activated");
             pressureplateActive = true;
 
             CameraSwitcher.Register(cinematicCam);

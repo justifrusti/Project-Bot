@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &951698552933035409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 726299747524781819}
+  - component: {fileID: 5933902871052012082}
+  m_Layer: 13
+  m_Name: CollisionDetector
+  m_TagString: ActivatePlate
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &726299747524781819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951698552933035409}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7524617562466583541}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5933902871052012082
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 951698552933035409}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 0.1, z: 4}
+  m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!1 &4579312598616767428
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +56,7 @@ GameObject:
   - component: {fileID: 6344671400646969789}
   - component: {fileID: 6095198409640690671}
   - component: {fileID: 1751227318}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Button_Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,10 +152,13 @@ GameObject:
   - component: {fileID: 5823006535395029100}
   - component: {fileID: 1070533128466317684}
   - component: {fileID: 471703097458072435}
-  - component: {fileID: 1751227317}
-  m_Layer: 0
+  - component: {fileID: 5407778327874720391}
+  - component: {fileID: 4709037765677687992}
+  - component: {fileID: 7865381975455723001}
+  - component: {fileID: 6206980704439656555}
+  m_Layer: 12
   m_Name: Button_Top
-  m_TagString: Untagged
+  m_TagString: Plate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,20 +227,75 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1751227317
+--- !u!114 &5407778327874720391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6670350607536714512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dad019dfee6d9345abbcf615fcfcb0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinematicCam: {fileID: 0}
+  adjustSpeed: 0.3
+  moveTowards: {fileID: 726299747524781819}
+  originalPos: {x: 0, y: 0, z: 0}
+  switchCamOnDeactivate: 0
+  onPressureplate: 0
+  pressureplateActive: 0
+--- !u!64 &4709037765677687992
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6670350607536714512}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a5773273c424c0046ba8a111ac7a2b1c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4224165221488200566, guid: 1e60b02aa816b4c4b88e98dc218720c2, type: 3}
+--- !u!114 &7865381975455723001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6670350607536714512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c76959c73eac6fd40891011880b3c4f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  currentAction: 0
+  cinematicCam: {fileID: 0}
+  switchObject: {fileID: 0}
+  path: []
+  originalPlatformMoveSpeed: 0
+  platformMoveSpeed: 0
+  index: 0
+--- !u!54 &6206980704439656555
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6670350607536714512}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &7144713843033037135
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7524617562466583541}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Button Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,6 +325,7 @@ Transform:
   m_Children:
   - {fileID: 5993642843671420179}
   - {fileID: 5823006535395029100}
+  - {fileID: 726299747524781819}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

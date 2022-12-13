@@ -38,8 +38,8 @@ TagManager:
   - PlayerBullet
   - LaserBurn
   - RenderTexture
-  - 
-  - 
+  - Button
+  - ButtonActivator
   - 
   - 
   - 
