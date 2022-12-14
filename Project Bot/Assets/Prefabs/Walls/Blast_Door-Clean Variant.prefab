@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 122877210}
   - component: {fileID: 6484209951716134918}
   - component: {fileID: 3052093685898800865}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hallway
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 6478376657968026902}
   - component: {fileID: 122877211}
   - component: {fileID: 7836011397510319222}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Blast_Door-Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 7481811462212507359}
   - component: {fileID: 122877212}
   - component: {fileID: 5380662584775757162}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Blast_Door-Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,4 +542,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  clip: {fileID: 0}

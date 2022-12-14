@@ -27,7 +27,7 @@ public class SwitchComponent : MonoBehaviour
     [Space]
     public float originalPlatformMoveSpeed;
     [HideInInspector] public float platformMoveSpeed;
-    [SerializeField] private int index;
+    private int index;
     private bool movingBack = false;
     private bool canMove = true;
 

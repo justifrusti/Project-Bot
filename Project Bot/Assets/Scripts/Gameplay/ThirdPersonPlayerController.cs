@@ -57,6 +57,13 @@ public class ThirdPersonPlayerController : MonoBehaviour
     [Space]
     public Transform wheels;
     public Transform head;
+    [Space]
+    public Material wheelMaterial;
+    public float walkScrollSpeed;
+    public float runScrollSpeed;
+    public float speedPadScrollSpeed;
+    [Space]
+    public bool showGizmos;
 
     private Color emissionColor;
     private Material currentMat;
@@ -76,7 +83,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
     [Space]
     public float invisFramesTime;
     public int chargeShootSpeed;
-
+    [Space]
     public GameObject bullet;
 
     [HideInInspector] public bool invisFramesActive;
@@ -142,9 +149,6 @@ public class ThirdPersonPlayerController : MonoBehaviour
     [Header("RenderObjects")]
     public GameObject speedLines;
 
-    [Header("Debug")]
-    public bool showGizmos;
-
     //Private Check Variables
     private bool onPad;
 
@@ -170,6 +174,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
         }else
         {
             speedLines.SetActive(false);
+            wheelMaterial.SetFloat("ScrollSpeed", 0);
         }
 
         if (Input.GetButton("Horizontal") && isMoving)
@@ -657,6 +662,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
         switch (movementMode)
         {
             case MovementMode.Walking:
+                wheelMaterial.SetFloat("ScrollSpeed", walkScrollSpeed);
+
                 speed = walkingSpeed;
                 turnSensitivity = normalTurnSensitivity;
 
@@ -671,6 +678,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 break;
 
             case MovementMode.Running:
+                wheelMaterial.SetFloat("ScrollSpeed", runScrollSpeed);
+
                 speed = runSpeed;
                 turnSensitivity = runTurnSensitivity;
 
@@ -693,6 +702,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 speedLines.SetActive(true);
 
                 onPad = true;
+
+                wheelMaterial.SetFloat("ScrollSpeed", speedPadScrollSpeed);
 
                 speed = speedPadSpeed;
                 turnSensitivity = runTurnSensitivity;
