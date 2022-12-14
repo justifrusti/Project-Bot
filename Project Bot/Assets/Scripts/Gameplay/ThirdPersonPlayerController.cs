@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -30,11 +31,19 @@ public class ThirdPersonPlayerController : MonoBehaviour
         CamBased
     }
 
+    public enum Attacks
+    {
+        Spark,
+        ShockWave
+    }
+
     public MovementMode movementMode;
     [Space]
     public JumpMode jumpMode;
     [Space]
     public CamMode camMode;
+    [Space]
+    public Attacks currentAttack;
 
     [Header("Debug and Non Catogarized")]
     public Rigidbody rb;
@@ -61,6 +70,10 @@ public class ThirdPersonPlayerController : MonoBehaviour
     public int maxDamageCharge;
     public float damageChargeSpeed;
     [Space]
+    public int shockDmg;
+    public float shockRange;
+    public float shockDelay;
+    [Space]
     public float invisFramesTime;
     public int chargeShootSpeed;
 
@@ -70,6 +83,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
     [HideInInspector] public int hearts;
     [HideInInspector] public float damage;
     [HideInInspector] public int deaths;
+    [HideInInspector] public bool canShock;
+    [HideInInspector] public float timeTillNextShock;
 
     [Header("Character/Cam Movement")]
     public int walkingSpeed;
@@ -126,6 +141,9 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     [Header("RenderObjects")]
     public GameObject speedLines;
+
+    [Header("Debug")]
+    public bool showGizmos;
 
     //Private Check Variables
     private bool onPad;
@@ -323,29 +341,65 @@ public class ThirdPersonPlayerController : MonoBehaviour
             }
         }
 
-        //Charge Shot
-        if(Input.GetButton("LMB"))
+        //Attacks
+        if(timeTillNextShock > -.01f)
         {
-            if (damage < maxDamageCharge)
-            {
-                damage += damageChargeSpeed * Time.deltaTime;
-            }
-            else if (damage > maxDamageCharge)
-            {
-                damage = maxDamageCharge;
-            }
+            timeTillNextShock -= 1 * Time.deltaTime;
         }
 
-        if(Input.GetButtonUp("LMB"))
+        if(timeTillNextShock <= 0)
         {
-            GameObject currentBullet = Instantiate(bullet, rightHand.position, Quaternion.identity);
+            canShock = true;
+        }
 
-            currentBullet.GetComponent<Rigidbody>().AddForce(rightHand.up * chargeShootSpeed, ForceMode.Impulse);
-            currentBullet.GetComponent<PlayerBullet>().AssignPlayer(this);
+        switch(currentAttack)
+        {
+            case Attacks.Spark:
+                //Charge Shot
+                if (Input.GetButton("LMB"))
+                {
+                    if (damage < maxDamageCharge)
+                    {
+                        damage += damageChargeSpeed * Time.deltaTime;
+                    }
+                    else if (damage > maxDamageCharge)
+                    {
+                        damage = maxDamageCharge;
+                    }
+                }
 
-            manager.facialManager.ChangeEM(true, .5f, FacialExpressionManager.CurrentExpression.Wink);
-            canChangeEmotion = false;
-            StartCoroutine(ResetBool(.5f));
+                if (Input.GetButtonUp("LMB"))
+                {
+                    GameObject currentBullet = Instantiate(bullet, rightHand.position, Quaternion.identity);
+
+                    currentBullet.GetComponent<Rigidbody>().AddForce(rightHand.up * chargeShootSpeed, ForceMode.Impulse);
+                    currentBullet.GetComponent<PlayerBullet>().AssignPlayer(this);
+
+                    manager.facialManager.ChangeEM(true, .5f, FacialExpressionManager.CurrentExpression.Wink);
+                    canChangeEmotion = false;
+                    StartCoroutine(ResetBool(.5f));
+                }
+                break;
+
+            case Attacks.ShockWave:
+                if(Input.GetButtonDown("LMB") && canShock)
+                {
+                    Collider[] enemies = Physics.OverlapSphere(transform.position, shockRange);
+
+                    foreach (Collider enemy in enemies)
+                    {
+                        EnemyAI ai = enemy.GetComponent<EnemyAI>();
+
+                        if(ai != null)
+                        {
+                            ai.CheckHealth(shockDmg);
+                        }
+                    }
+
+                    canShock = false;
+                    timeTillNextShock = shockDelay;
+                }
+                break;
         }
 
         //Debug
@@ -905,5 +959,13 @@ public class ThirdPersonPlayerController : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         canChangeEmotion = true;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (showGizmos)
+        {
+            Gizmos.DrawWireSphere(transform.position, shockRange);
+        }
     }
 }

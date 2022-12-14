@@ -1218,6 +1218,7 @@ MonoBehaviour:
   movementMode: 3
   jumpMode: 0
   camMode: 0
+  currentAttack: 0
   rb: {fileID: 6044978034577956858}
   rayCastPoint: {fileID: 5956855607082832660}
   cam: {fileID: 0}
@@ -1228,6 +1229,9 @@ MonoBehaviour:
   maxHearts: 3
   maxDamageCharge: 10
   damageChargeSpeed: 2.5
+  shockDmg: 5
+  shockRange: 10
+  shockDelay: 10
   invisFramesTime: 1.2
   chargeShootSpeed: 5
   bullet: {fileID: 1130220312172269330, guid: 6a24b8ee2d3c2304ca201ca22b3643a7, type: 3}
@@ -1235,6 +1239,8 @@ MonoBehaviour:
   hearts: 0
   damage: 0
   deaths: 0
+  canShock: 0
+  timeTillNextShock: 10
   walkingSpeed: 7
   runSpeed: 15
   speedPadSpeed: 32
@@ -1271,6 +1277,8 @@ MonoBehaviour:
   unlockedYellowKK: 0
   unlockedGreeKK: 0
   unlockedRedKK: 0
+  speedLines: {fileID: 0}
+  showGizmos: 0
 --- !u!65 &7000550141917630387
 BoxCollider:
   m_ObjectHideFlags: 0
