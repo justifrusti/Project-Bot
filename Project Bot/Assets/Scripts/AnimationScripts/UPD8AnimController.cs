@@ -8,9 +8,11 @@ public class UPD8AnimController : MonoBehaviour
 
     public float minSpecialIdleTime, maxSpecialIdleTime;
 
+    private IEnumerator timer;
     private bool isPlayingSpecial;
     private float timeTillSpecial;
     private bool triggeredEnd;
+    private bool playingIdle = true;
 
     void Start()
     {
@@ -19,14 +21,42 @@ public class UPD8AnimController : MonoBehaviour
 
     void Update()
     {
-        
+        if(playingIdle)
+        {
+            if (!isPlayingSpecial)
+            {
+                isPlayingSpecial = true;
+
+                timeTillSpecial = Random.Range(minSpecialIdleTime, maxSpecialIdleTime);
+            }
+
+            if (timeTillSpecial > 0)
+            {
+                timeTillSpecial -= 1 * Time.deltaTime;
+            }
+            else if (timeTillSpecial <= 0)
+            {
+                if (!triggeredEnd)
+                {
+                    triggeredEnd = true;
+
+                    StartCoroutine(ResetTimer());
+                }
+            }
+        }
     }
 
-    IEnumerator ResetTimer(bool boolToTrigger)
+    IEnumerator ResetTimer()
     {
-        yield return new WaitForSeconds(5);
+        anim.SetTrigger("IdleSpecial1");
 
-        boolToTrigger = false;
+        yield return new WaitForSeconds(15);
+
+        anim.SetTrigger("IdleSpecial2");
+
+        yield return new WaitForSeconds(7);
+
+        triggeredEnd = false;
         isPlayingSpecial = false;
     }
 }

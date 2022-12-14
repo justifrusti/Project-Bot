@@ -31,7 +31,7 @@ public class FacialExpressionManager : MonoBehaviour
         Shocked2,
         Smile,
         Smug,
-        Wink
+        Wink,
     }
 
     public FacialColors color;
