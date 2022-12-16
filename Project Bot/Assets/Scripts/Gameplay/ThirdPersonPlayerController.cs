@@ -357,54 +357,18 @@ public class ThirdPersonPlayerController : MonoBehaviour
             canShock = true;
         }
 
-        switch(currentAttack)
+        if(Input.GetButton("LMB") && currentAttack == Attacks.Spark)
         {
-            case Attacks.Spark:
-                //Charge Shot
-                if (Input.GetButton("LMB"))
-                {
-                    if (damage < maxDamageCharge)
-                    {
-                        damage += damageChargeSpeed * Time.deltaTime;
-                    }
-                    else if (damage > maxDamageCharge)
-                    {
-                        damage = maxDamageCharge;
-                    }
-                }
+            ChargeSpark();
+        }else if(Input.GetButtonUp("LMB") && currentAttack == Attacks.Spark)
+        {
+            Attack();
+        }
 
-                if (Input.GetButtonUp("LMB"))
-                {
-                    GameObject currentBullet = Instantiate(bullet, rightHand.position, Quaternion.identity);
-
-                    currentBullet.GetComponent<Rigidbody>().AddForce(rightHand.up * chargeShootSpeed, ForceMode.Impulse);
-                    currentBullet.GetComponent<PlayerBullet>().AssignPlayer(this);
-
-                    manager.facialManager.ChangeEM(true, .5f, FacialExpressionManager.CurrentExpression.Wink);
-                    canChangeEmotion = false;
-                    StartCoroutine(ResetBool(.5f));
-                }
-                break;
-
-            case Attacks.ShockWave:
-                if(Input.GetButtonDown("LMB") && canShock)
-                {
-                    Collider[] enemies = Physics.OverlapSphere(transform.position, shockRange);
-
-                    foreach (Collider enemy in enemies)
-                    {
-                        EnemyAI ai = enemy.GetComponent<EnemyAI>();
-
-                        if(ai != null)
-                        {
-                            ai.CheckHealth(shockDmg);
-                        }
-                    }
-
-                    canShock = false;
-                    timeTillNextShock = shockDelay;
-                }
-                break;
+        if(Input.GetKeyDown(KeyCode.LeftControl) && !canJump)
+        {
+            Vector3 force = new Vector3(0, -12, 0);
+            rb.AddForce(force, ForceMode.Impulse);
         }
 
         //Debug
@@ -432,6 +396,12 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 canChangeEmotion = false;
                 StartCoroutine(ResetBool(.5f));
             }
+
+            if(!canJump && currentAttack == Attacks.ShockWave)
+            {
+                Attack();
+            }
+
         }
 
         if(collision.gameObject.CompareTag("Floor") && movementMode == MovementMode.SpeedPad)
@@ -770,7 +740,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
         if (timesJumped != maxJumps)
         {
             rb.velocity = new Vector3(rb.velocity.x, 0);
-            rb.velocity += jump;
+            rb.AddForce(jump, ForceMode.Impulse);
 
             timesJumped++;
         }
@@ -963,6 +933,56 @@ public class ThirdPersonPlayerController : MonoBehaviour
         camSens = cmCam.m_XAxis.m_MaxSpeed;
 
         hearts = maxHearts;
+    }
+
+    public void Attack()
+    {
+        switch (currentAttack)
+        {
+            case Attacks.Spark:
+                //Charge Shot
+                GameObject currentBullet = Instantiate(bullet, rightHand.position, Quaternion.identity);
+
+                currentBullet.GetComponent<Rigidbody>().AddForce(rightHand.up * chargeShootSpeed, ForceMode.Impulse);
+                currentBullet.GetComponent<PlayerBullet>().AssignPlayer(this);
+
+                manager.facialManager.ChangeEM(true, .5f, FacialExpressionManager.CurrentExpression.Wink);
+                canChangeEmotion = false;
+
+                StartCoroutine(ResetBool(.5f));
+                break;
+
+            case Attacks.ShockWave:
+                Collider[] enemies = Physics.OverlapSphere(transform.position, shockRange);
+
+                foreach (Collider enemy in enemies)
+                {
+                    EnemyAI ai = enemy.GetComponent<EnemyAI>();
+
+                    if (ai != null)
+                    {
+                        ai.CheckHealth(shockDmg);
+
+                        print(enemy.name + "Took DMG");
+                    }
+                }
+
+                canShock = false;
+                timeTillNextShock = shockDelay;
+                break;
+        }
+    }
+
+    public void ChargeSpark()
+    {
+        if (damage < maxDamageCharge)
+        {
+            damage += damageChargeSpeed * Time.deltaTime;
+        }
+        else if (damage > maxDamageCharge)
+        {
+            damage = maxDamageCharge;
+        }
     }
 
     IEnumerator ResetBool(float time)

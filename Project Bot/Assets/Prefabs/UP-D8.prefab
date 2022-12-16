@@ -399,9 +399,9 @@ MonoBehaviour:
   runTurnSensitivity: 600
   maxJumpCharge: 4
   jumpChargeSpeed: 2
-  jump: {x: 0, y: 4, z: 0}
-  jumpPadJump: {x: 0, y: 16, z: 0}
-  originalJump: {x: 0, y: 4, z: 0}
+  jump: {x: 0, y: 8, z: 0}
+  jumpPadJump: {x: 0, y: 24, z: 0}
+  originalJump: {x: 0, y: 8, z: 0}
   originalWalkSpeed: 4
   originalRunSpeed: 9
   speed: 0

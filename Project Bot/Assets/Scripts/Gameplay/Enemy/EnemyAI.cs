@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -128,30 +129,22 @@ public class EnemyAI : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Wall")  || collision.gameObject.CompareTag("Roomba"))
-        {
-            float randomizer = Random.Range(0, 1.01f);
-
-            if(randomizer <= .7f)
-            {
-                transform.Rotate(turnAngle);
-            }else if(randomizer > .7f)
-            {
-                transform.Rotate(turnAngle * 2);
-            }else
-            {
-                transform.Rotate(turnAngle);
-            }
-        }
-
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<ThirdPersonPlayerController>().TakeDamage(damage);
 
-            if(type == AIType.Roomba)
+            if (type == AIType.Roomba)
             {
-                KnockBack();
+                //KnockBack();
             }
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Roomba"))
+        {
+            transform.Rotate(turnAngle * Time.deltaTime);
         }
     }
 
