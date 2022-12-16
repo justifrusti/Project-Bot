@@ -573,6 +573,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
         {
             transform.position = currentActiveCheckpoint;
 
+            TakeDamage(1);
+
             int randomizer = Random.Range(0, 3);
 
             if(randomizer == 0)
