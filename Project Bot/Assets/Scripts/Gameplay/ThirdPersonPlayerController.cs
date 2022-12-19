@@ -173,10 +173,12 @@ public class ThirdPersonPlayerController : MonoBehaviour
         if(isMoving)
         {
             MoveCharacter();
+            UPD8AnimController.playingIdle = false;
         }else
         {
             speedLines.SetActive(false);
             wheelMaterial.SetFloat("ScrollSpeed", 0);
+            UPD8AnimController.playingIdle = true;
         }
 
         if (Input.GetButton("Horizontal") && isMoving)

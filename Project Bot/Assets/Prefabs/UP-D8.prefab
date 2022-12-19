@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 3850656850849121307}
   - component: {fileID: 6174823746504843075}
   - component: {fileID: 5390066206122950639}
-  m_Layer: 3
+  m_Layer: 14
   m_Name: AimAssistCone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

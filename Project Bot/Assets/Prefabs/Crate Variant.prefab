@@ -138,6 +138,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collisionsound: {fileID: 3700036202902239652}
+--- !u!114 &-163156175144875208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2601565352398933391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074ac862f47fe7841890b91ebc3ef2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2944215295889174750
 PrefabInstance:
   m_ObjectHideFlags: 0
