@@ -7,13 +7,16 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class Cone : MonoBehaviour
 {
+    public GameObject colidedObj;
+
     public int subdivisions = 10;
     public float radius = 1f;
     public float height = 2f;
 
     public bool regenerateMesh;
-
     public bool renderMesh;
+    public bool generateCollider;
+    public bool usedForCollision;
 
     void Update()
     {
@@ -23,6 +26,16 @@ public class Cone : MonoBehaviour
         }else if(!renderMesh && gameObject.GetComponent<MeshRenderer>() != null)
         {
             DestroyImmediate(gameObject.GetComponent<MeshRenderer>());
+        }
+
+        if(generateCollider && gameObject.GetComponent<MeshCollider>() == null)
+        {
+            gameObject.AddComponent<MeshCollider>();
+            GetComponent<MeshCollider>().sharedMesh = GetComponent<MeshFilter>().sharedMesh;
+            GetComponent<MeshCollider>().convex = true;
+        }else if(!generateCollider && gameObject.GetComponent<MeshCollider>() != null)
+        {
+            DestroyImmediate(gameObject.GetComponent<MeshCollider>());
         }
 
         if(regenerateMesh)
@@ -89,5 +102,18 @@ public class Cone : MonoBehaviour
         mesh.RecalculateNormals();
 
         return mesh;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(usedForCollision)
+        {
+            colidedObj = other.gameObject;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        colidedObj = null;
     }
 }

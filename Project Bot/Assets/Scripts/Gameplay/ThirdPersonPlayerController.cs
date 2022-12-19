@@ -85,6 +85,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
     public int chargeShootSpeed;
     [Space]
     public GameObject bullet;
+    [Space]
+    public GameObject aimAssistCone;
 
     [HideInInspector] public bool invisFramesActive;
     [HideInInspector] public int hearts;
@@ -945,7 +947,20 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 //Charge Shot
                 GameObject currentBullet = Instantiate(bullet, rightHand.position, Quaternion.identity);
 
-                currentBullet.GetComponent<Rigidbody>().AddForce(rightHand.up * chargeShootSpeed, ForceMode.Impulse);
+                if (aimAssistCone.GetComponent<Cone>().colidedObj != null)
+                {
+                    GameObject collidedObject = aimAssistCone.GetComponent<Cone>().colidedObj;
+
+                    print(collidedObject);
+
+                    currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * chargeShootSpeed, ForceMode.Impulse);
+                }
+                else
+                {
+                    currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * chargeShootSpeed, ForceMode.Impulse);
+                }
+
+                
                 currentBullet.GetComponent<PlayerBullet>().AssignPlayer(this);
 
                 manager.facialManager.ChangeEM(true, .5f, FacialExpressionManager.CurrentExpression.Wink);
