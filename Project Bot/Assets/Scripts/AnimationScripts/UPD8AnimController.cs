@@ -12,7 +12,7 @@ public class UPD8AnimController : MonoBehaviour
     private bool isPlayingSpecial;
     private float timeTillSpecial;
     private bool triggeredEnd;
-    private bool playingIdle = true;
+    public static bool playingIdle = true;
 
     void Start()
     {
@@ -23,6 +23,8 @@ public class UPD8AnimController : MonoBehaviour
     {
         if(playingIdle)
         {
+            anim.SetBool("PlayingIdle", true);
+
             if (!isPlayingSpecial)
             {
                 isPlayingSpecial = true;
@@ -43,6 +45,9 @@ public class UPD8AnimController : MonoBehaviour
                     StartCoroutine(ResetTimer());
                 }
             }
+        }else
+        {
+            anim.SetBool("PlayingIdle", false);
         }
     }
 
