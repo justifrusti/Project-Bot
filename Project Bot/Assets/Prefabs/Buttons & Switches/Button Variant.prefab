@@ -244,9 +244,9 @@ MonoBehaviour:
   moveTowards: {fileID: 726299747524781819}
   originalPos: {x: 0, y: 0, z: 0}
   switchCamOnDeactivate: 0
-  buttonMat: {fileID: 0}
+  buttonMat: {fileID: 2100000, guid: 37ebba3e60166514eb687fc40f1a1975, type: 2}
+  playCinematic: 1
   onPressureplate: 0
-  pressureplateActive: 0
 --- !u!64 &4709037765677687992
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -279,6 +279,7 @@ MonoBehaviour:
   switchObject: {fileID: 0}
   path: []
   originalPlatformMoveSpeed: 0
+  playCinematic: 1
   platformMoveSpeed: 0
 --- !u!54 &6206980704439656555
 Rigidbody:

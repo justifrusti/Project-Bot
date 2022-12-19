@@ -900,10 +900,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5407778327874720391, guid: 7f3f5e4e7a510aa4bbaf8cc4871c1d4d, type: 3}
-      propertyPath: buttonMat
-      value: 
-      objectReference: {fileID: 2100000, guid: 37ebba3e60166514eb687fc40f1a1975, type: 2}
-    - target: {fileID: 5407778327874720391, guid: 7f3f5e4e7a510aa4bbaf8cc4871c1d4d, type: 3}
       propertyPath: cinematicCam
       value: 
       objectReference: {fileID: 2009522216}
@@ -2924,6 +2920,7 @@ MonoBehaviour:
   switchObject: {fileID: 0}
   path: []
   originalPlatformMoveSpeed: 0
+  playCinematic: 0
   platformMoveSpeed: 0
 --- !u!4 &466527732
 Transform:
@@ -4059,11 +4056,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728556012}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &731482332 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1859586323762989285, guid: 635f67992e79ba24faf563426c84618e, type: 3}
-  m_PrefabInstance: {fileID: 4082477082411886343}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &741461013
 GameObject:
   m_ObjectHideFlags: 0
@@ -5097,6 +5089,7 @@ MonoBehaviour:
   switchObject: {fileID: 0}
   path: []
   originalPlatformMoveSpeed: 0
+  playCinematic: 0
   platformMoveSpeed: 0
 --- !u!4 &1050109417
 Transform:
@@ -5762,6 +5755,7 @@ MonoBehaviour:
   switchObject: {fileID: 0}
   path: []
   originalPlatformMoveSpeed: 0
+  playCinematic: 0
   platformMoveSpeed: 0
 --- !u!4 &1172786750
 Transform:
@@ -8326,6 +8320,7 @@ MonoBehaviour:
   switchObject: {fileID: 0}
   path: []
   originalPlatformMoveSpeed: 0
+  playCinematic: 0
   platformMoveSpeed: 0
 --- !u!4 &1829056153
 Transform:
@@ -10168,15 +10163,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 598346035125090777, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000875219
+      value: 0.000875234
       objectReference: {fileID: 0}
     - target: {fileID: 598346035125090777, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00083079934
+      value: 0.00083082914
       objectReference: {fileID: 0}
     - target: {fileID: 598346035125090777, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0002761297
+      value: -0.00027614087
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca42ac4c14893f248b49f0343f52b46b, type: 3}
@@ -10241,6 +10236,7 @@ MonoBehaviour:
   - {x: 0, y: 6, z: 0}
   - {x: 0, y: 6, z: 0}
   originalPlatformMoveSpeed: 3
+  playCinematic: 1
   platformMoveSpeed: 0
 --- !u!114 &1991769685666548377
 MonoBehaviour:
@@ -11304,17 +11300,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 697234705}
     - target: {fileID: 4079619467450559469, guid: 635f67992e79ba24faf563426c84618e, type: 3}
-      propertyPath: maxHearts
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 4079619467450559469, guid: 635f67992e79ba24faf563426c84618e, type: 3}
       propertyPath: speedLines
       value: 
       objectReference: {fileID: 2075187357}
-    - target: {fileID: 4079619467450559469, guid: 635f67992e79ba24faf563426c84618e, type: 3}
-      propertyPath: aimAssistCone
-      value: 
-      objectReference: {fileID: 731482332}
     - target: {fileID: 4079619467450559470, guid: 635f67992e79ba24faf563426c84618e, type: 3}
       propertyPath: playerCam
       value: 
