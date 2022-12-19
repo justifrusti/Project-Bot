@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public PlayerUIManager uiManager;
     public FacialExpressionManager facialManager;
 
+    public AudioSource music;
+
     public static string directory = "/Data/";
     public static string fileName = "PlayerOS.bot";
 
@@ -30,6 +32,11 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Save file does not exist");
         }
+    }
+
+    private void Start()
+    {
+        music.Play();
     }
 
     private void Update()

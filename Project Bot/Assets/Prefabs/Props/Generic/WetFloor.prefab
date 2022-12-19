@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e04dbb6c6cebb14181e9db03c237371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionsound: {fileID: 0}
+  collisionsound: {fileID: 1701513186749493224}
 --- !u!82 &1701513186749493224
 AudioSource:
   m_ObjectHideFlags: 0
