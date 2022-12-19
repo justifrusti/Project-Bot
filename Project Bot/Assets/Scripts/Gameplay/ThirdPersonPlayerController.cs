@@ -953,7 +953,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
                     print(collidedObject);
 
-                    currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * chargeShootSpeed, ForceMode.Impulse);
+                    rightHand.LookAt(collidedObject.transform.position);
+                    currentBullet.GetComponent<Rigidbody>().AddForce(rightHand.forward * chargeShootSpeed, ForceMode.Impulse);
                 }
                 else
                 {

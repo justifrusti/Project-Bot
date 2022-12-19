@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 1850420711640850749}
   - component: {fileID: 3850656850849121307}
   - component: {fileID: 6174823746504843075}
-  - component: {fileID: 7686246707235897942}
+  - component: {fileID: 5390066206122950639}
   m_Layer: 3
   m_Name: AimAssistCone
   m_TagString: Untagged
@@ -207,14 +207,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colidedObj: {fileID: 0}
-  subdivisions: 4
+  subdivisions: 8
   radius: 0.5
   height: 8
   regenerateMesh: 0
   renderMesh: 0
   generateCollider: 1
   usedForCollision: 1
---- !u!64 &7686246707235897942
+--- !u!64 &5390066206122950639
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,7 +222,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859586323762989285}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
