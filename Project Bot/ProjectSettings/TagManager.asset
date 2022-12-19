@@ -40,8 +40,8 @@ TagManager:
   - RenderTexture
   - Button
   - ButtonActivator
-  - 
-  - 
+  - AssistCone
+  - HumanoidCollision
   - 
   - 
   - 

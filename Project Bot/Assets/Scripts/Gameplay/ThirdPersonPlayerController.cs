@@ -331,10 +331,14 @@ public class ThirdPersonPlayerController : MonoBehaviour
             {
                 skillUI.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
+                cmCam.m_XAxis.m_MaxSpeed = 300;
+                cmCam.m_YAxis.m_MaxSpeed = 2;
             }else
             {
                 skillUI.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
+                cmCam.m_XAxis.m_MaxSpeed = 0;
+                cmCam.m_YAxis.m_MaxSpeed = 0;
             }
         }
 
