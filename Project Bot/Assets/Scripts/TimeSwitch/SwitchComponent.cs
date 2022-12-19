@@ -26,6 +26,8 @@ public class SwitchComponent : MonoBehaviour
     public Vector3[] path;
     [Space]
     public float originalPlatformMoveSpeed;
+    [Space]
+    public bool playCinematic;
     [HideInInspector] public float platformMoveSpeed;
     private int index;
     private bool movingBack = false;
@@ -96,9 +98,12 @@ public class SwitchComponent : MonoBehaviour
 
     public void CinematicCutscene()
     {
-        CameraSwitcher.Register(cinematicCam);
+        if(playCinematic)
+        {
+            CameraSwitcher.Register(cinematicCam);
 
-        StartCoroutine(CinematicCutsceneTimer());
+            StartCoroutine(CinematicCutsceneTimer());
+        }
     }
 
     IEnumerator MovingBack()

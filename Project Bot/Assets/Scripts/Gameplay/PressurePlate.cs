@@ -16,10 +16,12 @@ public class PressurePlate : MonoBehaviour
     public bool switchCamOnDeactivate;
     [Space]
     public Material buttonMat;
+    [Space]
+    public bool playCinematic;
 
     [HideInInspector] public bool onPressureplate;
     private SwitchComponent component;
-    [SerializeField]private bool pressureplateActive = false;
+    private bool pressureplateActive = false;
 
     private void Awake()
     {
@@ -46,14 +48,19 @@ public class PressurePlate : MonoBehaviour
 
             pressureplateActive = true;
 
-            CameraSwitcher.Register(cinematicCam);
+            if(playCinematic)
+            {
+                CameraSwitcher.Register(cinematicCam);
 
-            if(CameraSwitcher.IsActiveCamera(cinematicCam))
-            {
-                Debug.Log("Cinematic is already active");
-            }else
-            {
-                CameraSwitcher.SwitchCamera(cinematicCam);
+                if (CameraSwitcher.IsActiveCamera(cinematicCam))
+                {
+                    Debug.Log("Cinematic is already active");
+                }
+                else
+                {
+                    CameraSwitcher.SwitchCamera(cinematicCam);
+                    FindObjectOfType<AudioManagerScript>().Play("PuzzleSolved");
+                }
             }
 
             StartCoroutine(ActivatePressureFunction());
@@ -100,20 +107,32 @@ public class PressurePlate : MonoBehaviour
         component.currentAction = SwitchComponent.Action.Disable;
         yield return new WaitForSeconds(1.5f);
 
-        CameraSwitcher.SwitchPlayerCamera(CameraSwitcher.playerCam);
+        if(playCinematic)
+        {
+            CameraSwitcher.SwitchPlayerCamera(CameraSwitcher.playerCam);
+        }
     }
 
     IEnumerator DeactivatePressureFunction()
     {
-        yield return new WaitForSeconds(1.5f);
-        component.currentAction = SwitchComponent.Action.Enable;
-        yield return new WaitForSeconds(1.5f);
-
-        if(switchCamOnDeactivate)
+        if(playCinematic)
         {
-            CameraSwitcher.SwitchPlayerCamera(CameraSwitcher.playerCam);
-        }
+            if (switchCamOnDeactivate)
+            {
+                yield return new WaitForSeconds(1.5f);
+                component.currentAction = SwitchComponent.Action.Enable;
+                yield return new WaitForSeconds(1.5f);
 
-        CameraSwitcher.Unregister(cinematicCam);
+                CameraSwitcher.SwitchPlayerCamera(CameraSwitcher.playerCam);
+            }else
+            {
+                component.currentAction = SwitchComponent.Action.Enable;
+            }
+
+            CameraSwitcher.Unregister(cinematicCam);
+        }else
+        {
+            component.currentAction = SwitchComponent.Action.Enable;
+        }
     }
 }

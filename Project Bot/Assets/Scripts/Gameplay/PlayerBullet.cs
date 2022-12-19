@@ -27,7 +27,11 @@ public class PlayerBullet : MonoBehaviour
             exploder.ExplosiveForce();
 
             collision.gameObject.GetComponent<SwitchComponent>().enabled = false;
-            collision.gameObject.GetComponent<SwitchComponent>().CinematicCutscene();
+
+            if(exploder.GetComponent<SwitchComponent>().playCinematic)
+            {
+                collision.gameObject.GetComponent<SwitchComponent>().CinematicCutscene();
+            }
         }
 
         Destroy(this.gameObject);
