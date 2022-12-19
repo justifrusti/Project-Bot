@@ -460,7 +460,7 @@ MonoBehaviour:
   invisFramesTime: 1.2
   chargeShootSpeed: 5
   bullet: {fileID: 1130220312172269330, guid: 6a24b8ee2d3c2304ca201ca22b3643a7, type: 3}
-  aimAssistCone: {fileID: 0}
+  aimAssistCone: {fileID: 1859586323762989285}
   invisFramesActive: 0
   hearts: 0
   damage: 0
