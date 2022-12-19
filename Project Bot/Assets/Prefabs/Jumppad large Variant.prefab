@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1017540821
 Transform:
@@ -4831,7 +4831,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1122374645
 Transform:
@@ -4972,11 +4972,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5293917629316059829, guid: af76babd9428ade4d94b2931f183e4ec, type: 3}
       propertyPath: m_Name
-      value: Jumppad large
+      value: Jumppad large Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5293917629316059829, guid: af76babd9428ade4d94b2931f183e4ec, type: 3}
       propertyPath: m_TagString
       value: JumpPad
+      objectReference: {fileID: 0}
+    - target: {fileID: 5293917629316059829, guid: af76babd9428ade4d94b2931f183e4ec, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af76babd9428ade4d94b2931f183e4ec, type: 3}
