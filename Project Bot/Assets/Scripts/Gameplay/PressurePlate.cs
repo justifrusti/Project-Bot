@@ -104,7 +104,15 @@ public class PressurePlate : MonoBehaviour
     IEnumerator ActivatePressureFunction()
     {
         yield return new WaitForSeconds(1.5f);
-        component.currentAction = SwitchComponent.Action.Disable;
+        
+        if(component.currentAction == SwitchComponent.Action.Disable)
+        {
+            component.currentAction = SwitchComponent.Action.Enable;
+        }else if(component.currentAction == SwitchComponent.Action.Enable)
+        {
+            component.currentAction = SwitchComponent.Action.Disable;
+        }
+
         yield return new WaitForSeconds(1.5f);
 
         if(playCinematic)

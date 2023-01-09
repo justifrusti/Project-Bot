@@ -66,6 +66,11 @@ public class FacialExpressionManager : MonoBehaviour
     public Texture em_Smug;
     public Texture em_Wink;
 
+    private void Start()
+    {
+        materialToChange.EnableKeyword("_EMISSION");
+    }
+
     private void Update()
     {
         switch(color)

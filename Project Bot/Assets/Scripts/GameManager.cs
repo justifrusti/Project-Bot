@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using System.Linq.Expressions;
 
 [RequireComponent(typeof(SkillTreeReader))]
 public class GameManager : MonoBehaviour
@@ -11,15 +10,27 @@ public class GameManager : MonoBehaviour
     public ThirdPersonPlayerController playerController;
     public PlayerUIManager uiManager;
     public FacialExpressionManager facialManager;
+    public SkillTreeReader treeReader;
 
     public AudioSource music;
 
     public static string directory = "/Data/";
     public static string fileName = "PlayerOS.bot";
 
+    [HideInInspector]public bool initialized = false;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        Initialize();
+    }
+
+    private void Initialize()
+    {
         InitializeScripts();
 
         string fullPath = Application.persistentDataPath + directory + fileName;
@@ -32,25 +43,62 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Save file does not exist");
         }
-    }
 
-    private void Start()
-    {
-        music.Play();
+        treeReader.Initialize();
+
+        if (music != null)
+        {
+            music.Play();
+        }else
+        {
+            Debug.Log("No Music Present");
+        }
+
+        if (playerController != null)
+        {
+            playerController.Initialize();
+        }
+        else
+        {
+            Debug.Log(playerController.GetType().ToString() + " not present");
+        }
+
+        if (uiManager != null)
+        {
+            NoInitialize(uiManager.GetType().ToString());
+        }else
+        {
+            Debug.Log(uiManager.GetType().ToString() + " not present");
+        }
+
+        if (facialManager != null) 
+        {
+            facialManager.ChangeEM(true, 10.0f, FacialExpressionManager.CurrentExpression.Happy);
+            StartCoroutine(playerController.ResetBool(10.0f));
+            NoInitialize(facialManager.GetType().ToString());
+        }else
+        {
+            Debug.Log(facialManager.GetType().ToString() + " not present");
+        }
+
+        initialized = true;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N))
+        if(initialized)
         {
-            SavePlayerData();
-            SaveGame();
-        }
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                SavePlayerData();
+                SaveGame();
+            }
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            LoadGame();
-            LoadPlayerData();
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                LoadGame();
+                LoadPlayerData();
+            }
         }
     }
 
@@ -59,6 +107,17 @@ public class GameManager : MonoBehaviour
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonPlayerController>();
         uiManager = GameObject.FindGameObjectWithTag("UI Manager").GetComponent<PlayerUIManager>();
         facialManager = GameObject.FindGameObjectWithTag("Player").GetComponent<FacialExpressionManager>();
+        treeReader = GetComponent<SkillTreeReader>();
+    }
+
+    public void ReInitialize()
+    {
+        Initialize();
+    }
+
+    public void NoInitialize(string scriptName)
+    {
+        Debug.Log("No Initialize Present In: " + scriptName);
     }
 
     public void SavePlayerData()

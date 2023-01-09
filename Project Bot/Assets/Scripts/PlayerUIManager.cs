@@ -21,26 +21,29 @@ public class PlayerUIManager : MonoBehaviour
 
     void Update()
     {
-        availableSkillPoints.text = "Available Skill Points: " + SkillTreeReader.Instance.availablePoints.ToString();
-
-        for (int i = 0; i < availableHearts.Length; i++)
+        if(playerController.manager != null && playerController.manager.initialized)
         {
-            if (i < playerController.hearts)
-            {
-                availableHearts[i].sprite = fullHeart;
-            }
-            else
-            {
-                availableHearts[i].sprite = emptyHeart;
-            }
+            availableSkillPoints.text = "Available Skill Points: " + SkillTreeReader.Instance.availablePoints.ToString();
 
-            if (i < playerController.maxHearts)
+            for (int i = 0; i < availableHearts.Length; i++)
             {
-                availableHearts[i].enabled = true;
-            }
-            else
-            {
-                availableHearts[i].enabled = false;
+                if (i < playerController.hearts)
+                {
+                    availableHearts[i].sprite = fullHeart;
+                }
+                else
+                {
+                    availableHearts[i].sprite = emptyHeart;
+                }
+
+                if (i < playerController.maxHearts)
+                {
+                    availableHearts[i].enabled = true;
+                }
+                else
+                {
+                    availableHearts[i].enabled = false;
+                }
             }
         }
     }

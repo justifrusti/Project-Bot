@@ -12,11 +12,6 @@ public class LaserEmitter : MonoBehaviour
 
     RaycastHit hit;
 
-    private void Start()
-    {
-
-    }
-
     private void Update()
     {
         if(Physics.Raycast(transform.position, Vector3.right, out hit, laserDst))

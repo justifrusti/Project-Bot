@@ -30,6 +30,8 @@ public class SwitchManager : MonoBehaviour
             timer.SetActive(true);
 
             initializedComponents = true;
+
+            StartCoroutine(Beep(Mathf.RoundToInt(maxTime)));
         }
 
         if (switchActive && initializedComponents)
@@ -97,5 +99,15 @@ public class SwitchManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         CameraSwitcher.SwitchPlayerCamera(CameraSwitcher.playerCam);
         CameraSwitcher.Unregister(cinematicCam);
+    }
+
+    IEnumerator Beep(int time)
+    {
+        for (int i = 0; i < time; i++)
+        {
+            yield return new WaitForSeconds(1);
+
+            print("Super Awesome timer beep sound intensifies");
+        }
     }
 }

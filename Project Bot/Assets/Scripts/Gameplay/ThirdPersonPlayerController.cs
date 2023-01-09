@@ -1,16 +1,15 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(FacialExpressionManager))]
 public class ThirdPersonPlayerController : MonoBehaviour
 {
     public GameManager manager;
-    
+
     public enum MovementMode
     {
         Walking,
@@ -153,240 +152,259 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     //Private Check Variables
     private bool onPad;
-
     private bool canChangeEmotion = true;
+    private bool hasDied = false;
 
-    void Start()
+    private Animator anim;
+
+    private void Awake()
     {
-        VariableSetup();
+        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        anim = GetComponent<Animator>();
+    }
+
+    public void Initialize()
+    {
+        InitialSetup();
 
         Cursor.lockState = CursorLockMode.Locked;
-
-        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         SkillTreeReader.Instance.availablePoints = manager.saveData.skillPoints;
     }
 
     private void FixedUpdate()
     {
-        //Player Movement
-        if(isMoving)
+        if(manager != null && manager.initialized && !hasDied)
         {
-            MoveCharacter();
-            UPD8AnimController.playingIdle = false;
-        }else
-        {
-            speedLines.SetActive(false);
-            wheelMaterial.SetFloat("ScrollSpeed", 0);
-            UPD8AnimController.playingIdle = true;
-        }
-
-        if (Input.GetButton("Horizontal") && isMoving)
-        {
-            TurnChar();
-        }else if(Input.GetButton("Horizontal") && !isMoving && turnMode)
-        {
-            float h = Input.GetAxis("Horizontal");
-
-            Vector3 rightWheel = new Vector3(0, 180, 0);
-            Vector3 leftWheel = new Vector3(0, -180, 0);
-
-            if (h > 0)
+            //Player Movement
+            if (isMoving)
             {
-                wheels.Rotate(rightWheel * Time.deltaTime, Space.Self);
+                MoveCharacter();
+                UPD8AnimController.playingIdle = false;
             }
-            else if (h < 0)
+            else
             {
-                wheels.Rotate(leftWheel * Time.deltaTime, Space.Self);
+                speedLines.SetActive(false);
+                wheelMaterial.SetFloat("ScrollSpeed", 0);
+                UPD8AnimController.playingIdle = true;
             }
-        }
-        else if(Input.GetButton("Horizontal") && !isMoving && !turnMode)
-        {
-            TurnChar();
+
+            if (Input.GetButton("Horizontal") && isMoving)
+            {
+                TurnChar();
+            }
+            else if (Input.GetButton("Horizontal") && !isMoving && turnMode)
+            {
+                float h = Input.GetAxis("Horizontal");
+
+                Vector3 rightWheel = new Vector3(0, 180, 0);
+                Vector3 leftWheel = new Vector3(0, -180, 0);
+
+                if (h > 0)
+                {
+                    wheels.Rotate(rightWheel * Time.deltaTime, Space.Self);
+                }
+                else if (h < 0)
+                {
+                    wheels.Rotate(leftWheel * Time.deltaTime, Space.Self);
+                }
+            }
+            else if (Input.GetButton("Horizontal") && !isMoving && !turnMode)
+            {
+                TurnChar();
+            }
         }
     }
 
     void Update()
     {
-        //Player Movement
-        if (Input.GetButtonDown("Vertical"))
+        if(manager != null && manager.initialized && !hasDied)
         {
-            isMoving = true;
-            movementMode = MovementMode.Walking;
-        }
-        else if (Input.GetButtonUp("Vertical"))
-        {
-            isMoving = false;
-            movementMode = MovementMode.Idle;
-        }
+            //Player Movement
+            if (Input.GetButtonDown("Vertical"))
+            {
+                isMoving = true;
+                movementMode = MovementMode.Walking;
+            }
+            else if (Input.GetButtonUp("Vertical"))
+            {
+                isMoving = false;
+                movementMode = MovementMode.Idle;
+            }
 
-        if(Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            turnMode = true;
-        }else if(Input.GetKeyUp(KeyCode.LeftControl))
-        {
-            turnMode = false;
-        }
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                turnMode = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftControl))
+            {
+                turnMode = false;
+            }
 
-        if(movementMode == MovementMode.Idle && canChangeEmotion)
-        {
-            manager.facialManager.ChangeEM(false, 0, FacialExpressionManager.CurrentExpression.Default);
-        }
+            if (movementMode == MovementMode.Idle && canChangeEmotion)
+            {
+                manager.facialManager.ChangeEM(false, 0, FacialExpressionManager.CurrentExpression.Default);
+            }
 
-        //Jump
-        switch(jumpMode)
-        {
-            case JumpMode.NormalJump:
-                if (Input.GetButtonDown("Jump"))
-                {
-                    if (timesJumped == maxJumps)
+            //Jump
+            switch (jumpMode)
+            {
+                case JumpMode.NormalJump:
+                    if (Input.GetButtonDown("Jump"))
                     {
-                        canJump = false;
-                    }
+                        if (timesJumped == maxJumps)
+                        {
+                            canJump = false;
+                        }
 
-                    Jump();
+                        Jump();
+                    }
+                    break;
+
+                case JumpMode.ChargeJump:
+                    if (Input.GetButton("Jump"))
+                    {
+                        if (timesJumped == maxJumps)
+                        {
+                            canJump = false;
+                        }
+
+                        ChargedJump();
+                    }
+                    else if (Input.GetButtonUp("Jump"))
+                    {
+                        if (timesJumped != maxJumps)
+                        {
+                            rb.velocity = new Vector3(rb.velocity.x, 0);
+                            rb.velocity += new Vector3(0, jump.y + jumpCharge, 0);
+
+                            timesJumped++;
+                        }
+
+                        if (timesJumped == maxJumps)
+                        {
+                            canJump = false;
+                        }
+
+                        jumpCharge = 0;
+                    }
+                    break;
+            }
+
+            if (Physics.Raycast(rayCastPoint.position, rayCastPoint.forward, out hit, 2f))
+            {
+                if (hit.collider.tag == "Overload")
+                {
+                    if (Input.GetButtonDown("Interact"))
+                    {
+                        hit.collider.GetComponent<OverloadInitialize>().LaunchMinigame();
+                    }
                 }
-                break;
 
-            case JumpMode.ChargeJump:
-                if (Input.GetButton("Jump"))
+                if (hit.collider.gameObject.tag == "PickUp")
                 {
-                    if (timesJumped == maxJumps)
-                    {
-                        canJump = false;
-                    }
-
-                    ChargedJump();
-                }else if(Input.GetButtonUp("Jump"))
-                {
-                    if (timesJumped != maxJumps)
-                    {
-                        rb.velocity = new Vector3(rb.velocity.x, 0);
-                        rb.velocity += new Vector3(0, jump.y + jumpCharge, 0);
-
-                        timesJumped++;
-                    }
-
-                    if (timesJumped == maxJumps)
-                    {
-                        canJump = false;
-                    }
-
-                    jumpCharge = 0;
-                }
-                break;
-        }
-
-        if(Physics.Raycast(rayCastPoint.position, rayCastPoint.forward, out hit, 2f))
-        {
-            if(hit.collider.tag == "Overload")
-            {
-                if(Input.GetButtonDown("Interact"))
-                {
-                    hit.collider.GetComponent<OverloadInitialize>().LaunchMinigame();
+                    HoldablePickUp();
                 }
             }
 
-            if (hit.collider.gameObject.tag == "PickUp")
+            //Pickup
+            if (Input.GetButtonDown("LMB") && hasPickup)
             {
-                HoldablePickUp();
+                hasPickup = false;
+
+                pickUpItem.GetComponent<Collider>().isTrigger = false;
+
+                pickUpItem.GetComponent<Rigidbody>().isKinematic = false;
+                pickUpItem.transform.parent = null;
+
+                pickUpItem.GetComponent<Rigidbody>().AddForce(transform.forward * dropForce);
             }
-        }
 
-        //Pickup
-        if (Input.GetButtonDown("LMB") && hasPickup)
-        {
-            hasPickup = false;
-
-            pickUpItem.GetComponent<Collider>().isTrigger = false;
-
-            pickUpItem.GetComponent<Rigidbody>().isKinematic = false;
-            pickUpItem.transform.parent = null;
-
-            pickUpItem.GetComponent<Rigidbody>().AddForce(transform.forward * dropForce);
-        }
-
-        if (Input.GetButtonDown("RMB") && hasPickup)
-        {
-            hasPickup = false;
-
-            pickUpItem.GetComponent<Collider>().isTrigger = false;
-
-            pickUpItem.GetComponent<Rigidbody>().isKinematic = false;
-            pickUpItem.transform.parent = null;
-
-            pickUpItem.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce);
-            FindObjectOfType<AudioManagerScript>().Play("PickupThrow");
-        }
-
-        if (Input.GetButtonDown("Respawn"))
-        {
-            transform.position = currentActiveCheckpoint;
-        }
-
-        //Skills
-        if(Input.GetButtonDown("Esc"))
-        {
-            if(skillUI.activeInHierarchy)
+            if (Input.GetButtonDown("RMB") && hasPickup)
             {
-                skillUI.SetActive(false);
-                Cursor.lockState = CursorLockMode.Locked;
-                cmCam.m_XAxis.m_MaxSpeed = 300;
-                cmCam.m_YAxis.m_MaxSpeed = 2;
-            }else
-            {
-                skillUI.SetActive(true);
-                Cursor.lockState = CursorLockMode.None;
-                cmCam.m_XAxis.m_MaxSpeed = 0;
-                cmCam.m_YAxis.m_MaxSpeed = 0;
+                hasPickup = false;
+
+                pickUpItem.GetComponent<Collider>().isTrigger = false;
+
+                pickUpItem.GetComponent<Rigidbody>().isKinematic = false;
+                pickUpItem.transform.parent = null;
+
+                pickUpItem.GetComponent<Rigidbody>().AddForce(transform.forward * throwForce);
+                FindObjectOfType<AudioManagerScript>().Play("PickupThrow");
             }
-        }
 
-        //Cam
-        if(Input.GetButtonDown("CamMode"))
-        {
-            if(camMode == CamMode.WheelBased)
+            if (Input.GetButtonDown("Respawn"))
             {
-                camMode = CamMode.CamBased;
-            }else if(camMode == CamMode.CamBased)
-            {
-                camMode = CamMode.WheelBased;
+                transform.position = currentActiveCheckpoint;
             }
-        }
 
-        //Attacks
-        if(timeTillNextShock > -.01f)
-        {
-            timeTillNextShock -= 1 * Time.deltaTime;
-        }
+            //Skills
+            if (Input.GetButtonDown("Esc"))
+            {
+                if (skillUI.activeInHierarchy)
+                {
+                    skillUI.SetActive(false);
+                    Cursor.lockState = CursorLockMode.Locked;
+                    cmCam.m_XAxis.m_MaxSpeed = 300;
+                    cmCam.m_YAxis.m_MaxSpeed = 2;
+                }
+                else
+                {
+                    skillUI.SetActive(true);
+                    Cursor.lockState = CursorLockMode.None;
+                    cmCam.m_XAxis.m_MaxSpeed = 0;
+                    cmCam.m_YAxis.m_MaxSpeed = 0;
+                }
+            }
 
-        if(timeTillNextShock <= 0)
-        {
-            canShock = true;
-        }
+            //Cam
+            if (Input.GetButtonDown("CamMode"))
+            {
+                if (camMode == CamMode.WheelBased)
+                {
+                    camMode = CamMode.CamBased;
+                }
+                else if (camMode == CamMode.CamBased)
+                {
+                    camMode = CamMode.WheelBased;
+                }
+            }
 
-        if(Input.GetButton("LMB") && currentAttack == Attacks.Spark)
-        {
-            ChargeSpark();
-        }else if(Input.GetButtonUp("LMB") && currentAttack == Attacks.Spark)
-        {
-            Attack();
-        }
+            //Attacks
+            if (timeTillNextShock > -.01f)
+            {
+                timeTillNextShock -= 1 * Time.deltaTime;
+            }
 
-        if(Input.GetKeyDown(KeyCode.LeftControl) && !canJump)
-        {
-            Vector3 force = new Vector3(0, -12, 0);
-            rb.AddForce(force, ForceMode.Impulse);
-        }
+            if (timeTillNextShock <= 0)
+            {
+                canShock = true;
+            }
 
-        //Debug
-        //Debug.DrawLine(rayCastPoint.position, rayCastPoint.forward * 1,Color.red, 1.0f);
+            if (Input.GetButton("LMB") && currentAttack == Attacks.Spark)
+            {
+                ChargeSpark();
+            }
+            else if (Input.GetButtonUp("LMB") && currentAttack == Attacks.Spark)
+            {
+                Attack();
+            }
 
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            deaths = manager.saveData.deaths;
-            deaths++;
-            manager.saveData.deaths = deaths;
+            if (Input.GetKeyDown(KeyCode.LeftControl) && !canJump)
+            {
+                Vector3 force = new Vector3(0, -12, 0);
+                rb.AddForce(force, ForceMode.Impulse);
+            }
+
+            //Debug
+            //Debug.DrawLine(rayCastPoint.position, rayCastPoint.forward * 1,Color.red, 1.0f);
+
+            if (Input.GetKeyDown(KeyCode.V))
+            {
+                deaths = manager.saveData.deaths;
+                deaths++;
+                manager.saveData.deaths = deaths;
+            }
         }
     }
 
@@ -398,7 +416,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
             canJump = true;
 
-            if(collision.gameObject.CompareTag("Floor") && canChangeEmotion)
+            if(collision.gameObject.CompareTag("Floor") && canChangeEmotion && manager != null && manager.initialized)
             {
                 manager.facialManager.ChangeEM(true, .5f, FacialExpressionManager.CurrentExpression.Shocked2);
                 canChangeEmotion = false;
@@ -835,7 +853,12 @@ public class ThirdPersonPlayerController : MonoBehaviour
         deaths = manager.saveData.deaths;
         deaths++;
         manager.saveData.deaths = deaths;
-        Destroy(gameObject);
+
+        rb.constraints = RigidbodyConstraints.None;
+        anim.enabled = false;
+        manager.facialManager.materialToChange.DisableKeyword("_EMISSION");
+
+        hasDied = true;
     }
 
     public void HoldablePickUp()
@@ -932,7 +955,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
         }
     }
 
-    public void VariableSetup()
+    public void InitialSetup()
     {
         currentActiveCheckpoint = transform.position;
 
@@ -943,6 +966,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
         camSens = cmCam.m_XAxis.m_MaxSpeed;
 
         hearts = maxHearts;
+
+        hasDied = false;
+
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        anim.enabled = true;
     }
 
     public void Attack()
@@ -1009,7 +1037,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator ResetBool(float time)
+    public IEnumerator ResetBool(float time)
     {
         yield return new WaitForSeconds(time);
 

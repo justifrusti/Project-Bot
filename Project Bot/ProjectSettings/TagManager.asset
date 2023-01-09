@@ -25,6 +25,8 @@ TagManager:
   - MovingPlatform
   - FuseBox
   - BlastDoor
+  - TurretMAR
+  - ShieldMAR
   layers:
   - Default
   - TransparentFX
