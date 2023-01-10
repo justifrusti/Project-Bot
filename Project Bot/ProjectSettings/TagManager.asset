@@ -27,6 +27,7 @@ TagManager:
   - BlastDoor
   - TurretMAR
   - ShieldMAR
+  - TimeSwitch
   layers:
   - Default
   - TransparentFX

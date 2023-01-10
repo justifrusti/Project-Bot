@@ -305,6 +305,14 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 {
                     HoldablePickUp();
                 }
+
+                if(hit.collider.CompareTag("TimeSwitch"))
+                {
+                    if(Input.GetButtonDown("Interact"))
+                    {
+                        hit.collider.gameObject.GetComponent<SwitchManager>().switchActive = true;
+                    }
+                }
             }
 
             //Pickup

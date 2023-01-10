@@ -19,6 +19,8 @@ public class SwitchManager : MonoBehaviour
     public float maxTime;
     public float timeLeft;
 
+    public bool playCinematic;
+
     private void Update()
     {
         if (switchActive && !initializedComponents)
@@ -67,9 +69,7 @@ public class SwitchManager : MonoBehaviour
                 {
                     components[i].currentAction = SwitchComponent.Action.Enable;
                 }
-            }
-
-            if(components[i].type == SwitchComponent.ComponentType.Platform)
+            }else if(components[i].type == SwitchComponent.ComponentType.Platform)
             {
                 if (components[i].currentAction == SwitchComponent.Action.Enable)
                 {
@@ -82,7 +82,10 @@ public class SwitchManager : MonoBehaviour
             }
         }
 
-        CinematicCutscene();
+        if(playCinematic)
+        {
+            CinematicCutscene();
+        }
     }
 
     public void CinematicCutscene()

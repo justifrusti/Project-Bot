@@ -18,15 +18,25 @@ public class PressurePlate : MonoBehaviour
     public Material buttonMat;
     [Space]
     public bool playCinematic;
+    [Space]
+    public SwitchComponent component;
+    public SwitchManager componentManager;
 
     [HideInInspector] public bool onPressureplate;
-    private SwitchComponent component;
+    
     private bool pressureplateActive = false;
 
     private void Awake()
     {
         originalPos = transform.position;
-        component = GetComponent<SwitchComponent>();
+        
+        if(gameObject.GetComponent<SwitchComponent>() != null)
+        {
+            component = GetComponent<SwitchComponent>();
+        }else if(gameObject.GetComponent<SwitchManager>() != null)
+        {
+            componentManager = GetComponent<SwitchManager>();
+        }
     }
 
     private void Update()
@@ -105,12 +115,19 @@ public class PressurePlate : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         
-        if(component.currentAction == SwitchComponent.Action.Disable)
+        if(component != null)
         {
-            component.currentAction = SwitchComponent.Action.Enable;
-        }else if(component.currentAction == SwitchComponent.Action.Enable)
+            if (component.currentAction == SwitchComponent.Action.Disable)
+            {
+                component.currentAction = SwitchComponent.Action.Enable;
+            }
+            else if (component.currentAction == SwitchComponent.Action.Enable)
+            {
+                component.currentAction = SwitchComponent.Action.Disable;
+            }
+        }else if(componentManager != null)
         {
-            component.currentAction = SwitchComponent.Action.Disable;
+            componentManager.switchActive = true;   
         }
 
         yield return new WaitForSeconds(1.5f);
