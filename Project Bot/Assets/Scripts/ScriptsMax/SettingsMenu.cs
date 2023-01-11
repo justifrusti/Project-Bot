@@ -161,7 +161,7 @@ public class SettingsMenu : MonoBehaviour
     public void LoadLevel1()
     {
         buttonClick.Play();
-        SceneManager.LoadScene("franswildit");
+        SceneManager.LoadScene("Overworld");
         FindObjectOfType<AudioManagerScript>().Play("DefenceSetupMusic");
     }
 

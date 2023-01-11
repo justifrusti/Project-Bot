@@ -49,9 +49,9 @@ Material:
     - _RippleSpeed: 2
     - _Smoothness: 1.06
     m_Colors:
-    - _BaseColor: {r: 0.055322148, g: 0.32460067, b: 0, a: 1}
+    - _BaseColor: {r: 0, g: 0.9056604, b: 0.056217268, a: 1}
     - _FoamColor: {r: 0.7490196, g: 0.7490196, b: 0.7490196, a: 1}
-    - _RippleColor: {r: 0.45907778, g: 0.5660378, b: 0.4560342, a: 1}
+    - _RippleColor: {r: 0.05660379, g: 0.010269379, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &2034169970226115885
 MonoBehaviour:
