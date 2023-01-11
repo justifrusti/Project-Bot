@@ -5,7 +5,10 @@ using UnityEngine;
 public class UPD8AnimController : MonoBehaviour
 {
     public Animator anim;
-
+    public ThirdPersonPlayerController controller;
+    [Space]
+    public float fallingThreshold;
+    [Space]
     public float minSpecialIdleTime, maxSpecialIdleTime;
 
     private IEnumerator timer;
@@ -21,6 +24,14 @@ public class UPD8AnimController : MonoBehaviour
 
     void Update()
     {
+        if(controller.jumpMode == ThirdPersonPlayerController.JumpMode.ChargeJump)
+        {
+            anim.SetBool("ChargeJump", true);
+        }else
+        {
+            anim.SetBool("ChargeJump", false);
+        }
+
         if(playingIdle)
         {
             anim.SetBool("PlayingIdle", true);
@@ -49,6 +60,32 @@ public class UPD8AnimController : MonoBehaviour
         {
             anim.SetBool("PlayingIdle", false);
         }
+
+        if(Input.GetButtonDown("Jump") && controller.canJump)
+        {
+            anim.SetTrigger("Jump");
+        }
+
+        if(Input.GetButtonUp("Jump") && controller.canJump)
+        {
+            anim.SetTrigger("JumpUp");
+        }else if(Input.GetButtonUp("Jump") && !controller.canJump)
+        {
+            anim.SetTrigger("JumpUp");
+        }
+
+        if(controller.rb.velocity.y < fallingThreshold)
+        {
+            anim.SetTrigger("JumpDown");
+        }
+
+        if(Input.GetButtonDown("LMB"))
+        {
+            anim.SetTrigger("ShootAim");
+        }else if(Input.GetButtonUp("LMB"))
+        {
+            anim.SetTrigger("ShootRelease");
+        }
     }
 
     IEnumerator ResetTimer()
@@ -61,7 +98,19 @@ public class UPD8AnimController : MonoBehaviour
 
         yield return new WaitForSeconds(7);
 
+        anim.SetTrigger("IdleSpecial3");
+
+        yield return new WaitForSeconds(10);
+
         triggeredEnd = false;
         isPlayingSpecial = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            anim.SetTrigger("HitGround");
+        }
     }
 }

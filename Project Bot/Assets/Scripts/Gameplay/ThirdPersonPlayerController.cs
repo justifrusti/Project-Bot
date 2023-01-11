@@ -413,6 +413,25 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 deaths++;
                 manager.saveData.deaths = deaths;
             }
+
+            if(onPad && isMoving)
+            {
+                anim.SetBool("OnPad", true);
+            }else if(!onPad)
+            {
+                anim.SetBool("OnPad", false);
+            }else if(onPad && !isMoving)
+            {
+                anim.SetBool("OnPad", false);
+            }
+
+            if(movementMode == MovementMode.Running)
+            {
+                anim.SetBool("IsSprinting", true);
+            }else
+            {
+                anim.SetBool("IsSprinting", false);
+            }
         }
     }
 
@@ -773,18 +792,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     public void Jump()
     {
-        if (timesJumped != maxJumps)
-        {
-            rb.velocity = new Vector3(rb.velocity.x, 0);
-            rb.AddForce(jump, ForceMode.Impulse);
-
-            timesJumped++;
-        }
-
-        if (timesJumped == maxJumps)
-        {
-            canJump = false;
-        }
+        StartCoroutine(JumpTimer());
     }
 
     public void ChargedJump()
@@ -823,6 +831,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
         if(!invisFramesActive)
         {
             CheckHealth(damage);
+
+            anim.SetTrigger("Hit");
 
             StartCoroutine(ResetInvis());
         }
@@ -1050,6 +1060,24 @@ public class ThirdPersonPlayerController : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         canChangeEmotion = true;
+    }
+
+    IEnumerator JumpTimer()
+    {
+        yield return new WaitForSeconds(.217f);
+
+        if (timesJumped != maxJumps)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, 0);
+            rb.AddForce(jump, ForceMode.Impulse);
+
+            timesJumped++;
+        }
+
+        if (timesJumped == maxJumps)
+        {
+            canJump = false;
+        }
     }
 
     private void OnDrawGizmosSelected()
