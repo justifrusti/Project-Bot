@@ -40,6 +40,6 @@ Material:
     - Scroll_Speed: 0.05
     m_Colors:
     - Hologram_Tiling: {r: 9.54, g: 3.26, b: 0, a: 0}
-    - Main_Color: {r: 0, g: 0.21772069, b: 0.4716981, a: 0}
-    - fresnel_color: {r: 1.1353015, g: 1.1353015, b: 1.1353015, a: 1}
+    - Main_Color: {r: 0, g: 0.19607843, b: 0.41568628, a: 0}
+    - fresnel_color: {r: 2.2706034, g: 2.2706034, b: 2.2706034, a: 1}
   m_BuildTextureStacks: []
