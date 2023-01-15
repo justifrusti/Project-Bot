@@ -149,11 +149,16 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     [Header("RenderObjects")]
     public GameObject speedLines;
+    public GameObject dummy;
+    public GameObject dummyParticles;
 
     //Private Check Variables
     private bool onPad;
     private bool canChangeEmotion = true;
     private bool hasDied = false;
+
+    private GameObject spawnedDummy;
+    private GameObject particlesSpawnedDummy;
 
     private Animator anim;
 
@@ -668,9 +673,9 @@ public class ThirdPersonPlayerController : MonoBehaviour
     {
         cmCam.m_BindingMode = CinemachineTransposer.BindingMode.SimpleFollowWithWorldUp;
 
-        Vector3 move = new Vector3();
-
         float v = Input.GetAxis("Vertical");
+
+        Vector3 move = new Vector3();
 
         if (Input.GetButtonDown("Sprint"))
         {
@@ -696,7 +701,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
                 transform.Translate(move * Time.deltaTime * speed, wheels);
 
-                if(canChangeEmotion)
+                if (canChangeEmotion)
                 {
                     manager.facialManager.ChangeEM(false, 0, FacialExpressionManager.CurrentExpression.Happy);
                 }
@@ -712,7 +717,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
                 transform.Translate(move * Time.deltaTime * speed, wheels);
 
-                if(canChangeEmotion)
+                if (canChangeEmotion)
                 {
                     manager.facialManager.ChangeEM(false, 0, FacialExpressionManager.CurrentExpression.Happy);
                 }
@@ -872,11 +877,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
         deaths++;
         manager.saveData.deaths = deaths;
 
-        rb.constraints = RigidbodyConstraints.None;
-        anim.enabled = false;
-        manager.facialManager.materialToChange.DisableKeyword("_EMISSION");
-
         hasDied = true;
+
+        particlesSpawnedDummy = Instantiate(dummyParticles, transform.position, Quaternion.identity);
+        spawnedDummy = Instantiate(dummy, transform.position, Quaternion.identity);
+        this.gameObject.SetActive(false);
     }
 
     public void HoldablePickUp()
@@ -1086,5 +1091,10 @@ public class ThirdPersonPlayerController : MonoBehaviour
         {
             Gizmos.DrawWireSphere(transform.position, shockRange);
         }
+    }
+
+    public void GameobjectDestroyer(GameObject objToDestroy)
+    {
+        Destroy(objToDestroy);
     }
 }

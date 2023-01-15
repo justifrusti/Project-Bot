@@ -14,7 +14,7 @@ public class LaserEmitter : MonoBehaviour
 
     private void Update()
     {
-        if(Physics.Raycast(transform.position, Vector3.right, out hit, laserDst))
+        if(Physics.Raycast(transform.position, transform.up, out hit, laserDst))
         {
             if(hit.collider.gameObject.CompareTag("Player"))
             {
