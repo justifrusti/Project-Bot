@@ -18,6 +18,9 @@ MonoBehaviour:
         now shall we!'
       timeBetweenSentences: 6
       spokenDialogue: {fileID: 8300000, guid: df1e7002c6c67b54aa46249ba359993c, type: 3}
+    - text: 'Scientist 2: It''ll probaply fail just like all the others.'
+      timeBetweenSentences: 4
+      spokenDialogue: {fileID: 8300000, guid: df1e7002c6c67b54aa46249ba359993c, type: 3}
     dutchConversation: []
     frenchConversation: []
     germanConversation: []

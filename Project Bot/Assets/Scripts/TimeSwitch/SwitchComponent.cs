@@ -49,7 +49,11 @@ public class SwitchComponent : MonoBehaviour
                 {
                     case ComponentType.Door:
                         switchObject.GetComponent<Collider>().isTrigger = true;
-                        Destroy(switchObject.GetComponent<MeshRenderer>());
+                        
+                        if(switchObject.GetComponent<MeshRenderer>() != null)
+                        {
+                            Destroy(switchObject.GetComponent<MeshRenderer>());
+                        }
                         break;
                 }
                 break;
@@ -58,8 +62,12 @@ public class SwitchComponent : MonoBehaviour
                 switch (type)
                 {
                     case ComponentType.Door:
-                        switchObject.AddComponent<MeshRenderer>();
-                        switchObject.GetComponent<MeshRenderer>().sharedMaterial = mat;
+                        if(switchObject.GetComponent<MeshRenderer>() == null)
+                        {
+                            switchObject.AddComponent<MeshRenderer>();
+                            switchObject.GetComponent<MeshRenderer>().sharedMaterial = mat;
+                        }
+
                         switchObject.GetComponent<Collider>().isTrigger = false;
                         break;
 
