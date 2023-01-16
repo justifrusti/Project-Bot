@@ -455,7 +455,7 @@ MonoBehaviour:
   maxDamageCharge: 10
   damageChargeSpeed: 2.5
   shockDmg: 5
-  shockRange: 10
+  shockRange: 20
   shockDelay: 10
   invisFramesTime: 1.2
   chargeShootSpeed: 5
@@ -476,6 +476,7 @@ MonoBehaviour:
   runTurnSensitivity: 600
   maxJumpCharge: 4
   jumpChargeSpeed: 2
+  shakeGainage: 3
   jump: {x: 0, y: 8, z: 0}
   jumpPadJump: {x: 0, y: 24, z: 0}
   originalJump: {x: 0, y: 8, z: 0}
@@ -504,6 +505,8 @@ MonoBehaviour:
   unlockedGreeKK: 0
   unlockedRedKK: 0
   speedLines: {fileID: 0}
+  dummy: {fileID: 0}
+  dummyParticles: {fileID: 0}
 --- !u!114 &4079619467450559470
 MonoBehaviour:
   m_ObjectHideFlags: 0

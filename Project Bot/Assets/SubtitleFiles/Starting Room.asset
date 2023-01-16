@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2122f391f38ea74ea2712c2bfd8170d, type: 3}
+  m_Name: Starting Room
+  m_EditorClassIdentifier: 
+  conversation:
+    englishConversation:
+    - text: 'Scientitst 1: So let''s see how this version of UP-D8 is going to peform
+        now shall we!'
+      timeBetweenSentences: 6
+      spokenDialogue: {fileID: 8300000, guid: df1e7002c6c67b54aa46249ba359993c, type: 3}
+    dutchConversation: []
+    frenchConversation: []
+    germanConversation: []

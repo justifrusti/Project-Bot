@@ -1,7 +1,6 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -237,6 +236,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
             {
                 isMoving = false;
                 movementMode = MovementMode.Idle;
+
+                rb.velocity = Vector3.zero;
             }
 
             if (Input.GetKeyDown(KeyCode.LeftControl))
@@ -675,9 +676,9 @@ public class ThirdPersonPlayerController : MonoBehaviour
     {
         cmCam.m_BindingMode = CinemachineTransposer.BindingMode.SimpleFollowWithWorldUp;
 
-        float v = Input.GetAxis("Vertical");
+        /*Vector3 move = new Vector3();*/
 
-        Vector3 move = new Vector3();
+        float v = Input.GetAxis("Vertical");
 
         if (Input.GetButtonDown("Sprint"))
         {
@@ -699,9 +700,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 speed = walkingSpeed;
                 turnSensitivity = normalTurnSensitivity;
 
-                move.z = v;
-
-                transform.Translate(move * Time.deltaTime * speed, wheels);
+                Move(v);
 
                 if (canChangeEmotion)
                 {
@@ -715,9 +714,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 speed = runSpeed;
                 turnSensitivity = runTurnSensitivity;
 
-                move.z = v;
-
-                transform.Translate(move * Time.deltaTime * speed, wheels);
+                Move(v);
 
                 if (canChangeEmotion)
                 {
@@ -740,9 +737,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 speed = speedPadSpeed;
                 turnSensitivity = runTurnSensitivity;
 
-                move.z = v;
-
-                transform.Translate(move * Time.deltaTime * speed, wheels);
+                Move(v);
 
                 if(canChangeEmotion)
                 {
@@ -750,6 +745,14 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    public void Move(float vertical)
+    {
+        Vector3 velocity = (transform.forward * vertical) * (speed * 100) * Time.fixedDeltaTime;
+
+        velocity.y = rb.velocity.y;
+        rb.velocity = velocity;
     }
 
     //Turning the character's body left and right

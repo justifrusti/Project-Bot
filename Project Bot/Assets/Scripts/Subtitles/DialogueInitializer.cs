@@ -22,6 +22,16 @@ public class DialogueInitializer : MonoBehaviour
         {
             InitializeSubs();
             initializeSubs = false;
+
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            initializeSubs = true;
         }
     }
 }
