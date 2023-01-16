@@ -107,6 +107,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
     public float maxJumpCharge;
     public float jumpChargeSpeed;
     [Space]
+    [Range(.01f, 6.00f)]public float shakeGainage;
+    [Space]
     public Vector3 jump;
     [Space]
     public Vector3 jumpPadJump;
@@ -835,6 +837,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
     {
         if(!invisFramesActive)
         {
+            InitilizeShake();
+
             CheckHealth(damage);
 
             anim.SetTrigger("Hit");
@@ -1096,5 +1100,12 @@ public class ThirdPersonPlayerController : MonoBehaviour
     public void GameobjectDestroyer(GameObject objToDestroy)
     {
         Destroy(objToDestroy);
+    }
+
+    public void InitilizeShake()
+    {
+        CameraShaker.RegisterCam(cmCam);
+        CameraShaker.InitializeRig();
+        CameraShaker.InitializeShake(5, (invisFramesTime / 3), shakeGainage);
     }
 }
