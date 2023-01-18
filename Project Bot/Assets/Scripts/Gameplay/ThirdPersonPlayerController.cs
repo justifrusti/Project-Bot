@@ -153,6 +153,9 @@ public class ThirdPersonPlayerController : MonoBehaviour
     public GameObject dummy;
     public GameObject dummyParticles;
 
+    [Header("Sounds")]
+    public AudioSource jumpSound;
+
     //Private Check Variables
     private bool onPad;
     private bool canChangeEmotion = true;
@@ -186,10 +189,17 @@ public class ThirdPersonPlayerController : MonoBehaviour
             if (isMoving)
             {
                 MoveCharacter();
+                
+                if(!FindObjectOfType<AudioManagerScript>().sounds[7].source.isPlaying)
+                {
+                    FindObjectOfType<AudioManagerScript>().Play("RobotMove");
+                }
+
                 UPD8AnimController.playingIdle = false;
             }
             else
             {
+                FindObjectOfType<AudioManagerScript>().StopPlaying("RobotMove");
                 speedLines.SetActive(false);
                 wheelMaterial.SetFloat("ScrollSpeed", 0);
                 UPD8AnimController.playingIdle = true;
@@ -804,6 +814,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
     {
         if (timesJumped != maxJumps)
         {
+            jumpSound.Play();
+            jumpSound.pitch = Random.Range(0.8f, 1.2f);
             rb.velocity = new Vector3(rb.velocity.x, 0);
             rb.AddForce(jump, ForceMode.Impulse);
 
@@ -853,6 +865,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
     {
         if(!invisFramesActive)
         {
+
             InitilizeShake();
 
             CheckHealth(damage);
@@ -870,6 +883,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
             Die();
         }else
         {
+            FindObjectOfType<AudioManagerScript>().Play("RobotHurt");
+
             canChangeEmotion = false;
             StartCoroutine(ResetBool(1.2f));
 
@@ -1042,6 +1057,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
                 //Fix this shit
 
+                FindObjectOfType<AudioManagerScript>().Play("SparkUse");
                 manager.facialManager.ChangeEM(true, .5f, FacialExpressionManager.CurrentExpression.Wink);
                 canChangeEmotion = false;
 
