@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter))]
@@ -17,6 +16,8 @@ public class Cone : MonoBehaviour
     public bool renderMesh;
     public bool generateCollider;
     public bool usedForCollision;
+
+    public List<GameObject> sparkObjs;
 
     void Update()
     {
@@ -106,9 +107,24 @@ public class Cone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        print("E");
+
         if(usedForCollision)
         {
             colidedObj = other.gameObject;
+        }
+
+        /*if(other.gameObject.CompareTag("FuseBox") || other.gameObject.CompareTag("Enemy"))
+        {
+            if(!sparkObjs.Contains(other.gameObject))
+            {
+                sparkObjs.Add(other.gameObject);
+            }
+        }*/
+
+        if (!sparkObjs.Contains(other.gameObject))
+        {
+            sparkObjs.Add(other.gameObject);
         }
     }
 

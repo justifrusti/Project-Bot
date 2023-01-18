@@ -802,7 +802,20 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     public void Jump()
     {
-        StartCoroutine(JumpTimer());
+        if (timesJumped != maxJumps)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, 0);
+            rb.AddForce(jump, ForceMode.Impulse);
+
+            timesJumped++;
+        }
+
+        if (timesJumped == maxJumps)
+        {
+            canJump = false;
+        }
+
+        //StartCoroutine(JumpTimer());
     }
 
     public void ChargedJump()
@@ -1008,8 +1021,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
         switch (currentAttack)
         {
             case Attacks.Spark:
-                //Charge Shot
-                GameObject currentBullet = Instantiate(bullet, rightHand.position, Quaternion.identity);
+                /*GameObject currentBullet = Instantiate(bullet, rightHand.position, Quaternion.identity);
 
                 if (aimAssistCone.GetComponent<Cone>().colidedObj != null)
                 {
@@ -1026,7 +1038,9 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 }
 
                 
-                currentBullet.GetComponent<PlayerBullet>().AssignPlayer(this);
+                currentBullet.GetComponent<PlayerBullet>().AssignPlayer(this);*/
+
+                //Fix this shit
 
                 manager.facialManager.ChangeEM(true, .5f, FacialExpressionManager.CurrentExpression.Wink);
                 canChangeEmotion = false;
@@ -1109,6 +1123,13 @@ public class ThirdPersonPlayerController : MonoBehaviour
     {
         CameraShaker.RegisterCam(cmCam);
         CameraShaker.InitializeRig();
-        CameraShaker.InitializeShake(5, (invisFramesTime / 3), shakeGainage);
+        
+        if(hearts > 1)
+        {
+            CameraShaker.InitializeShake(5, (invisFramesTime / 3), shakeGainage);
+        }else
+        {
+            CameraShaker.InitializeShake(5, (invisFramesTime / 3), shakeGainage * 10);
+        }
     }
 }

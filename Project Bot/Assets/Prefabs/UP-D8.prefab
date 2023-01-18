@@ -164,14 +164,14 @@ GameObject:
   - component: {fileID: 1850420711640850749}
   - component: {fileID: 3850656850849121307}
   - component: {fileID: 6174823746504843075}
-  - component: {fileID: 5390066206122950639}
+  - component: {fileID: 8689125136737615906}
   m_Layer: 14
-  m_Name: AimAssistCone
+  m_Name: SparkRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1850420711640850749
 Transform:
   m_ObjectHideFlags: 0
@@ -179,8 +179,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859586323762989285}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0.89, z: 0}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 1, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3735288281803845976}
@@ -208,13 +208,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colidedObj: {fileID: 0}
   subdivisions: 8
-  radius: 0.5
-  height: 8
+  radius: 1
+  height: 4
   regenerateMesh: 0
   renderMesh: 0
   generateCollider: 1
   usedForCollision: 1
---- !u!64 &5390066206122950639
+  sparkObjs: []
+--- !u!64 &8689125136737615906
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
