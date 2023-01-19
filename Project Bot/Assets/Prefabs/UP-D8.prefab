@@ -478,9 +478,9 @@ MonoBehaviour:
   maxJumpCharge: 4
   jumpChargeSpeed: 2
   shakeGainage: 3
-  jump: {x: 0, y: 8, z: 0}
-  jumpPadJump: {x: 0, y: 24, z: 0}
-  originalJump: {x: 0, y: 8, z: 0}
+  jump: {x: 0, y: 12, z: 0}
+  jumpPadJump: {x: 0, y: 30, z: 0}
+  originalJump: {x: 0, y: 12, z: 0}
   originalWalkSpeed: 4
   originalRunSpeed: 9
   speed: 0
@@ -508,6 +508,7 @@ MonoBehaviour:
   speedLines: {fileID: 0}
   dummy: {fileID: 0}
   dummyParticles: {fileID: 0}
+  jumpSound: {fileID: 0}
 --- !u!114 &4079619467450559470
 MonoBehaviour:
   m_ObjectHideFlags: 0

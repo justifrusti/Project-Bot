@@ -32,12 +32,12 @@ public class SwitchComponent : MonoBehaviour
     private int index;
     private bool movingBack = false;
     private bool canMove = true;
-    private Material mat;
+    private MeshRenderer renderer;
 
     private void Start()
     {
         platformMoveSpeed = originalPlatformMoveSpeed;
-        mat = switchObject.GetComponent<MeshRenderer>().sharedMaterial;
+        renderer = switchObject.GetComponent<MeshRenderer>();
     }
 
     private void Update()
@@ -52,7 +52,7 @@ public class SwitchComponent : MonoBehaviour
                         
                         if(switchObject.GetComponent<MeshRenderer>() != null)
                         {
-                            Destroy(switchObject.GetComponent<MeshRenderer>());
+                            renderer.enabled = false;
                         }
                         break;
                 }
@@ -62,11 +62,7 @@ public class SwitchComponent : MonoBehaviour
                 switch (type)
                 {
                     case ComponentType.Door:
-                        if(switchObject.GetComponent<MeshRenderer>() == null)
-                        {
-                            switchObject.AddComponent<MeshRenderer>();
-                            switchObject.GetComponent<MeshRenderer>().sharedMaterial = mat;
-                        }
+                        renderer.enabled = true;
 
                         switchObject.GetComponent<Collider>().isTrigger = false;
                         break;

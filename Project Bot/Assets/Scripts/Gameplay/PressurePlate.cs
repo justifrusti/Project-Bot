@@ -20,6 +20,7 @@ public class PressurePlate : MonoBehaviour
     public bool playCinematic;
     [Space]
     public SwitchComponent component;
+    public SwitchComponent secondComponent = null;
     public SwitchManager componentManager;
 
     [HideInInspector] public bool onPressureplate;
@@ -117,15 +118,9 @@ public class PressurePlate : MonoBehaviour
         
         if(component != null)
         {
-            if (component.currentAction == SwitchComponent.Action.Disable)
-            {
-                component.currentAction = SwitchComponent.Action.Enable;
-            }
-            else if (component.currentAction == SwitchComponent.Action.Enable)
-            {
-                component.currentAction = SwitchComponent.Action.Disable;
-            }
-        }else if(componentManager != null)
+            SwitchComponentState();
+        }
+        else if(componentManager != null)
         {
             componentManager.switchActive = true;   
         }
@@ -145,19 +140,47 @@ public class PressurePlate : MonoBehaviour
             if (switchCamOnDeactivate)
             {
                 yield return new WaitForSeconds(1.5f);
-                component.currentAction = SwitchComponent.Action.Enable;
+
+                SwitchComponentState();
+
                 yield return new WaitForSeconds(1.5f);
 
                 CameraSwitcher.SwitchPlayerCamera(CameraSwitcher.playerCam);
             }else
             {
-                component.currentAction = SwitchComponent.Action.Enable;
+                SwitchComponentState();
             }
 
             CameraSwitcher.Unregister(cinematicCam);
         }else
         {
+            SwitchComponentState();
+
+            CameraSwitcher.Unregister(cinematicCam);
+        }
+    }
+
+    public void SwitchComponentState()
+    {
+        if (component.currentAction == SwitchComponent.Action.Disable)
+        {
             component.currentAction = SwitchComponent.Action.Enable;
+        }
+        else if (component.currentAction == SwitchComponent.Action.Enable)
+        {
+            component.currentAction = SwitchComponent.Action.Disable;
+        }
+
+        if (secondComponent != null)
+        {
+            if (secondComponent.currentAction == SwitchComponent.Action.Disable)
+            {
+                secondComponent.currentAction = SwitchComponent.Action.Enable;
+            }
+            else if (secondComponent.currentAction == SwitchComponent.Action.Enable)
+            {
+                secondComponent.currentAction = SwitchComponent.Action.Disable;
+            }
         }
     }
 }
