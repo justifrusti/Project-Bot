@@ -47,7 +47,7 @@ Material:
     - _RippleDissolve: 4
     - _RippleSize: 50
     - _RippleSpeed: 2
-    - _Smoothness: 1.06
+    - _Smoothness: 0.18
     m_Colors:
     - _BaseColor: {r: 0, g: 0.9056604, b: 0.056217268, a: 1}
     - _FoamColor: {r: 0.7490196, g: 0.7490196, b: 0.7490196, a: 1}

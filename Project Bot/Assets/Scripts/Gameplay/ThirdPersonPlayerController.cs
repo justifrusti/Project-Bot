@@ -159,10 +159,10 @@ public class ThirdPersonPlayerController : MonoBehaviour
     //Private Check Variables
     private bool onPad;
     private bool canChangeEmotion = true;
-    private bool hasDied = false;
+    [HideInInspector] public bool hasDied = false;
 
-    private GameObject spawnedDummy;
-    private GameObject particlesSpawnedDummy;
+    [HideInInspector] public GameObject spawnedDummy;
+    [HideInInspector] public GameObject particlesSpawnedDummy;
 
     private Animator anim;
 

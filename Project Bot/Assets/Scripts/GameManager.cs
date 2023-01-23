@@ -99,6 +99,18 @@ public class GameManager : MonoBehaviour
                 LoadGame();
                 LoadPlayerData();
             }
+
+            if (Input.GetButtonDown("Respawn") && playerController.hearts <= 0 && playerController.hasDied)
+            {
+                Destroy(playerController.spawnedDummy);
+                Destroy(playerController.particlesSpawnedDummy);
+
+                playerController.gameObject.SetActive(true);
+
+                playerController.hasDied = false;
+
+                playerController.hearts = playerController.maxHearts;
+            }
         }
     }
 
