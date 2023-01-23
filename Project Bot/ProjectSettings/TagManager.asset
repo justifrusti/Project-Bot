@@ -28,6 +28,7 @@ TagManager:
   - TurretMAR
   - ShieldMAR
   - TimeSwitch
+  - HoloPlant
   layers:
   - Default
   - TransparentFX
