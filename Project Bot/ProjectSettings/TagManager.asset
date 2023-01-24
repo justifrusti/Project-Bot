@@ -46,7 +46,7 @@ TagManager:
   - ButtonActivator
   - AssistCone
   - HumanoidCollision
-  - 
+  - NonCollidePickup
   - 
   - 
   - 
