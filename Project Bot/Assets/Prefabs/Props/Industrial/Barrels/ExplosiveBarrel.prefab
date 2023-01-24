@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1624848554438062588}
   - component: {fileID: 3560210332175992118}
   - component: {fileID: 8392885035781576329}
-  m_Layer: 0
+  - component: {fileID: 1770076354869534165}
+  m_Layer: 16
   m_Name: ExplosiveBarrel
-  m_TagString: Untagged
+  m_TagString: PickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,3 +97,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9397456, y: 0.9397458, z: 1.5708158}
   m_Center: {x: 1.5253922e-14, y: -0.00000002980233, z: 0.7854079}
+--- !u!114 &1770076354869534165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3055855208466293987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074ac862f47fe7841890b91ebc3ef2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  particles: {fileID: 4453114916730353044, guid: feaa26ec134094c4aaf3cf2ce1955f74, type: 3}
+  playerController: {fileID: 0}
+  expOnImpact: 0
