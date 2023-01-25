@@ -3,20 +3,26 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.ParticleSystem;
 
 public class EnemyAI : MonoBehaviour
 {
     public enum AIType
     {
         Roomba,
-        Turret
+        Turret,
+        RoombaGun
+    }
+
+    public enum RoombaType
+    {
+        Default,
+        Gun,
+        SuicideRoomba
     }
 
     public AIType type;
-
-    public Rigidbody rb;
-    public int dmgKnockback;
-    [Space]
+    public RoombaType roombaType;
     [HideInInspector]public NavMeshAgent agent;
     [Header("Nav Mesh")]
     public Transform target;
@@ -45,6 +51,11 @@ public class EnemyAI : MonoBehaviour
 
     [HideInInspector] public bool canShoot;
 
+    [Header("Visuals")]
+    public GameObject exParticles;
+
+    private GameObject spawnedParticles;
+
     [Header("Debug")]
     public bool showGizmos;
 
@@ -57,6 +68,12 @@ public class EnemyAI : MonoBehaviour
                 break;
 
             case AIType.Turret:
+                canShoot = true;
+                break;
+
+            case AIType.RoombaGun:
+                agent = GetComponent<NavMeshAgent>();
+
                 canShoot = true;
                 break;
         }
@@ -86,6 +103,23 @@ public class EnemyAI : MonoBehaviour
             case AIType.Turret:
                 PlayerInRange();
                 break;
+
+            case AIType.RoombaGun:
+                if (!followPlayer)
+                {
+                    var targetV3 = new Vector3(target.position.x, target.position.y, target.position.z);
+
+                    agent.SetDestination(targetV3);
+                }
+                else if (followPlayer)
+                {
+                    agent.SetDestination(player.position);
+                }
+
+                CheckFollow();
+
+                PlayerInRange();
+                break;
         }
     }
 
@@ -110,7 +144,10 @@ public class EnemyAI : MonoBehaviour
 
         if(dstToPlayer <= range)
         {
-            barrelRotPoint.LookAt(player);
+            if (type != AIType.RoombaGun)
+            {
+                barrelRotPoint.LookAt(player);
+            }
 
             if(canShoot)
             {
@@ -121,22 +158,38 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    public void KnockBack()
+    /*public void KnockBack()
     {
         Vector3 dir = (transform.position - (transform.forward * -1)).normalized;
         rb.AddForce(dir * dmgKnockback, ForceMode.Impulse);
-    }
+    }*/
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<ThirdPersonPlayerController>().TakeDamage(damage);
-
             if (type == AIType.Roomba)
             {
                 //KnockBack();
+                if(roombaType == RoombaType.SuicideRoomba)
+                {
+                    Collider[] colliders = Physics.OverlapSphere(transform.position, range);
+
+                    foreach (Collider collider in colliders)
+                    {
+                        if (collider.gameObject.GetComponent<Rigidbody>() != null)
+                        {
+                            collider.gameObject.GetComponent<Rigidbody>().AddExplosionForce(150f, transform.position, range);
+
+                            spawnedParticles = Instantiate(exParticles, transform.position, Quaternion.identity);
+
+                            Destroy(gameObject);
+                        }
+                    }
+                }
             }
+
+            collision.gameObject.GetComponent<ThirdPersonPlayerController>().TakeDamage(damage);
         }
     }
 
@@ -186,6 +239,8 @@ public class EnemyAI : MonoBehaviour
 
     public void Die()
     {
+        spawnedParticles = Instantiate(exParticles, transform.position, Quaternion.identity);
+
         Destroy(gameObject);
     }
 }

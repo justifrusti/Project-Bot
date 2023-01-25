@@ -420,6 +420,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
             {
                 Vector3 force = new Vector3(0, -12, 0);
                 rb.AddForce(force, ForceMode.Impulse);
+
+                currentAttack = Attacks.ShockWave;
             }
 
             //Debug
@@ -468,11 +470,10 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 StartCoroutine(ResetBool(.5f));
             }
 
-            if(!canJump && currentAttack == Attacks.ShockWave)
+            if(currentAttack == Attacks.ShockWave)
             {
                 Attack();
             }
-
         }
 
         if(collision.gameObject.CompareTag("Floor") && movementMode == MovementMode.SpeedPad)
@@ -843,17 +844,17 @@ public class ThirdPersonPlayerController : MonoBehaviour
         }
     }
 
-    public void DoDamage(float damage, Collision collision)
+    public void DoDamage(float damage, GameObject collision)
     {
-        if (collision.gameObject.GetComponent<EnemyAI>() != null)
+        if (collision.GetComponent<EnemyAI>() != null)
         {
-            collision.gameObject.GetComponent<EnemyAI>().CheckHealth(damage);
+            collision.GetComponent<EnemyAI>().CheckHealth(damage);
         }
-        else if (collision.gameObject.transform.parent != null)
+        else if (collision.transform.parent != null)
         {
-            if(collision.gameObject.transform.parent.gameObject.GetComponent<EnemyAI>() != null)
+            if(collision.transform.parent.gameObject.GetComponent<EnemyAI>() != null)
             {
-                collision.gameObject.transform.parent.gameObject.GetComponent<EnemyAI>().CheckHealth(damage);
+                collision.transform.parent.gameObject.GetComponent<EnemyAI>().CheckHealth(damage);
             }
         }else
         {
@@ -865,7 +866,6 @@ public class ThirdPersonPlayerController : MonoBehaviour
     {
         if(!invisFramesActive)
         {
-
             InitilizeShake();
 
             CheckHealth(damage);
@@ -1036,24 +1036,12 @@ public class ThirdPersonPlayerController : MonoBehaviour
         switch (currentAttack)
         {
             case Attacks.Spark:
-                /*GameObject currentBullet = Instantiate(bullet, rightHand.position, Quaternion.identity);
-
-                if (aimAssistCone.GetComponent<Cone>().colidedObj != null)
-                {
-                    GameObject collidedObject = aimAssistCone.GetComponent<Cone>().colidedObj;
-
-                    print(collidedObject);
-
-                    rightHand.LookAt(collidedObject.transform.position);
-                    currentBullet.GetComponent<Rigidbody>().AddForce(rightHand.forward * chargeShootSpeed, ForceMode.Impulse);
-                }
-                else
-                {
-                    currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * chargeShootSpeed, ForceMode.Impulse);
-                }
+                GameObject currentBullet = Instantiate(bullet, rightHand.position, Quaternion.identity);
 
                 
-                currentBullet.GetComponent<PlayerBullet>().AssignPlayer(this);*/
+                currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * chargeShootSpeed, ForceMode.Impulse);
+
+                currentBullet.GetComponent<PlayerBullet>().AssignPlayer(this);
 
                 //Fix this shit
 
@@ -1081,6 +1069,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
                 canShock = false;
                 timeTillNextShock = shockDelay;
+
+                currentAttack = Attacks.Spark;
                 break;
         }
     }
@@ -1145,7 +1135,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
             CameraShaker.InitializeShake(5, (invisFramesTime / 3), shakeGainage);
         }else
         {
-            CameraShaker.InitializeShake(5, (invisFramesTime / 3), shakeGainage * 10);
+            CameraShaker.InitializeShake(5, (invisFramesTime / 3), shakeGainage * 20);
         }
     }
 }

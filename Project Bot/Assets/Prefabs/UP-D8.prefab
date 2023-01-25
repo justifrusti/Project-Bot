@@ -459,7 +459,7 @@ MonoBehaviour:
   shockRange: 20
   shockDelay: 10
   invisFramesTime: 1.2
-  chargeShootSpeed: 5
+  chargeShootSpeed: 15
   bullet: {fileID: 1130220312172269330, guid: 6a24b8ee2d3c2304ca201ca22b3643a7, type: 3}
   aimAssistCone: {fileID: 1859586323762989285}
   invisFramesActive: 0
@@ -509,6 +509,9 @@ MonoBehaviour:
   dummy: {fileID: 0}
   dummyParticles: {fileID: 0}
   jumpSound: {fileID: 0}
+  hasDied: 0
+  spawnedDummy: {fileID: 0}
+  particlesSpawnedDummy: {fileID: 0}
 --- !u!114 &4079619467450559470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -568,9 +571,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   controller: {fileID: 0}
-  fallingThreshold: -0.1
+  fallingThreshold: -0.5
   minSpecialIdleTime: 5
-  maxSpecialIdleTime: 5
+  maxSpecialIdleTime: 10
 --- !u!1 &4082477081478371757
 GameObject:
   m_ObjectHideFlags: 0

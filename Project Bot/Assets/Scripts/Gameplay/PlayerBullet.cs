@@ -14,13 +14,11 @@ public class PlayerBullet : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        rb.velocity = Vector3.zero;
+        playerController.DoDamage(playerController.damage, collision.gameObject);
 
-        playerController.DoDamage(playerController.damage, collision);
-
-        if(collision.gameObject.CompareTag("FuseBox"))
+        if (collision.gameObject.CompareTag("FuseBox"))
         {
             FuseExploder exploder = collision.gameObject.GetComponent<FuseExploder>();
 
@@ -34,6 +32,8 @@ public class PlayerBullet : MonoBehaviour
             collision.gameObject.GetComponent<SwitchComponent>().currentAction = SwitchComponent.Action.Disable;
         }
 
-        Destroy(this.gameObject);
+        print(collision.gameObject.name);
+
+        /*Destroy(this.gameObject);*/
     }
 }
