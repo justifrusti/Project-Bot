@@ -19,7 +19,7 @@ public class SwitchManager : MonoBehaviour
     public float maxTime;
     public float timeLeft;
 
-    public bool playCinematic;
+    public bool playCinematic, playCinematicOnDeactive;
 
     private void Update()
     {
@@ -28,6 +28,11 @@ public class SwitchManager : MonoBehaviour
             timeLeft = maxTime;
 
             InitializeComponents();
+
+            if(playCinematic)
+            {
+                CinematicCutscene();
+            }
 
             timer.SetActive(true);
 
@@ -49,6 +54,11 @@ public class SwitchManager : MonoBehaviour
             initializedComponents = false;
 
             InitializeComponents();
+
+            if(playCinematicOnDeactive)
+            {
+                CinematicCutscene();
+            }
 
             timer.SetActive(false);
 
@@ -80,11 +90,6 @@ public class SwitchManager : MonoBehaviour
                     components[i].currentAction = SwitchComponent.Action.Enable;
                 }
             }
-        }
-
-        if(playCinematic)
-        {
-            CinematicCutscene();
         }
     }
 
