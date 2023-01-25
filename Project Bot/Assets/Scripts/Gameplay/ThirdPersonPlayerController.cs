@@ -362,6 +362,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
             if (Input.GetButtonDown("Respawn"))
             {
                 transform.position = currentActiveCheckpoint;
+
+                manager.facialManager.ChangeEM(false, 0, FacialExpressionManager.CurrentExpression.Default);
             }
 
             //Skills
