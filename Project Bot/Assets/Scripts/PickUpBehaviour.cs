@@ -41,7 +41,7 @@ public class PickUpBehaviour : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if(expOnImpact)
+        if(expOnImpact && !collision.gameObject.CompareTag("Player"))
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, 15f);
 
