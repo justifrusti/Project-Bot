@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class PlayerUIManager : MonoBehaviour
 {
@@ -18,6 +19,13 @@ public class PlayerUIManager : MonoBehaviour
     public Image yellowIndicator;
     public Image greenIndicator;
     public Image redIndicator;
+    [Space]
+    public Slider dmgCharger;
+
+    private void Start()
+    {
+        dmgCharger.maxValue = playerController.maxDamageCharge;
+    }
 
     void Update()
     {
@@ -44,6 +52,18 @@ public class PlayerUIManager : MonoBehaviour
                 {
                     availableHearts[i].enabled = false;
                 }
+            }
+
+            if (Input.GetButton("LMB") && playerController.unlockedShock)
+            {
+                dmgCharger.gameObject.SetActive(true);
+
+                dmgCharger.value = playerController.damage;
+            }else
+            {
+                dmgCharger.gameObject.SetActive(false);
+
+                dmgCharger.value = 0;
             }
         }
     }

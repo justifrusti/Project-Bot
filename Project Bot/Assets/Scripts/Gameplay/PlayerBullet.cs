@@ -32,8 +32,6 @@ public class PlayerBullet : MonoBehaviour
             collision.gameObject.GetComponent<SwitchComponent>().currentAction = SwitchComponent.Action.Disable;
         }
 
-        print(collision.gameObject.name);
-
         /*Destroy(this.gameObject);*/
     }
 }

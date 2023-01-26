@@ -107,6 +107,8 @@ public class GameManager : MonoBehaviour
 
                 playerController.gameObject.SetActive(true);
 
+                playerController.gameObject.transform.position = playerController.currentActiveCheckpoint;
+
                 playerController.hasDied = false;
 
                 playerController.hearts = playerController.maxHearts;

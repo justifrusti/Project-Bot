@@ -156,6 +156,10 @@ public class ThirdPersonPlayerController : MonoBehaviour
     [Header("Sounds")]
     public AudioSource jumpSound;
 
+    [Header("Abilities")]
+    public bool unlockedShock;
+    public bool unlockedHacking;
+
     //Private Check Variables
     private bool onPad;
     private bool canChangeEmotion = true;
@@ -313,7 +317,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
             {
                 if (hit.collider.tag == "Overload")
                 {
-                    if (Input.GetButtonDown("Interact"))
+                    if (Input.GetButtonDown("Interact") && unlockedHacking)
                     {
                         hit.collider.GetComponent<OverloadInitialize>().LaunchMinigame();
                     }
@@ -399,31 +403,34 @@ public class ThirdPersonPlayerController : MonoBehaviour
             }
 
             //Attacks
-            if (timeTillNextShock > -.01f)
+            if(unlockedShock)
             {
-                timeTillNextShock -= 1 * Time.deltaTime;
-            }
+                if (timeTillNextShock > -.01f)
+                {
+                    timeTillNextShock -= 1 * Time.deltaTime;
+                }
 
-            if (timeTillNextShock <= 0)
-            {
-                canShock = true;
-            }
+                if (timeTillNextShock <= 0)
+                {
+                    canShock = true;
+                }
 
-            if (Input.GetButton("LMB") && currentAttack == Attacks.Spark)
-            {
-                ChargeSpark();
-            }
-            else if (Input.GetButtonUp("LMB") && currentAttack == Attacks.Spark)
-            {
-                Attack();
-            }
+                if (Input.GetButton("LMB") && currentAttack == Attacks.Spark)
+                {
+                    ChargeSpark();
+                }
+                else if (Input.GetButtonUp("LMB") && currentAttack == Attacks.Spark)
+                {
+                    Attack();
+                }
 
-            if (Input.GetKeyDown(KeyCode.LeftControl) && !canJump)
-            {
-                Vector3 force = new Vector3(0, -12, 0);
-                rb.AddForce(force, ForceMode.Impulse);
+                if (Input.GetKeyDown(KeyCode.LeftControl) && !canJump)
+                {
+                    Vector3 force = new Vector3(0, -12, 0);
+                    rb.AddForce(force, ForceMode.Impulse);
 
-                currentAttack = Attacks.ShockWave;
+                    currentAttack = Attacks.ShockWave;
+                }
             }
 
             //Debug
@@ -1039,17 +1046,16 @@ public class ThirdPersonPlayerController : MonoBehaviour
         {
             case Attacks.Spark:
                 GameObject currentBullet = Instantiate(bullet, rightHand.position, Quaternion.identity);
-
                 
                 currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * chargeShootSpeed, ForceMode.Impulse);
 
                 currentBullet.GetComponent<PlayerBullet>().AssignPlayer(this);
 
-                //Fix this shit
-
                 FindObjectOfType<AudioManagerScript>().Play("SparkUse");
                 manager.facialManager.ChangeEM(true, .5f, FacialExpressionManager.CurrentExpression.Wink);
                 canChangeEmotion = false;
+
+                damage = 0;
 
                 StartCoroutine(ResetBool(.5f));
                 break;

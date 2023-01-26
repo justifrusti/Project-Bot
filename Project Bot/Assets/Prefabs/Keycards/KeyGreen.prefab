@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8673318282858443941}
   - component: {fileID: 2539076750470329771}
   - component: {fileID: 4146501469782839290}
+  - component: {fileID: 3831899094427986361}
   m_Layer: 0
   m_Name: KeyGreen
   m_TagString: KeyCard
@@ -110,3 +111,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: {x: 40, y: 0, z: 0}
+--- !u!114 &3831899094427986361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7159928969012319600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ccba2f0c5766b6409e1c1a61a4dddb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 1

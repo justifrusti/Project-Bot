@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4320320551971162992}
-  - component: {fileID: 3512539473386656182}
   - component: {fileID: 3512539473386656201}
   - component: {fileID: 3512539473386656200}
   - component: {fileID: 3512539473386656203}
+  - component: {fileID: 6272214783902480446}
   m_Layer: 0
   m_Name: Roomba_Explosive Variant
   m_TagString: Roomba
@@ -37,19 +37,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3512539473386656182
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3512539473386656202}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.4597039, y: 0.33702353, z: 1.5224253}
-  m_Center: {x: 0, y: 0.16851176, z: 0.012806416}
 --- !u!54 &3512539473386656201
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -102,8 +89,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   roombaType: 2
-  rb: {fileID: 3512539473386656201}
-  dmgKnockback: 1
   agent: {fileID: 0}
   target: {fileID: 9031508572017153699}
   player: {fileID: 0}
@@ -121,6 +106,20 @@ MonoBehaviour:
   canShoot: 0
   exParticles: {fileID: 4453114916730353044, guid: feaa26ec134094c4aaf3cf2ce1955f74, type: 3}
   showGizmos: 1
+--- !u!64 &6272214783902480446
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3512539473386656202}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3298800115395149385, guid: b8e7ae478320a1748b70ca5b35748050, type: 3}
 --- !u!1 &4690219951227407155
 GameObject:
   m_ObjectHideFlags: 0
