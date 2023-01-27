@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4715244996944706352}
   - component: {fileID: 4715244996944706353}
   - component: {fileID: 4715244996944706354}
-  - component: {fileID: 8659598323464748844}
+  - component: {fileID: 1824149312842123316}
   m_Layer: 0
   m_Name: Roomba_Default Variant
   m_TagString: Roomba
@@ -158,7 +158,7 @@ MonoBehaviour:
   canShoot: 0
   exParticles: {fileID: 4453114916730353044, guid: feaa26ec134094c4aaf3cf2ce1955f74, type: 3}
   showGizmos: 1
---- !u!64 &8659598323464748844
+--- !u!64 &1824149312842123316
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6419881857985461817}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.5}
+  m_LocalPosition: {x: -0, y: 0, z: 0.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5342459907769885065}

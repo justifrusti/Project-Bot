@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEngine.ParticleSystem;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -125,6 +124,8 @@ public class EnemyAI : MonoBehaviour
 
     public void CheckFollow()
     {
+        DetectEdge();
+
         float dstToPlayer = Vector3.Distance(player.position, transform.position);
 
         if(dstToPlayer <= range)
@@ -242,5 +243,22 @@ public class EnemyAI : MonoBehaviour
         spawnedParticles = Instantiate(exParticles, transform.position, Quaternion.identity);
 
         Destroy(gameObject);
+    }
+
+    public void DetectEdge()
+    {
+        NavMeshHit hit;
+        float distanceToEdge = 1;
+
+
+        if (NavMesh.FindClosestEdge(transform.position, out hit, NavMesh.AllAreas))
+        {
+            distanceToEdge = hit.distance;
+        }
+
+        if (distanceToEdge < 1f)
+        {
+            transform.Rotate(turnAngle * Time.deltaTime);
+        }
     }
 }

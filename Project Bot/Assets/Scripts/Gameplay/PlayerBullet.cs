@@ -16,8 +16,6 @@ public class PlayerBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        playerController.DoDamage(playerController.damage, collision.gameObject);
-
         if (collision.gameObject.CompareTag("FuseBox"))
         {
             FuseExploder exploder = collision.gameObject.GetComponent<FuseExploder>();
@@ -30,6 +28,11 @@ public class PlayerBullet : MonoBehaviour
             }
 
             collision.gameObject.GetComponent<SwitchComponent>().currentAction = SwitchComponent.Action.Disable;
+        }
+
+        if(collision.gameObject.CompareTag("Roomba") || collision.gameObject.CompareTag("Turret"))
+        {
+            playerController.DoDamage(playerController.damageToApply, collision.gameObject);
         }
 
         /*Destroy(this.gameObject);*/

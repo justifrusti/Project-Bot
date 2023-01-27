@@ -58,7 +58,7 @@ public class PlayerUIManager : MonoBehaviour
             {
                 dmgCharger.gameObject.SetActive(true);
 
-                dmgCharger.value = playerController.damage;
+                dmgCharger.value = playerController.damageToApply;
             }else
             {
                 dmgCharger.gameObject.SetActive(false);

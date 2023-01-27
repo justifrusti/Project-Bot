@@ -88,7 +88,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     [HideInInspector] public bool invisFramesActive;
     [HideInInspector] public int hearts;
-    [HideInInspector] public float damage;
+    [HideInInspector] public float damageToApply;
     [HideInInspector] public int deaths;
     [HideInInspector] public bool canShock;
     [HideInInspector] public float timeTillNextShock;
@@ -365,6 +365,18 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
             if (Input.GetButtonDown("Respawn"))
             {
+                if(hasPickup)
+                {
+                    hasPickup = false;
+
+                    pickUpItem.GetComponent<Collider>().isTrigger = false;
+
+                    pickUpItem.GetComponent<Rigidbody>().isKinematic = false;
+                    pickUpItem.transform.parent = null;
+
+                    pickUpItem.GetComponent<Rigidbody>().AddForce(transform.forward * dropForce);
+                }
+
                 transform.position = currentActiveCheckpoint;
 
                 manager.facialManager.ChangeEM(false, 0, FacialExpressionManager.CurrentExpression.Default);
@@ -413,6 +425,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 if (timeTillNextShock <= 0)
                 {
                     canShock = true;
+                }
+
+                if(Input.GetButtonDown("LMB") && currentAttack == Attacks.Spark)
+                {
+                    damageToApply = 0;
                 }
 
                 if (Input.GetButton("LMB") && currentAttack == Attacks.Spark)
@@ -556,6 +573,16 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 manager.facialManager.ChangeEM(true, 1.5f, FacialExpressionManager.CurrentExpression.Death3);
                 canChangeEmotion = false;
                 StartCoroutine(ResetBool(1.5f));
+            }
+        }
+
+        if(collision.gameObject.CompareTag("Battery"))
+        {
+            if(hearts < maxHearts)
+            {
+                hearts++;
+
+                Destroy(collision.gameObject);
             }
         }
     }
@@ -1047,15 +1074,12 @@ public class ThirdPersonPlayerController : MonoBehaviour
             case Attacks.Spark:
                 GameObject currentBullet = Instantiate(bullet, rightHand.position, Quaternion.identity);
                 
-                currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * chargeShootSpeed, ForceMode.Impulse);
-
                 currentBullet.GetComponent<PlayerBullet>().AssignPlayer(this);
+                currentBullet.GetComponent<Rigidbody>().AddForce(transform.forward * chargeShootSpeed, ForceMode.Impulse);
 
                 FindObjectOfType<AudioManagerScript>().Play("SparkUse");
                 manager.facialManager.ChangeEM(true, .5f, FacialExpressionManager.CurrentExpression.Wink);
                 canChangeEmotion = false;
-
-                damage = 0;
 
                 StartCoroutine(ResetBool(.5f));
                 break;
@@ -1085,13 +1109,13 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     public void ChargeSpark()
     {
-        if (damage < maxDamageCharge)
+        if (damageToApply < maxDamageCharge)
         {
-            damage += damageChargeSpeed * Time.deltaTime;
+            damageToApply += damageChargeSpeed * Time.deltaTime;
         }
-        else if (damage > maxDamageCharge)
+        else if (damageToApply > maxDamageCharge)
         {
-            damage = maxDamageCharge;
+            damageToApply = maxDamageCharge;
         }
     }
 

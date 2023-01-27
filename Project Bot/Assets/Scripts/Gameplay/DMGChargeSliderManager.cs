@@ -23,7 +23,7 @@ public class DMGChargeSliderManager : MonoBehaviour
         {
             sliderObj.SetActive(true);
 
-            slider.value = manager.playerController.damage;
+            slider.value = manager.playerController.damageToApply;
         }else
         {
             sliderObj.SetActive(false);

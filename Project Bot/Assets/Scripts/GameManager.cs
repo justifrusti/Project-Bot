@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
         saveData.deaths = playerController.deaths;
         saveData.invisFramesActive = playerController.invisFramesActive;
         saveData.hearts = playerController.hearts;
-        saveData.damage = playerController.damage;
+        saveData.damage = playerController.damageToApply;
         saveData.walkingSpeed = playerController.walkingSpeed;
         saveData.runSpeed = playerController.runSpeed;
         saveData.speedPadSpeed = playerController.speedPadSpeed;
@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
         playerController.deaths = saveData.deaths;
         playerController.invisFramesActive = saveData.invisFramesActive;
         playerController.hearts = saveData.hearts;
-        playerController.damage = saveData.damage;
+        playerController.damageToApply = saveData.damage;
         playerController.walkingSpeed = saveData.walkingSpeed;
         playerController.runSpeed = saveData.runSpeed;
         playerController.speedPadSpeed = saveData.speedPadSpeed;

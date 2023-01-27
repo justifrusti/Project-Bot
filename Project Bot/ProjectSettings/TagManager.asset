@@ -29,6 +29,7 @@ TagManager:
   - ShieldMAR
   - TimeSwitch
   - HoloPlant
+  - Battery
   layers:
   - Default
   - TransparentFX
