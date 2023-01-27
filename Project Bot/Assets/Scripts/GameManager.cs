@@ -6,6 +6,8 @@ using System.IO;
 [RequireComponent(typeof(SkillTreeReader))]
 public class GameManager : MonoBehaviour
 {
+    public bool reIn;
+
     public SaveData saveData;
     public ThirdPersonPlayerController playerController;
     public PlayerUIManager uiManager;
@@ -45,6 +47,8 @@ public class GameManager : MonoBehaviour
         }
 
         treeReader.Initialize();
+
+        music = GameObject.Find("Music Manager").GetComponent<AudioSource>();
 
         if (music != null)
         {
@@ -106,6 +110,11 @@ public class GameManager : MonoBehaviour
                 Destroy(playerController.particlesSpawnedDummy);
 
                 playerController.gameObject.SetActive(true);
+                CameraSwitcher.SwitchPlayerCamera(playerController.cmCam);
+
+                playerController.gameoverUI.SetActive(false);
+
+                facialManager.ChangeEM(false, 0f, FacialExpressionManager.CurrentExpression.Default);
 
                 playerController.gameObject.transform.position = playerController.currentActiveCheckpoint;
 
@@ -143,6 +152,19 @@ public class GameManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             facialManager.color = FacialExpressionManager.FacialColors.Pink;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(uiManager.minigameController.ovUI.activeInHierarchy)
+            {
+                uiManager.minigameController.ovUI.SetActive(false);
+            }
+        }
+
+        if(reIn)
+        {
+            ReInitialize();
         }
     }
 

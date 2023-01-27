@@ -174,6 +174,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     private Animator anim;
 
+    public GameObject gameoverUI;
+
     private void Awake()
     {
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -357,6 +359,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
             if (Input.GetButtonDown("Respawn"))
             {
+                gameoverUI.SetActive(false);
+
                 if(hasPickup)
                 {
                     hasPickup = false;
@@ -723,6 +727,11 @@ public class ThirdPersonPlayerController : MonoBehaviour
                 other.transform.parent.gameObject.GetComponent<BlastDoorAnimationController>().StartOpeningAnim();
             }
         }
+
+        if(other.gameObject.CompareTag("Dialogue"))
+        {
+            other.gameObject.GetComponent<DialogueInitializer>().initializeSubs = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -983,6 +992,9 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
         particlesSpawnedDummy = Instantiate(dummyParticles, transform.position, Quaternion.identity);
         spawnedDummy = Instantiate(dummy, transform.position, Quaternion.identity);
+
+        gameoverUI.SetActive(true);
+
         this.gameObject.SetActive(false);
     }
 

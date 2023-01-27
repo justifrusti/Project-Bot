@@ -32,6 +32,8 @@ public class DialogueInitializer : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             initializeSubs = true;
+
+            Destroy(this.gameObject);
         }
     }
 }

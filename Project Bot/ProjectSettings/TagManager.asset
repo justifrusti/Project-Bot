@@ -30,6 +30,7 @@ TagManager:
   - TimeSwitch
   - HoloPlant
   - Battery
+  - Dialogue
   layers:
   - Default
   - TransparentFX

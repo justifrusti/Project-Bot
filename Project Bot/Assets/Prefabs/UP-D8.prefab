@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d3acf86db6a66749b8dc18e95c4119e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 1
+  color: 3
   em: 0
   previousEM: 0
   materialToChange: {fileID: 2100000, guid: d714caf828ea7264ea3e47b87d2c0f02, type: 2}
@@ -464,7 +464,7 @@ MonoBehaviour:
   aimAssistCone: {fileID: 1859586323762989285}
   invisFramesActive: 0
   hearts: 0
-  damage: 0
+  damageToApply: 0
   deaths: 0
   canShock: 0
   timeTillNextShock: 10
@@ -508,10 +508,16 @@ MonoBehaviour:
   speedLines: {fileID: 0}
   dummy: {fileID: 0}
   dummyParticles: {fileID: 0}
+  wheelParticles: {fileID: 0}
+  jumpParticles: {fileID: 0}
   jumpSound: {fileID: 0}
+  unlockedShock: 0
+  unlockedHacking: 0
   hasDied: 0
   spawnedDummy: {fileID: 0}
   particlesSpawnedDummy: {fileID: 0}
+  currentInitialized: {fileID: 0}
+  gameoverUI: {fileID: 0}
 --- !u!114 &4079619467450559470
 MonoBehaviour:
   m_ObjectHideFlags: 0
