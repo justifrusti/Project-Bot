@@ -19,11 +19,13 @@ public class AbilityUnlocker : MonoBehaviour
             if(abilityType == Ability.Shock) 
             {
                 collision.gameObject.GetComponent<ThirdPersonPlayerController>().unlockedShock = true;
+                FindObjectOfType<AudioManagerScript>().Play("ItemGet");
 
                 Destroy(this.gameObject);
             }else if(abilityType == Ability.Hacking)
             {
                 collision.gameObject.GetComponent<ThirdPersonPlayerController>().unlockedHacking = true;
+                FindObjectOfType<AudioManagerScript>().Play("ItemGet");
 
                 Destroy(this.gameObject);
             }

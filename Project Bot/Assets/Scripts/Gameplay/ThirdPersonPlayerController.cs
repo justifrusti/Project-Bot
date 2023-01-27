@@ -543,7 +543,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
             }
 
             manager.uiManager.KeyCardIndicators();
-
+            FindObjectOfType<AudioManagerScript>().Play("ItemGet");
             Destroy(collision.gameObject);
         }
 
@@ -576,6 +576,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
             {
                 hearts++;
 
+                FindObjectOfType<AudioManagerScript>().Play("BatteryGet");
                 Destroy(collision.gameObject);
             }
         }
@@ -671,8 +672,9 @@ public class ThirdPersonPlayerController : MonoBehaviour
             Vector3 alteredRespawnPos = new Vector3(respawnPos.x, respawnPos.y + 1, respawnPos.z + 1);
 
             transform.position = alteredRespawnPos;
+            FindObjectOfType<AudioManagerScript>().Play("Teleport");
 
-            if(canChangeEmotion)
+            if (canChangeEmotion)
             {
                 manager.facialManager.ChangeEM(true, 3f, FacialExpressionManager.CurrentExpression.Smile);
                 canChangeEmotion = false;
