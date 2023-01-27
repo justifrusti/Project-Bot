@@ -8,6 +8,8 @@ public class OverloadInitialize : MonoBehaviour
 
     public OverloadingMinigame ovMinigame;
 
+    public GameObject objToDeactivate;
+
     public void LaunchMinigame()
     {
         minigame.ovMinigame = ovMinigame;

@@ -8,6 +8,7 @@ using UnityEngine.Playables;
 public class PlayerUIManager : MonoBehaviour
 {
     public ThirdPersonPlayerController playerController;
+    public MinigameController minigameController;
     [Space]
     public TMP_Text availableSkillPoints;
     [Space]

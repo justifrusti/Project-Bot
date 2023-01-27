@@ -35,6 +35,20 @@ public class PlayerBullet : MonoBehaviour
             playerController.DoDamage(playerController.damageToApply, collision.gameObject);
         }
 
+        if (collision.gameObject.CompareTag("Overload"))
+        {
+            if (playerController.unlockedHacking)
+            {
+                playerController.currentInitialized = collision.gameObject.GetComponent<OverloadInitialize>();
+                collision.gameObject.GetComponent<OverloadInitialize>().LaunchMinigame();
+            }
+        }
+
+        if (collision.gameObject.CompareTag("TimeSwitch"))
+        {
+            collision.gameObject.GetComponent<SwitchManager>().switchActive = true;
+        }
+
         /*Destroy(this.gameObject);*/
     }
 }

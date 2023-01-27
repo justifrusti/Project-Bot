@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class MinigameController : MonoBehaviour
 {
+    public GameManager manager;
+
     [System.Serializable]
     public struct GridRow
     {
@@ -64,6 +66,8 @@ public class MinigameController : MonoBehaviour
 
     public void InitializeOverload()
     {
+        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         for (int y = 0; y < ovMinigame.gridStartPos.GridSize.y; y++)
         {
             for (int x = 0; x < ovMinigame.gridStartPos.GridSize.x; x++)
@@ -486,6 +490,16 @@ public class MinigameController : MonoBehaviour
 
     public void FinishMinigame()
     {
+        if(manager.playerController.currentInitialized.objToDeactivate.activeInHierarchy == false)
+        {
+            manager.playerController.currentInitialized.objToDeactivate.SetActive(true);
+        }else
+        {
+            manager.playerController.currentInitialized.objToDeactivate.SetActive(false);
+        }
+
+        FindObjectOfType<AudioManagerScript>().Play("PuzzleSolved");
+
         ovUI.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;

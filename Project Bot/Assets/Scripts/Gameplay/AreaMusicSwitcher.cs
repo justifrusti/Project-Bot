@@ -12,10 +12,13 @@ public class AreaMusicSwitcher : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            source.clip = clipToPlay;
+            if (source.clip != clipToPlay)
+            {
+                source.clip = clipToPlay;
 
-            source.Play();
-            source.loop = true;
+                source.Play();
+                source.loop = true;
+            }
         }
     }
 }

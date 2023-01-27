@@ -153,6 +153,9 @@ public class ThirdPersonPlayerController : MonoBehaviour
     public GameObject dummy;
     public GameObject dummyParticles;
 
+    public GameObject wheelParticles;
+    public GameObject jumpParticles;
+
     [Header("Sounds")]
     public AudioSource jumpSound;
 
@@ -167,6 +170,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     [HideInInspector] public GameObject spawnedDummy;
     [HideInInspector] public GameObject particlesSpawnedDummy;
+    [HideInInspector] public OverloadInitialize currentInitialized;
 
     private Animator anim;
 
@@ -203,6 +207,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
             }
             else
             {
+                wheelParticles.GetComponent<ParticleSystem>().loop = false;
+
                 FindObjectOfType<AudioManagerScript>().StopPlaying("RobotMove");
                 speedLines.SetActive(false);
                 wheelMaterial.SetFloat("ScrollSpeed", 0);
@@ -309,31 +315,17 @@ public class ThirdPersonPlayerController : MonoBehaviour
                         }
 
                         jumpCharge = 0;
+
+                        jumpParticles.GetComponent<ParticleSystem>().Stop();
                     }
                     break;
             }
 
             if (Physics.Raycast(rayCastPoint.position, rayCastPoint.forward, out hit, 2f))
             {
-                if (hit.collider.tag == "Overload")
-                {
-                    if (Input.GetButtonDown("Interact") && unlockedHacking)
-                    {
-                        hit.collider.GetComponent<OverloadInitialize>().LaunchMinigame();
-                    }
-                }
-
                 if (hit.collider.gameObject.tag == "PickUp")
                 {
                     HoldablePickUp();
-                }
-
-                if(hit.collider.CompareTag("TimeSwitch"))
-                {
-                    if(Input.GetButtonDown("Interact"))
-                    {
-                        hit.collider.gameObject.GetComponent<SwitchManager>().switchActive = true;
-                    }
                 }
             }
 
@@ -415,7 +407,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
             }
 
             //Attacks
-            if(unlockedShock)
+            if(unlockedShock && !manager.uiManager.minigameController.ovUI.activeInHierarchy)
             {
                 if (timeTillNextShock > -.01f)
                 {
@@ -483,7 +475,7 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("JumpPad"))
+        if(collision.gameObject.CompareTag("Floor") || collision.gameObject.CompareTag("JumpPad") || collision.gameObject.CompareTag("MovingPlatform"))
         {
             timesJumped = 0;
 
@@ -500,6 +492,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
             {
                 Attack();
             }
+
+            FindObjectOfType<AudioManagerScript>().Play("Landing");
         }
 
         if(collision.gameObject.CompareTag("Floor") && movementMode == MovementMode.SpeedPad)
@@ -643,6 +637,15 @@ public class ThirdPersonPlayerController : MonoBehaviour
         {
             transform.SetParent(collision.gameObject.transform);
         }
+
+        if(collision.gameObject.CompareTag("Floor") && isMoving)
+        {
+            if(!wheelParticles.GetComponent<ParticleSystem>().isPlaying)
+            {
+                wheelParticles.GetComponent<ParticleSystem>().Play();
+                wheelParticles.GetComponent<ParticleSystem>().loop = true;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -707,7 +710,16 @@ public class ThirdPersonPlayerController : MonoBehaviour
 
         if(other.gameObject.CompareTag("BlastDoor"))
         {
-            other.transform.parent.gameObject.GetComponent<BlastDoorAnimationController>().StartOpeningAnim();
+            if(other.transform.parent.gameObject.GetComponent<KeyCardController>() != null)
+            {
+                if (other.transform.parent.gameObject.GetComponent<KeyCardController>().color == KeyCardController.KeyCardColor.Blue && unlockedBlueKK)
+                {
+                    other.transform.parent.gameObject.GetComponent<BlastDoorAnimationController>().StartOpeningAnim();
+                }
+            }else
+            {
+                other.transform.parent.gameObject.GetComponent<BlastDoorAnimationController>().StartOpeningAnim();
+            }
         }
     }
 
@@ -715,12 +727,27 @@ public class ThirdPersonPlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("BlastDoor"))
         {
-            other.transform.parent.gameObject.GetComponent<BlastDoorAnimationController>().StartClosingAnim();
+            if (other.transform.parent.gameObject.GetComponent<KeyCardController>() != null)
+            {
+                if (other.transform.parent.gameObject.GetComponent<KeyCardController>().color == KeyCardController.KeyCardColor.Blue && unlockedBlueKK)
+                {
+                    other.transform.parent.gameObject.GetComponent<BlastDoorAnimationController>().StartClosingAnim();
+                }
+            }
+            else
+            {
+                other.transform.parent.gameObject.GetComponent<BlastDoorAnimationController>().StartClosingAnim();
+            }
         }
     }
 
     public void MoveCharacter()
     {
+        if(!wheelParticles.activeInHierarchy)
+        {
+            wheelParticles.SetActive(true);
+        }
+
         cmCam.m_BindingMode = CinemachineTransposer.BindingMode.SimpleFollowWithWorldUp;
 
         /*Vector3 move = new Vector3();*/
@@ -851,6 +878,8 @@ public class ThirdPersonPlayerController : MonoBehaviour
     {
         if (timesJumped != maxJumps)
         {
+            jumpParticles.GetComponent<ParticleSystem>().Play();
+
             jumpSound.Play();
             jumpSound.pitch = Random.Range(0.8f, 1.2f);
             rb.velocity = new Vector3(rb.velocity.x, 0);

@@ -114,6 +114,36 @@ public class GameManager : MonoBehaviour
                 playerController.hearts = playerController.maxHearts;
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            playerController.maxHearts += 100;
+            playerController.hearts = playerController.maxHearts;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            facialManager.color = FacialExpressionManager.FacialColors.White;
+        }else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            facialManager.color = FacialExpressionManager.FacialColors.Green;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            facialManager.color = FacialExpressionManager.FacialColors.Red;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            facialManager.color = FacialExpressionManager.FacialColors.Blue;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            facialManager.color = FacialExpressionManager.FacialColors.Amber;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            facialManager.color = FacialExpressionManager.FacialColors.Pink;
+        }
     }
 
     public void InitializeScripts()
