@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2122f391f38ea74ea2712c2bfd8170d, type: 3}
-  m_Name: Starting Room
+  m_Name: Tutorial Room 1
   m_EditorClassIdentifier: 
   conversation:
     englishConversation:
-    - text: 'Scientitst 1: So let''s see how this version of UP-D8 is going to peform
-        now shall we!'
+    - text: 'Scientist 1: Time to see if UP-D8 knows how to pickup stuff.'
       timeBetweenSentences: 6
       spokenDialogue: {fileID: 0}
-    - text: 'Scientist 2: It''ll probaply fail just like all the others.'
-      timeBetweenSentences: 4
+    - text: 'Scientist 2: UP-D8 can pickup stuff by pressing the "E" key right?'
+      timeBetweenSentences: 6
       spokenDialogue: {fileID: 0}
     dutchConversation: []
     frenchConversation: []
