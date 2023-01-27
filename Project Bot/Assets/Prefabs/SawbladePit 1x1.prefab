@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1984127502595782539}
+  - component: {fileID: 7575323860698850522}
   m_Layer: 0
   m_Name: SawbladePit 1x1
   m_TagString: Untagged
@@ -46,6 +47,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &7575323860698850522
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984127502595782538}
+  m_Enabled: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -4504023315871953618, guid: 7499ed2354904e842bcb58283ed05792, type: 2}
+  m_audioClip: {fileID: 8300000, guid: a7613c57557b3d84db4b93efea01d6d6, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.84
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 2.61
+  MinDistance: 15
+  MaxDistance: 20
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1984127502652335561
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53,6 +150,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1984127502595782539}
     m_Modifications:
+    - target: {fileID: 2143385897775884850, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2374556946241762860, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
       propertyPath: m_Name
       value: Sawblade (6)
@@ -131,6 +232,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1984127502595782539}
     m_Modifications:
+    - target: {fileID: 2143385897775884850, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2374556946241762860, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
       propertyPath: m_Name
       value: Sawblade (5)
@@ -209,6 +314,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1984127502595782539}
     m_Modifications:
+    - target: {fileID: 2143385897775884850, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2374556946241762860, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
       propertyPath: m_Name
       value: Sawblade (2)
@@ -287,6 +396,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1984127502595782539}
     m_Modifications:
+    - target: {fileID: 2143385897775884850, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2374556946241762860, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
       propertyPath: m_Name
       value: Sawblade (7)
@@ -365,6 +478,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1984127502595782539}
     m_Modifications:
+    - target: {fileID: 2143385897775884850, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2374556946241762860, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
       propertyPath: m_Name
       value: Sawblade (4)
@@ -443,6 +560,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1984127502595782539}
     m_Modifications:
+    - target: {fileID: 2143385897775884850, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2374556946241762860, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
       propertyPath: m_Name
       value: Sawblade (3)
@@ -521,6 +642,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1984127502595782539}
     m_Modifications:
+    - target: {fileID: 2143385897775884850, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2374556946241762860, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
       propertyPath: m_Name
       value: Sawblade (4)
@@ -599,6 +724,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1984127502595782539}
     m_Modifications:
+    - target: {fileID: 2143385897775884850, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2374556946241762860, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
       propertyPath: m_Name
       value: Sawblade (6)
@@ -677,6 +806,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1984127502595782539}
     m_Modifications:
+    - target: {fileID: 2143385897775884850, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2374556946241762860, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
       propertyPath: m_Name
       value: Sawblade (2)
@@ -755,6 +888,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1984127502595782539}
     m_Modifications:
+    - target: {fileID: 2143385897775884850, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2374556946241762860, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
       propertyPath: m_Name
       value: Sawblade (7)
@@ -833,6 +970,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1984127502595782539}
     m_Modifications:
+    - target: {fileID: 2143385897775884850, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2374556946241762860, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
       propertyPath: m_Name
       value: Sawblade (1)
@@ -911,6 +1052,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1984127502595782539}
     m_Modifications:
+    - target: {fileID: 2143385897775884850, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2374556946241762860, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
       propertyPath: m_Name
       value: Sawblade (1)
@@ -989,6 +1134,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1984127502595782539}
     m_Modifications:
+    - target: {fileID: 2143385897775884850, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2374556946241762860, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
       propertyPath: m_Name
       value: Sawblade (5)
@@ -1067,6 +1216,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1984127502595782539}
     m_Modifications:
+    - target: {fileID: 2143385897775884850, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2374556946241762860, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
       propertyPath: m_Name
       value: Sawblade (8)
@@ -1145,6 +1298,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1984127502595782539}
     m_Modifications:
+    - target: {fileID: 2143385897775884850, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2374556946241762860, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
       propertyPath: m_Name
       value: Sawblade (3)
@@ -1223,6 +1380,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1984127502595782539}
     m_Modifications:
+    - target: {fileID: 2143385897775884850, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2374556946241762860, guid: 7338ee1dcdbdec54d82206486c4aee18, type: 3}
       propertyPath: m_Name
       value: Sawblade (8)

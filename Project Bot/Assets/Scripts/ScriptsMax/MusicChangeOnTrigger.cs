@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class MusicChangeOnTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        FindObjectOfType<AudioManagerScript>().StopPlaying("GameplayMusic");
+        FindObjectOfType<AudioManagerScript>().Play("naamvangeluidhier");
     }
 }
